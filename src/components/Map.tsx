@@ -5,9 +5,10 @@ import {
   Popup,
   LayersControl,
   LayerGroup,
+  useMap,
 } from "react-leaflet";
 import L from "leaflet";
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { type Listing, type Place } from "../data";
 
 const MPLS_CENTER: [number, number] = [44.93, -93.27];
@@ -48,23 +49,47 @@ const SCHOOL_ICON = placeIcon("🎓", "#1565c0");
 const DAYCARE_ICON = placeIcon("🧸", "#ef6c00");
 const WORK_ICON = placeIcon("💼", "#6a1b9a");
 
+function FlyToSelected({
+  listing,
+  markerRef,
+}: {
+  listing: Listing | null;
+  markerRef: React.RefObject<Map<string, L.Marker>>;
+}) {
+  const map = useMap();
+  useEffect(() => {
+    if (!listing || listing.lat == null || listing.lng == null) return;
+    map.flyTo([listing.lat, listing.lng], Math.max(map.getZoom(), 14), { duration: 0.7 });
+    const marker = markerRef.current?.get(listing.id);
+    marker?.openPopup();
+  }, [listing, map, markerRef]);
+  return null;
+}
+
 export function Map({
   listings,
   shortlist,
   schools,
   daycares,
   work,
+  selectedId,
+  onSelect,
 }: {
   listings: Listing[];
   shortlist: Set<string>;
   schools: Place[];
   daycares: Place[];
   work: Place;
+  selectedId: string | null;
+  onSelect: (id: string) => void;
 }) {
   const breaks = useMemo(
     () => computeBreaks(listings.map((l) => l.price ?? 0).filter((p) => p > 0)),
     [listings]
   );
+
+  const markerRef = useRef(new globalThis.Map<string, L.Marker>());
+  const selected = listings.find((l) => l.id === selectedId) ?? null;
 
   return (
     <MapContainer
@@ -77,6 +102,7 @@ export function Map({
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
+      <FlyToSelected listing={selected} markerRef={markerRef} />
       <LayersControl position="topright">
         <LayersControl.Overlay checked name="Listings">
           <LayerGroup>
@@ -85,7 +111,16 @@ export function Map({
               const q = l.price ? quartileFor(l.price, breaks) : 1;
               const icon = rentalIcon(QUARTILE_COLORS[q], shortlist.has(l.id));
               return (
-                <Marker key={l.id} position={[l.lat, l.lng]} icon={icon}>
+                <Marker
+                  key={l.id}
+                  position={[l.lat, l.lng]}
+                  icon={icon}
+                  ref={(ref) => {
+                    if (ref) markerRef.current.set(l.id, ref);
+                    else markerRef.current.delete(l.id);
+                  }}
+                  eventHandlers={{ click: () => onSelect(l.id) }}
+                >
                   <Popup>
                     <strong>{l.lodging}</strong>
                     <br />

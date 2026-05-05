@@ -45,6 +45,8 @@ export default function App() {
             schools={data.schools}
             daycares={data.daycares}
             work={data.work}
+            selectedId={selectedId}
+            onSelect={setSelectedId}
           />
         </section>
       </main>
