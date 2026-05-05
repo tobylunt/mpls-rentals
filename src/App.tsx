@@ -11,7 +11,13 @@ export default function App() {
         <h1>MPLS Rentals</h1>
       </header>
       <main className="main">
-        <Map listings={data.listings} shortlist={shortlist} />
+        <Map
+          listings={data.listings}
+          shortlist={shortlist}
+          schools={data.schools}
+          daycares={data.daycares}
+          work={data.work}
+        />
       </main>
     </div>
   );

@@ -1,11 +1,16 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  LayersControl,
+  LayerGroup,
+} from "react-leaflet";
 import L from "leaflet";
 import { useMemo } from "react";
-import { type Listing } from "../data";
+import { type Listing, type Place } from "../data";
 
 const MPLS_CENTER: [number, number] = [44.93, -93.27];
-
-// 4 colors green → red for cheapest → priciest quartile
 const QUARTILE_COLORS = ["#2e7d32", "#9ccc65", "#ffb300", "#e53935"];
 
 function quartileFor(price: number, breaks: number[]): number {
@@ -19,25 +24,42 @@ function computeBreaks(prices: number[]): number[] {
   return [q(0.25), q(0.5), q(0.75)];
 }
 
-function pinIcon(color: string, starred: boolean): L.DivIcon {
+function rentalIcon(color: string, starred: boolean): L.DivIcon {
   return L.divIcon({
     className: "rental-pin",
-    html: `
-      <div class="rental-pin__body" style="background:${color}">
-        ${starred ? '<span class="rental-pin__star">★</span>' : ""}
-      </div>
-    `,
+    html: `<div class="rental-pin__body" style="background:${color}">
+      ${starred ? '<span class="rental-pin__star">★</span>' : ""}
+    </div>`,
     iconSize: [22, 22],
     iconAnchor: [11, 11],
   });
 }
 
+function placeIcon(emoji: string, bg: string): L.DivIcon {
+  return L.divIcon({
+    className: "place-pin",
+    html: `<div class="place-pin__body" style="background:${bg}">${emoji}</div>`,
+    iconSize: [26, 26],
+    iconAnchor: [13, 13],
+  });
+}
+
+const SCHOOL_ICON = placeIcon("🎓", "#1565c0");
+const DAYCARE_ICON = placeIcon("🧸", "#ef6c00");
+const WORK_ICON = placeIcon("💼", "#6a1b9a");
+
 export function Map({
   listings,
   shortlist,
+  schools,
+  daycares,
+  work,
 }: {
   listings: Listing[];
   shortlist: Set<string>;
+  schools: Place[];
+  daycares: Place[];
+  work: Place;
 }) {
   const breaks = useMemo(
     () => computeBreaks(listings.map((l) => l.price ?? 0).filter((p) => p > 0)),
@@ -55,21 +77,61 @@ export function Map({
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {listings.map((l) => {
-        if (l.lat == null || l.lng == null) return null;
-        const q = l.price ? quartileFor(l.price, breaks) : 1;
-        const icon = pinIcon(QUARTILE_COLORS[q], shortlist.has(l.id));
-        return (
-          <Marker key={l.id} position={[l.lat, l.lng]} icon={icon}>
-            <Popup>
-              <strong>{l.lodging}</strong>
-              <br />
-              ${l.price?.toLocaleString()} · {l.bedrooms}BR
-              {l.school ? ` · ${l.school}` : ""}
-            </Popup>
-          </Marker>
-        );
-      })}
+      <LayersControl position="topright">
+        <LayersControl.Overlay checked name="Listings">
+          <LayerGroup>
+            {listings.map((l) => {
+              if (l.lat == null || l.lng == null) return null;
+              const q = l.price ? quartileFor(l.price, breaks) : 1;
+              const icon = rentalIcon(QUARTILE_COLORS[q], shortlist.has(l.id));
+              return (
+                <Marker key={l.id} position={[l.lat, l.lng]} icon={icon}>
+                  <Popup>
+                    <strong>{l.lodging}</strong>
+                    <br />
+                    ${l.price?.toLocaleString()} · {l.bedrooms}BR
+                    {l.school ? ` · ${l.school}` : ""}
+                  </Popup>
+                </Marker>
+              );
+            })}
+          </LayerGroup>
+        </LayersControl.Overlay>
+
+        <LayersControl.Overlay checked name="Schools">
+          <LayerGroup>
+            {schools.map((s) =>
+              s.lat != null && s.lng != null ? (
+                <Marker key={s.name} position={[s.lat, s.lng]} icon={SCHOOL_ICON}>
+                  <Popup><strong>{s.name}</strong> (school)</Popup>
+                </Marker>
+              ) : null
+            )}
+          </LayerGroup>
+        </LayersControl.Overlay>
+
+        <LayersControl.Overlay checked name="Daycares">
+          <LayerGroup>
+            {daycares.map((d) =>
+              d.lat != null && d.lng != null ? (
+                <Marker key={d.name} position={[d.lat, d.lng]} icon={DAYCARE_ICON}>
+                  <Popup><strong>{d.name}</strong> (daycare)</Popup>
+                </Marker>
+              ) : null
+            )}
+          </LayerGroup>
+        </LayersControl.Overlay>
+
+        <LayersControl.Overlay checked name="Work">
+          <LayerGroup>
+            {work.lat != null && work.lng != null ? (
+              <Marker position={[work.lat, work.lng]} icon={WORK_ICON}>
+                <Popup><strong>{work.name}</strong></Popup>
+              </Marker>
+            ) : null}
+          </LayerGroup>
+        </LayersControl.Overlay>
+      </LayersControl>
     </MapContainer>
   );
 }
