@@ -64,12 +64,16 @@ function ChainLines({
   const school = schools.find((s) => s.name === selected.school);
   const daycare = daycares.find((d) => d.name === selected.daycare);
 
-  const segments: [[number, number], [number, number]][] = [];
-  if (home && school?.lat != null && school?.lng != null) {
-    segments.push([home, [school.lat, school.lng]]);
+  if (!home) return null;
+
+  const segments: { positions: [[number, number], [number, number]]; color: string }[] = [];
+  if (school?.lat != null && school?.lng != null) {
+    // home → school: school-icon blue, matches the school pin color
+    segments.push({ positions: [home, [school.lat, school.lng]], color: "#1565c0" });
   }
-  if (school?.lat != null && school?.lng != null && daycare?.lat != null && daycare?.lng != null) {
-    segments.push([[school.lat, school.lng], [daycare.lat, daycare.lng]]);
+  if (daycare?.lat != null && daycare?.lng != null) {
+    // home → daycare: daycare-icon orange, matches the daycare pin color
+    segments.push({ positions: [home, [daycare.lat, daycare.lng]], color: "#ef6c00" });
   }
 
   return (
@@ -77,8 +81,8 @@ function ChainLines({
       {segments.map((s, i) => (
         <Polyline
           key={i}
-          positions={s}
-          pathOptions={{ color: "#1565c0", weight: 3, opacity: 0.6, dashArray: "6 6" }}
+          positions={s.positions}
+          pathOptions={{ color: s.color, weight: 3, opacity: 0.7, dashArray: "6 6" }}
         />
       ))}
     </>

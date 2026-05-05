@@ -33,11 +33,33 @@ export function ListingPopup({
           {shortlisted ? "★" : "☆"}
         </button>
       </div>
+      {listing.image_url ? (
+        <a
+          className="popup__thumb"
+          href={listing.url ?? "#"}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src={listing.image_url}
+            alt={listing.lodging}
+            referrerPolicy="no-referrer"
+            onError={(e) => {
+              (e.currentTarget.parentElement as HTMLAnchorElement).style.display = "none";
+            }}
+          />
+        </a>
+      ) : null}
       <div className="popup__price">
         ${listing.price?.toLocaleString()} · {listing.bedrooms}BR {listing.housing_type}
         {listing.size_sqft ? ` · ${listing.size_sqft} sqft (${listing.price_per_sqft}/sqft)` : ""}
       </div>
       <div className="popup__hood">{listing.neighborhood ?? "—"}</div>
+      {listing.url ? (
+        <a className="popup__link" href={listing.url} target="_blank" rel="noopener noreferrer">
+          View original listing ↗
+        </a>
+      ) : null}
       <hr />
       <div>School: {listing.school ?? "—"} ({fmtDist(listing.dist_school)})</div>
       <div>Daycare: {listing.daycare ?? "—"} ({fmtDist(listing.dist_daycare)})</div>

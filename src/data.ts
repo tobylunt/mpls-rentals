@@ -10,6 +10,8 @@ export type Listing = {
   id: string;
   lodging: string;
   address: string;
+  url: string | null;
+  image_url: string | null;
   lat: number | null;
   lng: number | null;
   bedrooms: number | null;

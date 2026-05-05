@@ -22,8 +22,19 @@ ROOT = Path(__file__).resolve().parent.parent
 XLSX = ROOT / "2026 MPLS housing.xlsx"
 OUT = ROOT / "public" / "data" / "listings.json"
 CACHE = ROOT / "scripts" / ".geocode_cache.json"
+OG_CACHE = ROOT / "scripts" / ".og_image_cache.json"
 
 USER_AGENT = "mpls-rentals-map/0.1 (personal project)"
+# Browser-like UA for og:image scraping (Zillow/Redfin block obvious bots).
+BROWSER_UA = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+)
+
+# Listings to skip (no longer available, etc.). Match by Lodging cell value.
+SKIP_LISTINGS: set[str] = {
+    "5027 Chowen Ave S",
+}
 
 # -- Hardcoded addresses for named buildings (Lodging cells that aren't street addresses).
 # Verify each by searching the building name; update here if any are wrong.
@@ -31,7 +42,7 @@ NAMED_BUILDINGS: dict[str, str] = {
     "The Collection C5": "2071 Ford Pkwy, Saint Paul, MN",
     "Linden 43 Unit 410": "Linden 43, 4310 Upton Ave S, Minneapolis, MN",
     "Noko apartments": "Noko Apartments Minneapolis",
-    "Sanctuary Lofts": "2400 Park Ave S, Minneapolis, MN",
+    "Sanctuary Lofts": "3225 E Minnehaha Pkwy, Minneapolis, MN 55417",
 }
 
 # Normalize school names to geocoder-friendly queries.
@@ -62,6 +73,66 @@ def load_cache() -> dict[str, list[float] | None]:
 
 def save_cache(cache: dict[str, list[float] | None]) -> None:
     CACHE.write_text(json.dumps(cache, indent=2, sort_keys=True))
+
+
+def load_og_cache() -> dict[str, str | None]:
+    if OG_CACHE.exists():
+        return json.loads(OG_CACHE.read_text())
+    return {}
+
+
+def save_og_cache(cache: dict[str, str | None]) -> None:
+    OG_CACHE.write_text(json.dumps(cache, indent=2, sort_keys=True))
+
+
+# Match og:image (or twitter:image as fallback) regardless of attribute order/quoting style.
+_OG_RE = re.compile(
+    r'<meta[^>]*?(?:property|name)=["\'](?:og:image|twitter:image)["\'][^>]*?content=["\']([^"\']+)["\']',
+    re.IGNORECASE,
+)
+_OG_RE_REV = re.compile(
+    r'<meta[^>]*?content=["\']([^"\']+)["\'][^>]*?(?:property|name)=["\'](?:og:image|twitter:image)["\']',
+    re.IGNORECASE,
+)
+
+
+def fetch_og_image(url: str, cache: dict[str, str | None]) -> str | None:
+    """Best-effort og:image scrape. Caches results (success or failure) to avoid retries.
+    Many real-estate sites (Zillow, Redfin, Apartments.com) block bots — graceful failure."""
+    if url in cache:
+        return cache[url]
+    print(f"  scraping: {url}")
+    try:
+        r = requests.get(
+            url,
+            headers={
+                "User-Agent": BROWSER_UA,
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                "Accept-Language": "en-US,en;q=0.9",
+            },
+            timeout=15,
+            allow_redirects=True,
+        )
+        if r.status_code != 200:
+            print(f"    HTTP {r.status_code}")
+            cache[url] = None
+            save_og_cache(cache)
+            time.sleep(0.6)
+            return None
+        m = _OG_RE.search(r.text) or _OG_RE_REV.search(r.text)
+        if m:
+            img = m.group(1)
+            print(f"    -> {img[:80]}")
+            cache[url] = img
+        else:
+            print("    no og:image found")
+            cache[url] = None
+    except Exception as e:
+        print(f"    ERROR: {e}", file=sys.stderr)
+        cache[url] = None
+    save_og_cache(cache)
+    time.sleep(0.6)  # be polite even though we're hitting different hosts
+    return cache[url]
 
 
 def geocode(query: str, cache: dict[str, list[float] | None]) -> tuple[float, float] | None:
@@ -210,16 +281,25 @@ def haversine_km(a: tuple[float, float], b: tuple[float, float]) -> float:
 
 def main() -> None:
     cache = load_cache()
-    wb = openpyxl.load_workbook(XLSX, data_only=True)
+    og_cache = load_og_cache()
+    # data_only=False keeps cell hyperlinks accessible (data_only=True drops them).
+    wb = openpyxl.load_workbook(XLSX, data_only=False)
     ws = wb.active
 
-    rows = list(ws.iter_rows(min_row=2, values_only=True))
+    rows = list(ws.iter_rows(min_row=2))
     listings: list[dict[str, Any]] = []
 
-    for r in rows:
-        if r[0] is None:
+    for row in rows:
+        lodging_cell = row[0]
+        if lodging_cell.value is None:
             continue
-        lodging = str(r[0]).strip()
+        lodging = str(lodging_cell.value).strip()
+        if lodging in SKIP_LISTINGS:
+            print(f"  skipping (per SKIP_LISTINGS): {lodging}")
+            continue
+        url = lodging_cell.hyperlink.target if lodging_cell.hyperlink else None
+        # Pull plain values for the remaining cells.
+        r = [c.value for c in row]
         neighborhood = r[2].strip() if isinstance(r[2], str) else None
         bedrooms, htype = parse_bedrooms(r[1])
         price = float(r[3]) if isinstance(r[3], (int, float)) else None
@@ -244,10 +324,14 @@ def main() -> None:
         coords = geocode(address, cache)
         lat, lng = (coords[0], coords[1]) if coords else (None, None)
 
+        image_url = fetch_og_image(url, og_cache) if url else None
+
         listings.append({
             "id": slugify(lodging) or slugify(address),
             "lodging": lodging,
             "address": address,
+            "url": url,
+            "image_url": image_url,
             "lat": lat,
             "lng": lng,
             "bedrooms": bedrooms,

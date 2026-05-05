@@ -4,3 +4,4 @@ dist
 *.log
 *.tsbuildinfo
 scripts/.geocode_cache.json
+scripts/.og_image_cache.json

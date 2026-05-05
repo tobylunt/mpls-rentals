@@ -117,6 +117,28 @@ body {
 .popup__hood { color: #666; }
 .popup hr { border: none; border-top: 1px solid #eee; margin: 6px 0; }
 .popup__notes { margin-top: 6px; font-style: italic; color: #555; }
+.popup__thumb {
+  display: block;
+  margin: 6px 0;
+  border-radius: 4px;
+  overflow: hidden;
+  line-height: 0;
+}
+.popup__thumb img {
+  width: 100%;
+  max-width: 260px;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+}
+.popup__link {
+  display: inline-block;
+  margin-top: 4px;
+  color: #1565c0;
+  text-decoration: none;
+  font-size: 12px;
+}
+.popup__link:hover { text-decoration: underline; }
 
 .topbar__tabs { margin-left: 24px; display: flex; gap: 4px; }
 .tab {
