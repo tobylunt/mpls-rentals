@@ -1,23 +1,49 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
+import { useMemo } from "react";
 import { type Listing } from "../data";
-
-// Fix default-marker icon paths (Leaflet's defaults assume a webpack setup that
-// doesn't apply here). Pull from CDN.
-const defaultIcon = L.icon({
-  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-  iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
-});
-L.Marker.prototype.options.icon = defaultIcon;
 
 const MPLS_CENTER: [number, number] = [44.93, -93.27];
 
-export function Map({ listings }: { listings: Listing[] }) {
+// 4 colors green → red for cheapest → priciest quartile
+const QUARTILE_COLORS = ["#2e7d32", "#9ccc65", "#ffb300", "#e53935"];
+
+function quartileFor(price: number, breaks: number[]): number {
+  for (let i = 0; i < breaks.length; i++) if (price <= breaks[i]) return i;
+  return breaks.length;
+}
+
+function computeBreaks(prices: number[]): number[] {
+  const sorted = [...prices].sort((a, b) => a - b);
+  const q = (p: number) => sorted[Math.floor(sorted.length * p)];
+  return [q(0.25), q(0.5), q(0.75)];
+}
+
+function pinIcon(color: string, starred: boolean): L.DivIcon {
+  return L.divIcon({
+    className: "rental-pin",
+    html: `
+      <div class="rental-pin__body" style="background:${color}">
+        ${starred ? '<span class="rental-pin__star">★</span>' : ""}
+      </div>
+    `,
+    iconSize: [22, 22],
+    iconAnchor: [11, 11],
+  });
+}
+
+export function Map({
+  listings,
+  shortlist,
+}: {
+  listings: Listing[];
+  shortlist: Set<string>;
+}) {
+  const breaks = useMemo(
+    () => computeBreaks(listings.map((l) => l.price ?? 0).filter((p) => p > 0)),
+    [listings]
+  );
+
   return (
     <MapContainer
       center={MPLS_CENTER}
@@ -29,17 +55,21 @@ export function Map({ listings }: { listings: Listing[] }) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {listings.map((l) =>
-        l.lat != null && l.lng != null ? (
-          <Marker key={l.id} position={[l.lat, l.lng]}>
+      {listings.map((l) => {
+        if (l.lat == null || l.lng == null) return null;
+        const q = l.price ? quartileFor(l.price, breaks) : 1;
+        const icon = pinIcon(QUARTILE_COLORS[q], shortlist.has(l.id));
+        return (
+          <Marker key={l.id} position={[l.lat, l.lng]} icon={icon}>
             <Popup>
               <strong>{l.lodging}</strong>
               <br />
               ${l.price?.toLocaleString()} · {l.bedrooms}BR
+              {l.school ? ` · ${l.school}` : ""}
             </Popup>
           </Marker>
-        ) : null
-      )}
+        );
+      })}
     </MapContainer>
   );
 }
