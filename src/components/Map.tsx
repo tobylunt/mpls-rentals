@@ -5,6 +5,7 @@ import {
   Popup,
   LayersControl,
   LayerGroup,
+  Polyline,
   useMap,
 } from "react-leaflet";
 import L from "leaflet";
@@ -49,6 +50,40 @@ function placeIcon(emoji: string, bg: string): L.DivIcon {
 const SCHOOL_ICON = placeIcon("🎓", "#1565c0");
 const DAYCARE_ICON = placeIcon("🧸", "#ef6c00");
 const WORK_ICON = placeIcon("💼", "#6a1b9a");
+
+function ChainLines({
+  selected,
+  schools,
+  daycares,
+}: {
+  selected: Listing;
+  schools: Place[];
+  daycares: Place[];
+}) {
+  const home: [number, number] | null = selected.lat != null && selected.lng != null ? [selected.lat, selected.lng] : null;
+  const school = schools.find((s) => s.name === selected.school);
+  const daycare = daycares.find((d) => d.name === selected.daycare);
+
+  const segments: [[number, number], [number, number]][] = [];
+  if (home && school?.lat != null && school?.lng != null) {
+    segments.push([home, [school.lat, school.lng]]);
+  }
+  if (school?.lat != null && school?.lng != null && daycare?.lat != null && daycare?.lng != null) {
+    segments.push([[school.lat, school.lng], [daycare.lat, daycare.lng]]);
+  }
+
+  return (
+    <>
+      {segments.map((s, i) => (
+        <Polyline
+          key={i}
+          positions={s}
+          pathOptions={{ color: "#1565c0", weight: 3, opacity: 0.6, dashArray: "6 6" }}
+        />
+      ))}
+    </>
+  );
+}
 
 function FlyToSelected({
   listing,
@@ -106,6 +141,9 @@ export function Map({
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <FlyToSelected listing={selected} markerRef={markerRef} />
+      {selected && selected.lat != null && selected.lng != null ? (
+        <ChainLines selected={selected} schools={schools} daycares={daycares} />
+      ) : null}
       <LayersControl position="topright">
         <LayersControl.Overlay checked name="Listings">
           <LayerGroup>
