@@ -89,6 +89,11 @@ function ChainLines({
   );
 }
 
+// Pixels to shift the map's center NORTH of the pin so the popup (which opens
+// above the pin) doesn't run off the top of the viewport. Tuned to fit a popup
+// with thumbnail + full details (~360-400px tall).
+const POPUP_OFFSET_PX = 180;
+
 function FlyToSelected({
   listing,
   markerRef,
@@ -99,7 +104,11 @@ function FlyToSelected({
   const map = useMap();
   useEffect(() => {
     if (!listing || listing.lat == null || listing.lng == null) return;
-    map.flyTo([listing.lat, listing.lng], Math.max(map.getZoom(), 14), { duration: 0.7 });
+    const targetZoom = Math.max(map.getZoom(), 14);
+    const pinPoint = map.project([listing.lat, listing.lng], targetZoom);
+    const centerPoint = L.point(pinPoint.x, pinPoint.y - POPUP_OFFSET_PX);
+    const center = map.unproject(centerPoint, targetZoom);
+    map.flyTo(center, targetZoom, { duration: 0.7 });
     const marker = markerRef.current?.get(listing.id);
     marker?.openPopup();
   }, [listing, map, markerRef]);
