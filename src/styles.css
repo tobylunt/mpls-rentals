@@ -131,9 +131,13 @@ body {
   object-fit: cover;
   display: block;
 }
-.popup__link {
-  display: inline-block;
+.popup__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
   margin-top: 4px;
+}
+.popup__link {
   color: #1565c0;
   text-decoration: none;
   font-size: 12px;

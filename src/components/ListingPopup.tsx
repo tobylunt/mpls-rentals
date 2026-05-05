@@ -53,11 +53,23 @@ export function ListingPopup({
         {listing.size_sqft ? ` · ${listing.size_sqft} sqft (${listing.price_per_sqft}/sqft)` : ""}
       </div>
       <div className="popup__hood">{listing.neighborhood ?? "—"}</div>
-      {listing.url ? (
-        <a className="popup__link" href={listing.url} target="_blank" rel="noopener noreferrer">
-          View original listing ↗
-        </a>
-      ) : null}
+      <div className="popup__links">
+        {listing.url ? (
+          <a className="popup__link" href={listing.url} target="_blank" rel="noopener noreferrer">
+            Original listing ↗
+          </a>
+        ) : null}
+        {listing.lat != null && listing.lng != null ? (
+          <a
+            className="popup__link"
+            href={`https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${listing.lat},${listing.lng}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Street View ↗
+          </a>
+        ) : null}
+      </div>
       <hr />
       <div>School: {listing.school ?? "—"} ({fmtDist(listing.dist_school)})</div>
       <div>Daycare: {listing.daycare ?? "—"} ({fmtDist(listing.dist_daycare)})</div>
