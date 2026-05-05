@@ -60,7 +60,7 @@ MANUAL_IMAGES: dict[str, str] = {
 # -- Hardcoded addresses for named buildings (Lodging cells that aren't street addresses).
 # Verify each by searching the building name; update here if any are wrong.
 NAMED_BUILDINGS: dict[str, str] = {
-    "The Collection C5": "2071 Ford Pkwy, Saint Paul, MN",
+    "The Collection C5": "800 Cretin Ave S, Saint Paul, MN 55116",
     "Linden 43 Unit 410": "Linden 43, 4310 Upton Ave S, Minneapolis, MN",
     "Noko apartments": "4720 Longfellow Ave S, Minneapolis, MN",
     "Sanctuary Lofts": "3225 E Minnehaha Pkwy, Minneapolis, MN 55417",
