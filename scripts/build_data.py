@@ -68,7 +68,7 @@ NAMED_BUILDINGS: dict[str, str] = {
 
 # Normalize school names to geocoder-friendly queries.
 SCHOOL_QUERIES: dict[str, str] = {
-    "Burroughs": "Burroughs Community School, Minneapolis, MN",
+    "Burroughs": "1601 W 50th St, Minneapolis, MN 55419",
     "Lake Harriet": "Lake Harriet Community School Lower Campus, Minneapolis, MN",
     "Horace Mann": "Horace Mann Elementary School, Saint Paul, MN",
     "Groveland Park": "Groveland Park Elementary School, Saint Paul, MN",
