@@ -185,7 +185,6 @@ export function Map({
                       onToggleStar={() => onToggleStar(l.id)}
                       schools={schools}
                       daycares={daycares}
-                      work={work}
                     />
                   </Popup>
                 </Marker>

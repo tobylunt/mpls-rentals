@@ -57,7 +57,6 @@ export default function App() {
                 setSortKey={setSortKey}
                 schools={data.schools}
                 daycares={data.daycares}
-                work={data.work}
               />
             </aside>
             <section className="map-area">
@@ -78,7 +77,6 @@ export default function App() {
             listings={shortlisted}
             schools={data.schools}
             daycares={data.daycares}
-            work={data.work}
             onClose={() => setView("map")}
           />
         )}

@@ -7,8 +7,7 @@ export function sortListings(
   listings: Listing[],
   sortKey: SortKey,
   schools: Place[],
-  daycares: Place[],
-  work: Place
+  daycares: Place[]
 ): Listing[] {
   const arr = [...listings];
   switch (sortKey) {
@@ -20,8 +19,8 @@ export function sortListings(
       return arr.sort((a, b) => (b.bedrooms ?? 0) - (a.bedrooms ?? 0));
     case "chain":
       return arr.sort((a, b) => {
-        const ca = chainTimeFor(a, schools, daycares, work) ?? Infinity;
-        const cb = chainTimeFor(b, schools, daycares, work) ?? Infinity;
+        const ca = chainTimeFor(a, schools, daycares) ?? Infinity;
+        const cb = chainTimeFor(b, schools, daycares) ?? Infinity;
         return ca - cb;
       });
   }
@@ -37,7 +36,6 @@ export function ListingList({
   setSortKey,
   schools,
   daycares,
-  work,
 }: {
   listings: Listing[];
   shortlist: Set<string>;
@@ -48,9 +46,8 @@ export function ListingList({
   setSortKey: (k: SortKey) => void;
   schools: Place[];
   daycares: Place[];
-  work: Place;
 }) {
-  const sorted = sortListings(listings, sortKey, schools, daycares, work);
+  const sorted = sortListings(listings, sortKey, schools, daycares);
 
   return (
     <div className="list">
@@ -76,7 +73,6 @@ export function ListingList({
             onToggleStar={() => onToggleStar(l.id)}
             schools={schools}
             daycares={daycares}
-            work={work}
           />
         ))}
         {sorted.length === 0 ? <div className="list__empty">No listings match.</div> : null}

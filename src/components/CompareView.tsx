@@ -39,13 +39,11 @@ export function CompareView({
   listings,
   schools,
   daycares,
-  work,
   onClose,
 }: {
   listings: Listing[];
   schools: Place[];
   daycares: Place[];
-  work: Place;
   onClose: () => void;
 }) {
   if (listings.length === 0) {
@@ -57,7 +55,7 @@ export function CompareView({
     );
   }
 
-  const chains = listings.map((l) => chainTimeFor(l, schools, daycares, work));
+  const chains = listings.map((l) => chainTimeFor(l, schools, daycares));
 
   const rows: Row[] = [
     {

@@ -1,7 +1,7 @@
 import { type Listing, type Place } from "../data";
 import { chainTimeMin } from "../score";
 
-export function chainTimeFor(l: Listing, schools: Place[], daycares: Place[], work: Place): number | null {
+export function chainTimeFor(l: Listing, schools: Place[], daycares: Place[]): number | null {
   const school = schools.find((s) => s.name === l.school);
   const daycare = daycares.find((d) => d.name === l.daycare);
   if (!school || !daycare) return null;
@@ -11,7 +11,6 @@ export function chainTimeFor(l: Listing, schools: Place[], daycares: Place[], wo
     homeLng: l.lng,
     school: { lat: school.lat, lng: school.lng },
     daycare: { lat: daycare.lat, lng: daycare.lng },
-    work: { lat: work.lat, lng: work.lng },
   });
 }
 
@@ -27,7 +26,6 @@ export function ListingCard({
   onToggleStar,
   schools,
   daycares,
-  work,
 }: {
   listing: Listing;
   shortlisted: boolean;
@@ -36,9 +34,8 @@ export function ListingCard({
   onToggleStar: () => void;
   schools: Place[];
   daycares: Place[];
-  work: Place;
 }) {
-  const chain = chainTimeFor(listing, schools, daycares, work);
+  const chain = chainTimeFor(listing, schools, daycares);
 
   return (
     <div
@@ -66,7 +63,7 @@ export function ListingCard({
       <div className="card__row">School: {listing.school ?? "—"} ({fmt(listing.dist_school.drive_min, " min drive")})</div>
       <div className="card__row">Daycare: {listing.daycare ?? "—"} ({fmt(listing.dist_daycare.drive_min, " min drive")})</div>
       <div className="card__row">Work: {fmt(listing.dist_work_drive_min, " min drive")}</div>
-      <div className="card__row card__chain" title="Estimated home → school → daycare → work">
+      <div className="card__row card__chain" title="Estimated home → school → daycare">
         Chain time: {chain == null ? "—" : `~${Math.round(chain)} min`}
       </div>
     </div>

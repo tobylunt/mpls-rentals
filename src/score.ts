@@ -24,7 +24,6 @@ export type ChainInputs = {
   homeLng?: number | null;
   school: Pt;
   daycare: Pt;
-  work: Pt;
 };
 
 function isFull(p: Pt): p is { lat: number; lng: number } {
@@ -36,10 +35,11 @@ function driveMinBetween(a: Pt, b: Pt): number | null {
   return haversineKm(a.lat, a.lng, b.lat, b.lng) * DRIVE_MIN_PER_KM;
 }
 
+// Models the morning routine: home → school → daycare. Work is intentionally
+// excluded — work commute is shown separately and shouldn't dominate the
+// "school+daycare bunching" signal this metric is meant to surface.
 export function chainTimeMin(input: ChainInputs): number | null {
-  if (!isFull(input.school) || !isFull(input.daycare) || !isFull(input.work)) {
-    return null;
-  }
+  if (!isFull(input.school) || !isFull(input.daycare)) return null;
 
   let homeToSchool = input.homeToSchoolDriveMin;
   if (homeToSchool == null) {
@@ -49,7 +49,6 @@ export function chainTimeMin(input: ChainInputs): number | null {
   }
 
   const schoolToDaycare = driveMinBetween(input.school, input.daycare)!;
-  const daycareToWork = driveMinBetween(input.daycare, input.work)!;
 
-  return homeToSchool + schoolToDaycare + daycareToWork;
+  return homeToSchool + schoolToDaycare;
 }

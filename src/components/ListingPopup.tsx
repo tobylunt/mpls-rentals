@@ -14,16 +14,14 @@ export function ListingPopup({
   onToggleStar,
   schools,
   daycares,
-  work,
 }: {
   listing: Listing;
   shortlisted: boolean;
   onToggleStar: () => void;
   schools: Place[];
   daycares: Place[];
-  work: Place;
 }) {
-  const chain = chainTimeFor(listing, schools, daycares, work);
+  const chain = chainTimeFor(listing, schools, daycares);
 
   return (
     <div className="popup">

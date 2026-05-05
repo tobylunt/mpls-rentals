@@ -12,19 +12,17 @@ describe("haversineKm", () => {
 });
 
 describe("chainTimeMin", () => {
-  // Setup: home is 5 min drive from school. School and daycare are at the same
-  // point (school === daycare coords) so middle term is ~0. Daycare to work is
-  // a known 1-degree-lat distance => ~111 km => ~277 min at 2.5 min/km.
+  // Setup: home is 5 min drive from school. School and daycare are colocated,
+  // so the school→daycare leg is ~0 and the chain time equals home→school.
   const colocated: ChainInputs = {
     homeToSchoolDriveMin: 5,
     school: { lat: 44.9, lng: -93.3 },
     daycare: { lat: 44.9, lng: -93.3 },
-    work: { lat: 45.9, lng: -93.3 },
   };
 
   it("computes the chain when school and daycare overlap", () => {
-    // home->school: 5  +  school->daycare: ~0  +  daycare->work: ~277  =  ~282
-    expect(chainTimeMin(colocated)).toBeCloseTo(5 + 0 + 111 * 2.5, 0);
+    // home->school: 5  +  school->daycare: ~0
+    expect(chainTimeMin(colocated)).toBeCloseTo(5, 1);
   });
 
   it("penalizes school and daycare being far apart", () => {
@@ -49,7 +47,6 @@ describe("chainTimeMin", () => {
         homeLng: null,
         school: { lat: 44.9, lng: -93.3 },
         daycare: { lat: 44.9, lng: -93.3 },
-        work: { lat: 45.0, lng: -93.3 },
       })
     ).toBeNull();
   });
@@ -61,7 +58,6 @@ describe("chainTimeMin", () => {
       homeLng: -93.3,
       school: { lat: 44.9, lng: -93.3 }, // home == school
       daycare: { lat: 44.9, lng: -93.3 },
-      work: { lat: 44.9, lng: -93.3 },
     });
     expect(result).toBeCloseTo(0, 0);
   });
