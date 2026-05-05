@@ -45,14 +45,24 @@ SKIP_LISTINGS: set[str] = {
 # whose image we couldn't scrape. Example:
 #   "4807 Grand Ave S #1": "https://example.com/zillow-photo.jpg"
 # Local paths (relative to repo root) are accepted, e.g. "scripts/seed/4807.jpg".
-MANUAL_IMAGES: dict[str, str] = {}
+MANUAL_IMAGES: dict[str, str] = {
+    "Noko apartments": (
+        "https://static.wixstatic.com/media/"
+        "f3dec5_550c4994b91e4381bbcdcfaf2609ae94~mv2.jpg/v1/fit/w_960,h_640,q_90/"
+        "f3dec5_550c4994b91e4381bbcdcfaf2609ae94~mv2.jpg"
+    ),
+    "Sanctuary Lofts": (
+        "https://images.squarespace-cdn.com/content/v1/"
+        "642f00977c432651bb8947ba/f5e53a37-2aee-4c62-a216-e17ce964edbc/Hero_web.jpg"
+    ),
+}
 
 # -- Hardcoded addresses for named buildings (Lodging cells that aren't street addresses).
 # Verify each by searching the building name; update here if any are wrong.
 NAMED_BUILDINGS: dict[str, str] = {
     "The Collection C5": "2071 Ford Pkwy, Saint Paul, MN",
     "Linden 43 Unit 410": "Linden 43, 4310 Upton Ave S, Minneapolis, MN",
-    "Noko apartments": "Noko Apartments Minneapolis",
+    "Noko apartments": "4720 Longfellow Ave S, Minneapolis, MN",
     "Sanctuary Lofts": "3225 E Minnehaha Pkwy, Minneapolis, MN 55417",
 }
 
