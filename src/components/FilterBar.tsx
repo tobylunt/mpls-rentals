@@ -4,7 +4,6 @@ export type Filters = {
   priceMax: number;
   bedrooms: Set<number>;
   neighborhoods: Set<string>;
-  petFriendlyOnly: boolean;
   shortlistOnly: boolean;
 };
 
@@ -14,7 +13,6 @@ export function defaultFilters(listings: Listing[]): Filters {
     priceMax: max,
     bedrooms: new Set(),
     neighborhoods: new Set(),
-    petFriendlyOnly: false,
     shortlistOnly: false,
   };
 }
@@ -28,7 +26,6 @@ export function applyFilters(
     if (l.price != null && l.price > f.priceMax) return false;
     if (f.bedrooms.size > 0 && (l.bedrooms == null || !f.bedrooms.has(l.bedrooms))) return false;
     if (f.neighborhoods.size > 0 && (!l.neighborhood || !f.neighborhoods.has(l.neighborhood))) return false;
-    if (f.petFriendlyOnly && (l.pet_rent == null || l.pet_rent === "unknown")) return false;
     if (f.shortlistOnly && !shortlist.has(l.id)) return false;
     return true;
   });
@@ -98,15 +95,6 @@ export function FilterBar({
           ))}
         </div>
       </div>
-
-      <label className="filter filter--check">
-        <input
-          type="checkbox"
-          checked={filters.petFriendlyOnly}
-          onChange={(e) => setFilters({ ...filters, petFriendlyOnly: e.target.checked })}
-        />
-        Pet-friendly only
-      </label>
 
       <label className="filter filter--check">
         <input
