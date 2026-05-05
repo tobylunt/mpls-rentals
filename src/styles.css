@@ -117,3 +117,57 @@ body {
 .popup__hood { color: #666; }
 .popup hr { border: none; border-top: 1px solid #eee; margin: 6px 0; }
 .popup__notes { margin-top: 6px; font-style: italic; color: #555; }
+
+.topbar__tabs { margin-left: 24px; display: flex; gap: 4px; }
+.tab {
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+.tab--on { background: #1565c0; color: #fff; border-color: #1565c0; }
+
+.compare { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.compare__bar {
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.compare__bar button { padding: 4px 10px; }
+.compare__scroll { flex: 1; overflow: auto; }
+.compare__table {
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 100%;
+}
+.compare__table th, .compare__table td {
+  padding: 6px 12px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  vertical-align: top;
+}
+.compare__table thead th {
+  position: sticky;
+  top: 0;
+  background: #fafafa;
+  border-bottom: 2px solid #ccc;
+  min-width: 160px;
+}
+.compare__table tbody th {
+  background: #fafafa;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  font-weight: 500;
+  color: #666;
+  text-align: right;
+  white-space: nowrap;
+}
+.compare__best { background: #e8f5e9; font-weight: 600; }
+.compare__sub { font-size: 11px; color: #888; font-weight: normal; }
+.compare-empty { padding: 48px; text-align: center; color: #666; }
+.compare-empty button { margin-top: 12px; padding: 6px 16px; }
