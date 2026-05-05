@@ -1,3 +1,15 @@
+import { Map } from "./components/Map";
+import { data } from "./data";
+
 export default function App() {
-  return <h1 style={{ padding: 24 }}>MPLS Rentals — bootstrapping…</h1>;
+  return (
+    <div className="app">
+      <header className="topbar">
+        <h1>MPLS Rentals</h1>
+      </header>
+      <main className="main">
+        <Map listings={data.listings} />
+      </main>
+    </div>
+  );
 }
