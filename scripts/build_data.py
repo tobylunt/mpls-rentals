@@ -21,20 +21,31 @@ import requests
 ROOT = Path(__file__).resolve().parent.parent
 XLSX = ROOT / "2026 MPLS housing.xlsx"
 OUT = ROOT / "public" / "data" / "listings.json"
+IMAGES_DIR = ROOT / "public" / "images"
 CACHE = ROOT / "scripts" / ".geocode_cache.json"
 OG_CACHE = ROOT / "scripts" / ".og_image_cache.json"
 
 USER_AGENT = "mpls-rentals-map/0.1 (personal project)"
-# Browser-like UA for og:image scraping (Zillow/Redfin block obvious bots).
-BROWSER_UA = (
+# UAs to try in order. facebookexternalhit is often whitelisted because sites
+# want their share previews to render on Facebook. Many real-estate sites that
+# return 403 to Chrome will return 200 to it.
+SCRAPE_UAS = [
+    "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)",
+    "Twitterbot/1.0",
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-)
+    "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+]
 
 # Listings to skip (no longer available, etc.). Match by Lodging cell value.
 SKIP_LISTINGS: set[str] = {
     "5027 Chowen Ave S",
 }
+
+# Manual image overrides — paste a URL or local path here for any listing
+# whose image we couldn't scrape. Example:
+#   "4807 Grand Ave S #1": "https://example.com/zillow-photo.jpg"
+# Local paths (relative to repo root) are accepted, e.g. "scripts/seed/4807.jpg".
+MANUAL_IMAGES: dict[str, str] = {}
 
 # -- Hardcoded addresses for named buildings (Lodging cells that aren't street addresses).
 # Verify each by searching the building name; update here if any are wrong.
@@ -96,43 +107,116 @@ _OG_RE_REV = re.compile(
 )
 
 
-def fetch_og_image(url: str, cache: dict[str, str | None]) -> str | None:
-    """Best-effort og:image scrape. Caches results (success or failure) to avoid retries.
-    Many real-estate sites (Zillow, Redfin, Apartments.com) block bots — graceful failure."""
-    if url in cache:
-        return cache[url]
-    print(f"  scraping: {url}")
+def _try_fetch(url: str, ua: str) -> str | None:
+    """Single GET attempt. Returns response text on 200, None otherwise."""
     try:
         r = requests.get(
             url,
             headers={
-                "User-Agent": BROWSER_UA,
+                "User-Agent": ua,
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
                 "Accept-Language": "en-US,en;q=0.9",
             },
             timeout=15,
             allow_redirects=True,
         )
-        if r.status_code != 200:
-            print(f"    HTTP {r.status_code}")
-            cache[url] = None
-            save_og_cache(cache)
-            time.sleep(0.6)
-            return None
-        m = _OG_RE.search(r.text) or _OG_RE_REV.search(r.text)
-        if m:
-            img = m.group(1)
-            print(f"    -> {img[:80]}")
-            cache[url] = img
-        else:
-            print("    no og:image found")
-            cache[url] = None
+        if r.status_code == 200:
+            return r.text
+        print(f"    {ua.split('/')[0]}: HTTP {r.status_code}")
+        return None
     except Exception as e:
-        print(f"    ERROR: {e}", file=sys.stderr)
+        print(f"    {ua.split('/')[0]}: {e}", file=sys.stderr)
+        return None
+
+
+def fetch_og_image(url: str, cache: dict[str, str | None]) -> str | None:
+    """Best-effort og:image scrape. Tries facebookexternalhit, Twitterbot, then Chrome.
+    Caches results (success or failure) to avoid retries."""
+    if url in cache:
+        return cache[url]
+    print(f"  scraping: {url}")
+    text: str | None = None
+    for ua in SCRAPE_UAS:
+        text = _try_fetch(url, ua)
+        if text:
+            break
+        time.sleep(0.4)
+    if not text:
+        cache[url] = None
+        save_og_cache(cache)
+        return None
+    m = _OG_RE.search(text) or _OG_RE_REV.search(text)
+    if m:
+        img = m.group(1)
+        print(f"    -> {img[:80]}")
+        cache[url] = img
+    else:
+        print("    no og:image found")
         cache[url] = None
     save_og_cache(cache)
-    time.sleep(0.6)  # be polite even though we're hitting different hosts
+    time.sleep(0.4)
     return cache[url]
+
+
+def _ext_for(content_type: str | None, url: str) -> str:
+    if content_type:
+        ct = content_type.lower()
+        if "jpeg" in ct or "jpg" in ct:
+            return ".jpg"
+        if "png" in ct:
+            return ".png"
+        if "webp" in ct:
+            return ".webp"
+        if "gif" in ct:
+            return ".gif"
+    # Fall back to URL suffix
+    for ext in (".jpg", ".jpeg", ".png", ".webp", ".gif"):
+        if ext in url.lower():
+            return ".jpg" if ext == ".jpeg" else ext
+    return ".jpg"
+
+
+def download_image(image_url: str, listing_id: str) -> str | None:
+    """Download an image (URL or local path) to public/images/<id>.<ext>.
+    Returns the public URL path (e.g. "/images/foo.jpg") or None on failure."""
+    IMAGES_DIR.mkdir(parents=True, exist_ok=True)
+
+    # Local-path override: copy the file into public/images.
+    if not image_url.startswith(("http://", "https://")):
+        src = ROOT / image_url
+        if not src.is_file():
+            print(f"    local override missing: {src}")
+            return None
+        ext = src.suffix or ".jpg"
+        dst = IMAGES_DIR / f"{listing_id}{ext}"
+        dst.write_bytes(src.read_bytes())
+        return f"/images/{dst.name}"
+
+    # Reuse existing download (idempotent across reruns).
+    existing = list(IMAGES_DIR.glob(f"{listing_id}.*"))
+    if existing:
+        return f"/images/{existing[0].name}"
+
+    print(f"    downloading: {image_url[:80]}")
+    for ua in SCRAPE_UAS:
+        try:
+            r = requests.get(
+                image_url,
+                headers={"User-Agent": ua, "Referer": image_url},
+                timeout=20,
+                allow_redirects=True,
+            )
+            if r.status_code != 200:
+                continue
+            ext = _ext_for(r.headers.get("content-type"), image_url)
+            dst = IMAGES_DIR / f"{listing_id}{ext}"
+            dst.write_bytes(r.content)
+            print(f"    saved: {dst.name} ({len(r.content)//1024} KB)")
+            return f"/images/{dst.name}"
+        except Exception as e:
+            print(f"    {ua.split('/')[0]}: {e}", file=sys.stderr)
+    print("    download failed")
+    return None
 
 
 def geocode(query: str, cache: dict[str, list[float] | None]) -> tuple[float, float] | None:
@@ -324,10 +408,18 @@ def main() -> None:
         coords = geocode(address, cache)
         lat, lng = (coords[0], coords[1]) if coords else (None, None)
 
-        image_url = fetch_og_image(url, og_cache) if url else None
+        listing_id = slugify(lodging) or slugify(address)
+
+        # Image priority: manual override > scraped og:image > none.
+        # Whatever we resolve gets downloaded locally; image_url in JSON is a
+        # local /images/... path, never a remote URL.
+        manual = MANUAL_IMAGES.get(lodging)
+        scraped = fetch_og_image(url, og_cache) if url else None
+        source = manual or scraped
+        image_url = download_image(source, listing_id) if source else None
 
         listings.append({
-            "id": slugify(lodging) or slugify(address),
+            "id": listing_id,
             "lodging": lodging,
             "address": address,
             "url": url,
