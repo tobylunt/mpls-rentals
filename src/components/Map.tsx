@@ -10,6 +10,7 @@ import {
 import L from "leaflet";
 import { useEffect, useMemo, useRef } from "react";
 import { type Listing, type Place } from "../data";
+import { ListingPopup } from "./ListingPopup";
 
 const MPLS_CENTER: [number, number] = [44.93, -93.27];
 const QUARTILE_COLORS = ["#2e7d32", "#9ccc65", "#ffb300", "#e53935"];
@@ -74,6 +75,7 @@ export function Map({
   work,
   selectedId,
   onSelect,
+  onToggleStar,
 }: {
   listings: Listing[];
   shortlist: Set<string>;
@@ -82,6 +84,7 @@ export function Map({
   work: Place;
   selectedId: string | null;
   onSelect: (id: string) => void;
+  onToggleStar: (id: string) => void;
 }) {
   const breaks = useMemo(
     () => computeBreaks(listings.map((l) => l.price ?? 0).filter((p) => p > 0)),
@@ -121,11 +124,15 @@ export function Map({
                   }}
                   eventHandlers={{ click: () => onSelect(l.id) }}
                 >
-                  <Popup>
-                    <strong>{l.lodging}</strong>
-                    <br />
-                    ${l.price?.toLocaleString()} · {l.bedrooms}BR
-                    {l.school ? ` · ${l.school}` : ""}
+                  <Popup minWidth={260}>
+                    <ListingPopup
+                      listing={l}
+                      shortlisted={shortlist.has(l.id)}
+                      onToggleStar={() => onToggleStar(l.id)}
+                      schools={schools}
+                      daycares={daycares}
+                      work={work}
+                    />
                   </Popup>
                 </Marker>
               );

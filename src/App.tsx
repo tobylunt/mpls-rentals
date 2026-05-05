@@ -47,6 +47,7 @@ export default function App() {
             work={data.work}
             selectedId={selectedId}
             onSelect={setSelectedId}
+            onToggleStar={toggleShortlist}
           />
         </section>
       </main>

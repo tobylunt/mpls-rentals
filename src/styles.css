@@ -105,3 +105,15 @@ body {
 .card__sub { font-size: 12px; color: #666; margin: 2px 0 6px; }
 .card__row { font-size: 12px; color: #444; margin: 1px 0; }
 .card__chain { font-weight: 500; color: #1565c0; margin-top: 4px; }
+
+.popup { font-size: 12px; line-height: 1.4; }
+.popup__head { display: flex; align-items: center; gap: 8px; }
+.popup__star {
+  margin-left: auto; background: none; border: none; font-size: 16px;
+  color: #ccc; cursor: pointer;
+}
+.popup__star--on { color: #f9a825; }
+.popup__price { margin-top: 4px; font-size: 13px; }
+.popup__hood { color: #666; }
+.popup hr { border: none; border-top: 1px solid #eee; margin: 6px 0; }
+.popup__notes { margin-top: 6px; font-style: italic; color: #555; }
