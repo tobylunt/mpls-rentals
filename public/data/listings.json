@@ -1,0 +1,596 @@
+{
+  "listings": [
+    {
+      "id": "4807-grand-ave-s-1",
+      "lodging": "4807 Grand Ave S #1",
+      "address": "4807 Grand Ave S, Minneapolis, MN",
+      "lat": 44.915676,
+      "lng": -93.2842543,
+      "bedrooms": 2,
+      "housing_type": "apt",
+      "neighborhood": "Tangletown",
+      "price": 2150.0,
+      "pet_rent": "unknown",
+      "furnished": false,
+      "parking": "1 spot uncovered",
+      "size_sqft": 1300.0,
+      "price_per_sqft": 1.65,
+      "available": "Now",
+      "term": "1 year",
+      "school": "Burroughs",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 22,
+        "drive_min": 4,
+        "raw": "22 min walk (4)"
+      },
+      "dist_daycare": {
+        "walk_min": 30,
+        "drive_min": 5,
+        "raw": "30 min walk (5)"
+      },
+      "dist_work_drive_min": 12,
+      "utilities": "Owner covers heat, water, sewer, and trash.",
+      "notes": "The Granddad. Lower unit in duplex"
+    },
+    {
+      "id": "1838-jefferson",
+      "lodging": "1838 Jefferson",
+      "address": "1838 Jefferson, Saint Paul, MN",
+      "lat": 44.9305793,
+      "lng": -93.1781053,
+      "bedrooms": 3,
+      "housing_type": "house",
+      "neighborhood": "Macalaster/Groveland",
+      "price": 2100.0,
+      "pet_rent": 30.0,
+      "furnished": true,
+      "parking": "Street",
+      "size_sqft": 1800.0,
+      "price_per_sqft": 1.17,
+      "available": "2026-06-01",
+      "term": "~9mo",
+      "school": "Groveland Park",
+      "daycare": "Casa Highland Park",
+      "dist_school": {
+        "walk_min": 16,
+        "drive_min": null,
+        "raw": "16 min walk"
+      },
+      "dist_daycare": {
+        "walk_min": 24,
+        "drive_min": null,
+        "raw": "24 min walk"
+      },
+      "dist_work_drive_min": null,
+      "utilities": "Tenant pays all",
+      "notes": "Katsumi was nice, cats should be OK."
+    },
+    {
+      "id": "2079-st-clair",
+      "lodging": "2079 St Clair",
+      "address": "2079 St Clair, Saint Paul, MN",
+      "lat": 44.9344097,
+      "lng": -93.1885286,
+      "bedrooms": 3,
+      "housing_type": "house",
+      "neighborhood": "Macalaster/Groveland",
+      "price": 3095.0,
+      "pet_rent": 0.0,
+      "furnished": false,
+      "parking": "2 car garage",
+      "size_sqft": 1500.0,
+      "price_per_sqft": 2.06,
+      "available": "2026-06-01",
+      "term": "?",
+      "school": "Groveland Park",
+      "daycare": "Casa Highland Park",
+      "dist_school": {
+        "walk_min": 2,
+        "drive_min": null,
+        "raw": "2 min walk"
+      },
+      "dist_daycare": {
+        "walk_min": 33,
+        "drive_min": 4,
+        "raw": "33 min walk (4)"
+      },
+      "dist_work_drive_min": 11,
+      "utilities": "Tenant pays all",
+      "notes": null
+    },
+    {
+      "id": "the-collection-c5",
+      "lodging": "The Collection C5",
+      "address": "2071 Ford Pkwy, Saint Paul, MN",
+      "lat": 44.9180004,
+      "lng": -93.1879856,
+      "bedrooms": 2,
+      "housing_type": "apt",
+      "neighborhood": "Highland Park",
+      "price": 3015.0,
+      "pet_rent": 100.0,
+      "furnished": false,
+      "parking": "?",
+      "size_sqft": 1153.0,
+      "price_per_sqft": 2.61,
+      "available": "Now",
+      "term": "?",
+      "school": "Horace Mann",
+      "daycare": "Casa Highland Park",
+      "dist_school": {
+        "walk_min": 13,
+        "drive_min": 4,
+        "raw": "13 (4)"
+      },
+      "dist_daycare": {
+        "walk_min": 14,
+        "drive_min": 4,
+        "raw": "14 (4)"
+      },
+      "dist_work_drive_min": 26,
+      "utilities": null,
+      "notes": "Big box. Just south of main drag"
+    },
+    {
+      "id": "1220-saint-paul-ave",
+      "lodging": "1220 Saint Paul Ave",
+      "address": "1220 Saint Paul Ave, Saint Paul, MN",
+      "lat": 44.9055976,
+      "lng": -93.1791927,
+      "bedrooms": 2,
+      "housing_type": "house",
+      "neighborhood": "Highland Park",
+      "price": 2235.0,
+      "pet_rent": 0.0,
+      "furnished": false,
+      "parking": "Garage",
+      "size_sqft": 920.0,
+      "price_per_sqft": 2.43,
+      "available": "Now",
+      "term": "1 year",
+      "school": "Horace Mann",
+      "daycare": "Casa Highland Park",
+      "dist_school": {
+        "walk_min": 27,
+        "drive_min": 5,
+        "raw": "27 (5)"
+      },
+      "dist_daycare": {
+        "walk_min": 21,
+        "drive_min": 4,
+        "raw": "21 (4)"
+      },
+      "dist_work_drive_min": 18,
+      "utilities": "?",
+      "notes": null
+    },
+    {
+      "id": "5027-chowen-ave-s",
+      "lodging": "5027 Chowen Ave S",
+      "address": "5027 Chowen Ave S, Minneapolis, MN",
+      "lat": 44.9116751,
+      "lng": -93.3248813,
+      "bedrooms": 3,
+      "housing_type": "house",
+      "neighborhood": null,
+      "price": 3695.0,
+      "pet_rent": null,
+      "furnished": false,
+      "parking": null,
+      "size_sqft": 2000.0,
+      "price_per_sqft": 1.85,
+      "available": "2026-06-01",
+      "term": null,
+      "school": "Lake Harriet",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": 27,
+        "drive_min": null,
+        "raw": "27 min walk"
+      },
+      "dist_daycare": {
+        "walk_min": 6,
+        "drive_min": null,
+        "raw": "6 min walk"
+      },
+      "dist_work_drive_min": 18,
+      "utilities": null,
+      "notes": "Drove by, seemed nice"
+    },
+    {
+      "id": "4453-york-ave-s",
+      "lodging": "4453 York Ave S",
+      "address": "4453 York Ave S, Minneapolis, MN",
+      "lat": 44.9216962,
+      "lng": -93.3198612,
+      "bedrooms": 4,
+      "housing_type": "house",
+      "neighborhood": "Linden Hills",
+      "price": 4295.0,
+      "pet_rent": 50.0,
+      "furnished": false,
+      "parking": "3 car garage",
+      "size_sqft": 2700.0,
+      "price_per_sqft": 1.59,
+      "available": "2026-05-01",
+      "term": "1 year",
+      "school": "Lake Harriet",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": 18,
+        "drive_min": null,
+        "raw": "18 min walk"
+      },
+      "dist_daycare": {
+        "walk_min": 26,
+        "drive_min": null,
+        "raw": "26 min walk"
+      },
+      "dist_work_drive_min": 19,
+      "utilities": "?",
+      "notes": "Very close to Mark's parents' place"
+    },
+    {
+      "id": "4430-w-lake-harriet-pkwy",
+      "lodging": "4430 W Lake Harriet Pkwy",
+      "address": "4430 W Lake Harriet Pkwy, Minneapolis, MN",
+      "lat": 44.9223075,
+      "lng": -93.3126007,
+      "bedrooms": 2,
+      "housing_type": "condo",
+      "neighborhood": null,
+      "price": 3300.0,
+      "pet_rent": "unknown",
+      "furnished": false,
+      "parking": "?",
+      "size_sqft": 1400.0,
+      "price_per_sqft": 2.36,
+      "available": "2026-06-01",
+      "term": "?",
+      "school": "Lake Harriet",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": null,
+        "drive_min": null,
+        "raw": ""
+      },
+      "dist_daycare": {
+        "walk_min": null,
+        "drive_min": null,
+        "raw": ""
+      },
+      "dist_work_drive_min": 19,
+      "utilities": null,
+      "notes": "On lake harriet, top floor condo. Looks janky."
+    },
+    {
+      "id": "4311-abbott-ave-s-2",
+      "lodging": "4311 Abbott Ave S #2",
+      "address": "4311 Abbott Ave S, Minneapolis, MN",
+      "lat": 44.9248414,
+      "lng": -93.3225943,
+      "bedrooms": 2,
+      "housing_type": "duplex",
+      "neighborhood": "Linden Hills",
+      "price": 2200.0,
+      "pet_rent": 25.0,
+      "furnished": false,
+      "parking": "1 stall shared garage",
+      "size_sqft": 1450.0,
+      "price_per_sqft": 1.52,
+      "available": "Now",
+      "term": "1 year",
+      "school": "Lake Harriet",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": 10,
+        "drive_min": null,
+        "raw": "10 min walk"
+      },
+      "dist_daycare": {
+        "walk_min": 27,
+        "drive_min": 5,
+        "raw": "27 min walk (5)"
+      },
+      "dist_work_drive_min": 18,
+      "utilities": "Tenant pays all",
+      "notes": "Top floor duplex"
+    },
+    {
+      "id": "4928-penn-ave-s-floor-2",
+      "lodging": "4928 Penn Ave S Floor 2",
+      "address": "4928 Penn Ave S, Minneapolis, MN",
+      "lat": 44.9136059,
+      "lng": -93.3088316,
+      "bedrooms": 2,
+      "housing_type": "duplex",
+      "neighborhood": "Fulton",
+      "price": 2100.0,
+      "pet_rent": "unknown",
+      "furnished": false,
+      "parking": "1 stall shared garage",
+      "size_sqft": 1220.0,
+      "price_per_sqft": 1.72,
+      "available": "2026-06-01",
+      "term": "1 year",
+      "school": "Lake Harriet",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": 40,
+        "drive_min": 7,
+        "raw": "40 min walk (7)"
+      },
+      "dist_daycare": {
+        "walk_min": 27,
+        "drive_min": 4,
+        "raw": "27 min walk (4)"
+      },
+      "dist_work_drive_min": 16,
+      "utilities": "Heat, water, trash and lawn included. Tenant pays electric, internet, and shovels.",
+      "notes": "Upper floor"
+    },
+    {
+      "id": "4852-drew-ave-s",
+      "lodging": "4852 Drew Ave S",
+      "address": "4852 Drew Ave S, Minneapolis, MN",
+      "lat": 44.914464,
+      "lng": -93.3268496,
+      "bedrooms": 3,
+      "housing_type": "house",
+      "neighborhood": "Fulton",
+      "price": 3495.0,
+      "pet_rent": "unknown",
+      "furnished": false,
+      "parking": "Attached garage",
+      "size_sqft": 1503.0,
+      "price_per_sqft": 2.33,
+      "available": "2026-06-01",
+      "term": "1 year",
+      "school": "Lake Harriet",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": 24,
+        "drive_min": 4,
+        "raw": "24 min walk (4)"
+      },
+      "dist_daycare": {
+        "walk_min": 8,
+        "drive_min": 2,
+        "raw": "8 min walk (2)"
+      },
+      "dist_work_drive_min": 19,
+      "utilities": "Tenant pays all",
+      "notes": null
+    },
+    {
+      "id": "5100-xerxes-ave-s",
+      "lodging": "5100 Xerxes Ave S",
+      "address": "5100 Xerxes Ave S, Minneapolis, MN",
+      "lat": 44.9104933,
+      "lng": -93.3191726,
+      "bedrooms": 2,
+      "housing_type": "house",
+      "neighborhood": "Fulton",
+      "price": 3295.0,
+      "pet_rent": "unknown",
+      "furnished": false,
+      "parking": "?",
+      "size_sqft": 1504.0,
+      "price_per_sqft": 2.19,
+      "available": "2026-07-01",
+      "term": "1 year",
+      "school": "Lake Harriet",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": 35,
+        "drive_min": 5,
+        "raw": "35 min walk (5)"
+      },
+      "dist_daycare": {
+        "walk_min": 11,
+        "drive_min": 2,
+        "raw": "11 min walk (2)"
+      },
+      "dist_work_drive_min": 16,
+      "utilities": "Tenant pays all",
+      "notes": null
+    },
+    {
+      "id": "linden-43-unit-410",
+      "lodging": "Linden 43 Unit 410",
+      "address": "Linden 43, 4310 Upton Ave S, Minneapolis, MN",
+      "lat": 44.9249032,
+      "lng": -93.3149488,
+      "bedrooms": 2,
+      "housing_type": "apt",
+      "neighborhood": "Linden Hills",
+      "price": 4295.0,
+      "pet_rent": 80.0,
+      "furnished": false,
+      "parking": "Garage for $175",
+      "size_sqft": 1257.0,
+      "price_per_sqft": 3.42,
+      "available": "2026-08-01",
+      "term": "?",
+      "school": "Lake Harriet",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": 17,
+        "drive_min": 4,
+        "raw": "17 min walk (4)"
+      },
+      "dist_daycare": {
+        "walk_min": 36,
+        "drive_min": 6,
+        "raw": "36 min walk (6)"
+      },
+      "dist_work_drive_min": 17,
+      "utilities": "Tenant pays all",
+      "notes": "Right by Wild Rumpus"
+    },
+    {
+      "id": "4457-18th-ave-s",
+      "lodging": "4457 18th Ave S",
+      "address": "4457 18th Ave S, Minneapolis, MN",
+      "lat": 44.9216672,
+      "lng": -93.2482409,
+      "bedrooms": 3,
+      "housing_type": "house",
+      "neighborhood": "Northrop",
+      "price": 3400.0,
+      "pet_rent": "unknown",
+      "furnished": false,
+      "parking": "Garage",
+      "size_sqft": 2388.0,
+      "price_per_sqft": 1.42,
+      "available": "?",
+      "term": "?",
+      "school": "Northrop",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 30,
+        "drive_min": null,
+        "raw": "30 min walk"
+      },
+      "dist_daycare": {
+        "walk_min": null,
+        "drive_min": 8,
+        "raw": "8 min drive"
+      },
+      "dist_work_drive_min": 13,
+      "utilities": "Tenant pays all",
+      "notes": "Close to Hiawatha / Nokomis park"
+    },
+    {
+      "id": "noko-apartments",
+      "lodging": "Noko apartments",
+      "address": "Noko Apartments Minneapolis",
+      "lat": 44.9170711,
+      "lng": -93.2466589,
+      "bedrooms": 2,
+      "housing_type": "apt",
+      "neighborhood": "Nokomis",
+      "price": 3000.0,
+      "pet_rent": null,
+      "furnished": null,
+      "parking": null,
+      "size_sqft": 1129.0,
+      "price_per_sqft": 2.66,
+      "available": "Now",
+      "term": null,
+      "school": "Northrop",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 33,
+        "drive_min": 6,
+        "raw": "33 min walk (6)"
+      },
+      "dist_daycare": {
+        "walk_min": 57,
+        "drive_min": 9,
+        "raw": "57 min walk (9)"
+      },
+      "dist_work_drive_min": 14,
+      "utilities": null,
+      "notes": null
+    },
+    {
+      "id": "sanctuary-lofts",
+      "lodging": "Sanctuary Lofts",
+      "address": "2400 Park Ave S, Minneapolis, MN",
+      "lat": 44.9584641,
+      "lng": -93.2657519,
+      "bedrooms": 2,
+      "housing_type": "apt",
+      "neighborhood": "Nokomis",
+      "price": 2550.0,
+      "pet_rent": null,
+      "furnished": false,
+      "parking": null,
+      "size_sqft": 1565.0,
+      "price_per_sqft": 1.63,
+      "available": "Now",
+      "term": null,
+      "school": "Wenonah",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 17,
+        "drive_min": null,
+        "raw": "17 min walk"
+      },
+      "dist_daycare": {
+        "walk_min": null,
+        "drive_min": 12,
+        "raw": "12 min drive"
+      },
+      "dist_work_drive_min": 17,
+      "utilities": null,
+      "notes": null
+    }
+  ],
+  "schools": [
+    {
+      "name": "Burroughs",
+      "query": "Burroughs Community School, Minneapolis, MN",
+      "lat": 44.9114448,
+      "lng": -93.2999574
+    },
+    {
+      "name": "Lake Harriet",
+      "query": "Lake Harriet Community School Lower Campus, Minneapolis, MN",
+      "lat": 44.9293725,
+      "lng": -93.3258765
+    },
+    {
+      "name": "Horace Mann",
+      "query": "Horace Mann Elementary School, Saint Paul, MN",
+      "lat": 44.921402,
+      "lng": -93.1853475
+    },
+    {
+      "name": "Groveland Park",
+      "query": "Groveland Park Elementary School, Saint Paul, MN",
+      "lat": 44.9347976,
+      "lng": -93.186046
+    },
+    {
+      "name": "Northrop",
+      "query": "Northrop Urban Environmental School, Minneapolis, MN",
+      "lat": 44.9241704,
+      "lng": -93.2263849
+    },
+    {
+      "name": "Wenonah",
+      "query": "Wenonah Elementary, Minneapolis MN",
+      "lat": 44.9010893,
+      "lng": -93.2383422
+    }
+  ],
+  "daycares": [
+    {
+      "name": "Casa Kingfield",
+      "query": "Casa de Corazon Kingfield, Minneapolis, MN",
+      "lat": 44.9312837,
+      "lng": -93.2782547
+    },
+    {
+      "name": "Casa Highland Park",
+      "query": "Casa de Corazon Highland Park, Saint Paul, MN",
+      "lat": 44.9182287,
+      "lng": -93.1803371
+    },
+    {
+      "name": "Casa 50th and France",
+      "query": "Casa de Corazon 50th and France, Edina, MN",
+      "lat": 44.9105658,
+      "lng": -93.3287639
+    }
+  ],
+  "work": {
+    "name": "McKnight Foundation",
+    "query": "710 S 2nd St, Minneapolis, MN 55401",
+    "lat": 44.9782805,
+    "lng": -93.2565814
+  }
+}
