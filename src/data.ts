@@ -43,4 +43,14 @@ export type DataFile = {
   work: Place;
 };
 
-export const data: DataFile = raw as DataFile;
+// image_url in JSON is "/images/foo.jpg" — make it base-URL-aware so the same
+// build works at "/" (dev) and "/mpls-rentals/" (GH Pages subpath).
+const BASE = import.meta.env.BASE_URL;
+const rawData = raw as DataFile;
+export const data: DataFile = {
+  ...rawData,
+  listings: rawData.listings.map((l) => ({
+    ...l,
+    image_url: l.image_url ? `${BASE}${l.image_url.replace(/^\/+/, "")}` : null,
+  })),
+};
