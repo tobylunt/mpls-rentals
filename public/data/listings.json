@@ -1,6 +1,251 @@
 {
   "listings": [
     {
+      "id": "4927-ewing-ave-s-3",
+      "lodging": "4927 Ewing Ave S #3",
+      "address": "4927 Ewing Ave S, Minneapolis, MN 55410",
+      "url": "https://www.zillow.com/homedetails/4927-Ewing-Ave-S-3-Minneapolis-MN-55410/2062702339_zpid/",
+      "image_url": null,
+      "lat": 44.9137845,
+      "lng": -93.3276638,
+      "bedrooms": 3,
+      "housing_type": "apt",
+      "neighborhood": "Fulton",
+      "price": 3550.0,
+      "pet_rent": "unknown",
+      "furnished": false,
+      "parking": "Detached",
+      "size_sqft": 1351.0,
+      "price_per_sqft": 2.63,
+      "available": "2026-07-01",
+      "term": "1 year",
+      "school": "Lake Harriet",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": 25,
+        "drive_min": 4,
+        "raw": "~25 min walk (4) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 5,
+        "drive_min": 1,
+        "raw": "~5 min walk (1) (est)"
+      },
+      "dist_work_drive_min": 18,
+      "utilities": null,
+      "notes": "Triplex, top finish. Pets allowed (fee $500) but listing only says 'Small dogs OK' — VERIFY cats with manager."
+    },
+    {
+      "id": "ewing-place-203",
+      "lodging": "Ewing Place #203",
+      "address": "5052 Ewing Ave S, Minneapolis, MN 55410",
+      "url": "https://www.zillow.com/apartments/minneapolis-mn/ewing-place/9Rcm7p/",
+      "image_url": null,
+      "lat": 44.9109889,
+      "lng": -93.3279991,
+      "bedrooms": 2,
+      "housing_type": "apt",
+      "neighborhood": "Fulton",
+      "price": 3699.0,
+      "pet_rent": 20.0,
+      "furnished": false,
+      "parking": "Attached garage",
+      "size_sqft": 1281.0,
+      "price_per_sqft": 2.89,
+      "available": "Now",
+      "term": "?",
+      "school": "Lake Harriet",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": 30,
+        "drive_min": 5,
+        "raw": "~30 min walk (5) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 4,
+        "drive_min": 1,
+        "raw": "~4 min walk (1) (est)"
+      },
+      "dist_work_drive_min": 18,
+      "utilities": null,
+      "notes": "Cats welcome ($20/mo). Apartment building."
+    },
+    {
+      "id": "4749-harriet-ave-2",
+      "lodging": "4749 Harriet Ave #2",
+      "address": "4749 Harriet Ave, Minneapolis, MN 55419",
+      "url": "https://www.zillow.com/homedetails/4749-Harriet-Ave-2-Minneapolis-MN-55419/2075339371_zpid/",
+      "image_url": null,
+      "lat": 44.916883,
+      "lng": -93.2855786,
+      "bedrooms": 3,
+      "housing_type": "duplex",
+      "neighborhood": "Tangletown",
+      "price": 2395.0,
+      "pet_rent": 50.0,
+      "furnished": false,
+      "parking": "1 car garage",
+      "size_sqft": 1500.0,
+      "price_per_sqft": 1.6,
+      "available": "Now",
+      "term": "?",
+      "school": "Burroughs",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 25,
+        "drive_min": 5,
+        "raw": "~25 min walk (5) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 18,
+        "drive_min": 3,
+        "raw": "~18 min walk (3) (est)"
+      },
+      "dist_work_drive_min": 13,
+      "utilities": null,
+      "notes": "Townhome/duplex unit. Pets OK with $50/mo pet rent."
+    },
+    {
+      "id": "4934-lyndale-ave-s-2",
+      "lodging": "4934 Lyndale Ave S #2",
+      "address": "4934 Lyndale Ave S, Minneapolis, MN 55419",
+      "url": "https://www.zillow.com/homedetails/4934-Lyndale-Ave-S-2-Minneapolis-MN-55419/2092082695_zpid/",
+      "image_url": null,
+      "lat": 44.913027,
+      "lng": -93.2887075,
+      "bedrooms": 3,
+      "housing_type": "apt",
+      "neighborhood": "Lynnhurst",
+      "price": 2295.0,
+      "pet_rent": 25.0,
+      "furnished": false,
+      "parking": "?",
+      "size_sqft": 1500.0,
+      "price_per_sqft": 1.53,
+      "available": "Now",
+      "term": "?",
+      "school": "Burroughs",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 12,
+        "drive_min": 3,
+        "raw": "~12 min walk (3) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 22,
+        "drive_min": 4,
+        "raw": "~22 min walk (4) (est)"
+      },
+      "dist_work_drive_min": 15,
+      "utilities": null,
+      "notes": "Cats and dogs under 15 lbs OK. $250 pet deposit + $25/mo pet rent. Burroughs is 0.6 mi away."
+    },
+    {
+      "id": "sabbatical-179679-4515-grand",
+      "lodging": "4515 Grand Ave S (sabbatical sublet)",
+      "address": "4515 Grand Ave S, Minneapolis, MN 55409",
+      "url": "https://www.sabbaticalhomes.com/Rental/179679",
+      "image_url": null,
+      "lat": 44.9208877,
+      "lng": -93.2842213,
+      "bedrooms": 2,
+      "housing_type": "apt",
+      "neighborhood": "Kingfield",
+      "price": 1690.0,
+      "pet_rent": "unknown",
+      "furnished": true,
+      "parking": "?",
+      "size_sqft": null,
+      "price_per_sqft": null,
+      "available": "2026-07-01",
+      "term": "9mo min (through Aug 2027)",
+      "school": "Barton",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 12,
+        "drive_min": 3,
+        "raw": "~12 min walk (3) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 15,
+        "drive_min": 3,
+        "raw": "~15 min walk (3) (est)"
+      },
+      "dist_work_drive_min": 12,
+      "utilities": null,
+      "notes": "Furnished 2BR, 2nd floor of condo. SabbaticalHomes lister: S.M.H_Academic. Pets allowed. Plants need watering ~1x/wk. NOTE: school zone is Barton (NOT Burroughs), different attendance area than your other Grand Ave listings."
+    },
+    {
+      "id": "sabbatical-165748-lyndale-farmstead",
+      "lodging": "S Mpls Architectural Gem (sabbatical)",
+      "address": "Lyndale Farmstead, Minneapolis, MN (exact addr TBD)",
+      "url": "https://www.sabbaticalhomes.com/Rental/165748",
+      "image_url": null,
+      "lat": 44.9323529,
+      "lng": -93.2912731,
+      "bedrooms": 3,
+      "housing_type": "house",
+      "neighborhood": "Lyndale Farmstead",
+      "price": 3000.0,
+      "pet_rent": "unknown",
+      "furnished": true,
+      "parking": "Dedicated",
+      "size_sqft": 2300.0,
+      "price_per_sqft": 1.3,
+      "available": "2026-11-15",
+      "term": "5.5mo (Nov 2026 - Apr 2027), flexible",
+      "school": "Barton",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 10,
+        "drive_min": 2,
+        "raw": "~10 min walk (2) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 12,
+        "drive_min": 3,
+        "raw": "~12 min walk (3) (est)"
+      },
+      "dist_work_drive_min": 13,
+      "utilities": "Included",
+      "notes": "3BR/3BA + office, 2300 sqft, furnished. Architecturally designed home on 'scenic boulevard' near Bde Maka Ska + Lake Harriet. SabbaticalHomes lister: Paul/Sara. Dates flexible; 'ask about pets'. TODO: get exact address from lister, then re-check school zone (Barton OR Lyndale Elementary depending on which side of F1/F2 boundary)."
+    },
+    {
+      "id": "5432-25th-ave-s",
+      "lodging": "5432 25th Ave S",
+      "address": "5432 25th Ave S, Minneapolis, MN 55417",
+      "url": "https://www.zillow.com/homedetails/5432-25th-Ave-S-Minneapolis-MN-55417/1920059_zpid/",
+      "image_url": null,
+      "lat": 44.9042997,
+      "lng": -93.2364179,
+      "bedrooms": 4,
+      "housing_type": "house",
+      "neighborhood": "Standish",
+      "price": 2690.0,
+      "pet_rent": "unknown",
+      "furnished": false,
+      "parking": "?",
+      "size_sqft": 2200.0,
+      "price_per_sqft": 1.22,
+      "available": "Now",
+      "term": "?",
+      "school": "Wenonah",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 5,
+        "drive_min": 1,
+        "raw": "~5 min walk (1) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 35,
+        "drive_min": 10,
+        "raw": "~35 min walk (10) (est)"
+      },
+      "dist_work_drive_min": 17,
+      "utilities": null,
+      "notes": "House, cats/dogs OK. Wenonah school is 0.2 mi away (5 min walk)."
+    },
+    {
       "id": "4807-grand-ave-s-1",
       "lodging": "4807 Grand Ave S #1",
       "address": "4807 Grand Ave S, Minneapolis, MN",
@@ -33,7 +278,8 @@
       },
       "dist_work_drive_min": 12,
       "utilities": "Owner covers heat, water, sewer, and trash.",
-      "notes": "The Granddad. Lower unit in duplex"
+      "notes": "The Granddad. Lower unit in duplex",
+      "status": "removed"
     },
     {
       "id": "1838-jefferson",
@@ -52,8 +298,8 @@
       "parking": "Street",
       "size_sqft": 1800.0,
       "price_per_sqft": 1.17,
-      "available": "2026-06-01",
-      "term": "~9mo",
+      "available": "2026-09-01",
+      "term": "9mo (Sep 2026 - May 2027)",
       "school": "Groveland Park",
       "daycare": "Casa Highland Park",
       "dist_school": {
@@ -173,7 +419,8 @@
       },
       "dist_work_drive_min": 18,
       "utilities": "?",
-      "notes": null
+      "notes": null,
+      "status": "removed"
     },
     {
       "id": "4453-york-ave-s",
@@ -313,7 +560,8 @@
       },
       "dist_work_drive_min": 16,
       "utilities": "Heat, water, trash and lawn included. Tenant pays electric, internet, and shovels.",
-      "notes": "Upper floor"
+      "notes": "Upper floor",
+      "status": "removed"
     },
     {
       "id": "4852-drew-ave-s",
@@ -418,7 +666,43 @@
       },
       "dist_work_drive_min": 17,
       "utilities": "Tenant pays all",
-      "notes": "Right by Wild Rumpus"
+      "notes": "Right by Wild Rumpus",
+      "status": "removed"
+    },
+    {
+      "id": "linden-flats-washburn",
+      "lodging": "Linden Flats - Washburn",
+      "address": "4418 Beard Ave S, Minneapolis, MN 55410",
+      "url": "https://lindenflatsmpls.com/",
+      "image_url": null,
+      "lat": 44.9228298,
+      "lng": -93.324113,
+      "bedrooms": 2,
+      "housing_type": "apt",
+      "neighborhood": "Linden Hills",
+      "price": 2420.0,
+      "pet_rent": "unknown",
+      "furnished": false,
+      "parking": "?",
+      "size_sqft": 875.0,
+      "price_per_sqft": 2.77,
+      "available": "2026-08-01",
+      "term": "?",
+      "school": "Lake Harriet",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": 12,
+        "drive_min": null,
+        "raw": "~12 min walk (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 25,
+        "drive_min": 5,
+        "raw": "~25 min walk (5) (est)"
+      },
+      "dist_work_drive_min": 18,
+      "utilities": null,
+      "notes": "2BR/1BA Washburn floorplan, available first week of August. Contact: LindenFlats@Level10Mgmt.com / (612) 217-8661."
     },
     {
       "id": "4457-18th-ave-s",
@@ -562,6 +846,12 @@
       "query": "Wenonah Elementary, Minneapolis MN",
       "lat": 44.9010893,
       "lng": -93.2383422
+    },
+    {
+      "name": "Barton",
+      "query": "Barton Elementary School, 4237 Colfax Ave S, Minneapolis, MN",
+      "lat": 44.9255347,
+      "lng": -93.2914638
     }
   ],
   "daycares": [

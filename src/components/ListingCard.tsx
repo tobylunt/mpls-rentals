@@ -37,14 +37,17 @@ export function ListingCard({
 }) {
   const chain = chainTimeFor(listing, schools, daycares);
 
+  const removed = listing.status === "removed";
+
   return (
     <div
-      className={`card ${selected ? "card--selected" : ""}`}
+      className={`card ${selected ? "card--selected" : ""} ${removed ? "card--removed" : ""}`}
       onClick={onSelect}
     >
       <div className="card__head">
         <span className="card__price">${listing.price?.toLocaleString() ?? "?"}</span>
         <span className="card__br">{listing.bedrooms ?? "?"}BR {listing.housing_type ?? ""}</span>
+        {removed ? <span className="card__removed-tag">OFF MARKET</span> : null}
         <button
           className={`card__star ${shortlisted ? "card__star--on" : ""}`}
           onClick={(e) => {

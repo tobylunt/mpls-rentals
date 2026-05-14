@@ -32,6 +32,7 @@ export type Listing = {
   dist_work_drive_min: number | null;
   utilities: string | null;
   notes: string | null;
+  status?: "active" | "removed";
 };
 
 export type Place = { name: string; query: string; lat: number | null; lng: number | null };

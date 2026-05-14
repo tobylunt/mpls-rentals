@@ -10,15 +10,20 @@ export function sortListings(
   daycares: Place[]
 ): Listing[] {
   const arr = [...listings];
+  // Always sink removed listings to the bottom regardless of primary sort.
+  const byStatus = (a: Listing, b: Listing) =>
+    (a.status === "removed" ? 1 : 0) - (b.status === "removed" ? 1 : 0);
   switch (sortKey) {
     case "price":
-      return arr.sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity));
+      return arr.sort((a, b) => byStatus(a, b) || (a.price ?? Infinity) - (b.price ?? Infinity));
     case "ppsf":
-      return arr.sort((a, b) => (a.price_per_sqft ?? Infinity) - (b.price_per_sqft ?? Infinity));
+      return arr.sort((a, b) => byStatus(a, b) || (a.price_per_sqft ?? Infinity) - (b.price_per_sqft ?? Infinity));
     case "bedrooms":
-      return arr.sort((a, b) => (b.bedrooms ?? 0) - (a.bedrooms ?? 0));
+      return arr.sort((a, b) => byStatus(a, b) || (b.bedrooms ?? 0) - (a.bedrooms ?? 0));
     case "chain":
       return arr.sort((a, b) => {
+        const s = byStatus(a, b);
+        if (s !== 0) return s;
         const ca = chainTimeFor(a, schools, daycares) ?? Infinity;
         const cb = chainTimeFor(b, schools, daycares) ?? Infinity;
         return ca - cb;

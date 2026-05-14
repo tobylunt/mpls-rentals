@@ -166,7 +166,8 @@ export function Map({
             {listings.map((l) => {
               if (l.lat == null || l.lng == null) return null;
               const q = l.price ? quartileFor(l.price, breaks) : 1;
-              const icon = rentalIcon(QUARTILE_COLORS[q], shortlist.has(l.id));
+              const color = l.status === "removed" ? "#9e9e9e" : QUARTILE_COLORS[q];
+              const icon = rentalIcon(color, shortlist.has(l.id));
               return (
                 <Marker
                   key={l.id}

@@ -23,10 +23,13 @@ export function ListingPopup({
 }) {
   const chain = chainTimeFor(listing, schools, daycares);
 
+  const removed = listing.status === "removed";
+
   return (
-    <div className="popup">
+    <div className={`popup ${removed ? "popup--removed" : ""}`}>
       <div className="popup__head">
         <strong>{listing.lodging}</strong>
+        {removed ? <span className="card__removed-tag">OFF MARKET</span> : null}
         <button className={`popup__star ${shortlisted ? "popup__star--on" : ""}`} onClick={onToggleStar}>
           {shortlisted ? "★" : "☆"}
         </button>
