@@ -141,6 +141,41 @@
       "notes": "Cats and dogs under 15 lbs OK. $250 pet deposit + $25/mo pet rent. Burroughs is 0.6 mi away."
     },
     {
+      "id": "sabbatical-175281-uptown",
+      "lodging": "Classic Uptown Foursquare (sabbatical)",
+      "address": "Uptown Minneapolis, MN (exact addr TBD)",
+      "url": "https://www.sabbaticalhomes.com/rental/175281",
+      "image_url": "/images/sabbatical-175281-uptown.webp",
+      "lat": 44.945,
+      "lng": -93.301,
+      "bedrooms": 5,
+      "housing_type": "house",
+      "neighborhood": "Uptown",
+      "price": 4250.0,
+      "pet_rent": "unknown",
+      "furnished": false,
+      "parking": "2 car garage",
+      "size_sqft": 3711.0,
+      "price_per_sqft": 1.15,
+      "available": "2026-07-01",
+      "term": "11 mo min",
+      "school": "Kenwood",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 25,
+        "drive_min": 5,
+        "raw": "~25 min walk (5) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": null,
+        "drive_min": 7,
+        "raw": "~7 min drive (est)"
+      },
+      "dist_work_drive_min": 12,
+      "utilities": null,
+      "notes": "Beautiful foursquare, 5BR/4BA, 3711 sqft, UNFURNISHED. SabbaticalHomes #175281. Walk Score 88. Around the corner from Black Walnut bakery (3155 Hennepin). 'Ask about pets'. Coords approximate — confirm exact address with lister. School zone is C3 → Kenwood (different from Burroughs/Lake Harriet)."
+    },
+    {
       "id": "sabbatical-179679-4515-grand",
       "lodging": "4515 Grand Ave S (sabbatical sublet)",
       "address": "4515 Grand Ave S, Minneapolis, MN 55409",
@@ -852,6 +887,12 @@
       "query": "Barton Elementary School, 4237 Colfax Ave S, Minneapolis, MN",
       "lat": 44.9255347,
       "lng": -93.2914638
+    },
+    {
+      "name": "Kenwood",
+      "query": "Kenwood Elementary School, 2013 Penn Ave S, Minneapolis, MN",
+      "lat": 44.9622329,
+      "lng": -93.307784
     }
   ],
   "daycares": [
