@@ -141,6 +141,41 @@
       "notes": "Cats and dogs under 15 lbs OK. $250 pet deposit + $25/mo pet rent. Burroughs is 0.6 mi away."
     },
     {
+      "id": "5207-belmont-ave-s",
+      "lodging": "5207 Belmont Ave S (main level)",
+      "address": "5207 Belmont Ave S, Minneapolis, MN 55419",
+      "url": "https://www.zillow.com/homedetails/5207-Belmont-Ave-S-Minneapolis-MN-55419/2093189456_zpid/",
+      "image_url": "/images/5207-belmont-ave-s.jpg",
+      "lat": 44.9086797,
+      "lng": -93.2788708,
+      "bedrooms": 3,
+      "housing_type": "duplex",
+      "neighborhood": "Tangletown",
+      "price": 2500.0,
+      "pet_rent": "unknown",
+      "furnished": false,
+      "parking": "Attached garage",
+      "size_sqft": 1600.0,
+      "price_per_sqft": 1.56,
+      "available": "Now",
+      "term": "?",
+      "school": "Burroughs",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 22,
+        "drive_min": 5,
+        "raw": "~22 min walk (5) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 30,
+        "drive_min": 5,
+        "raw": "~30 min walk (5) (est)"
+      },
+      "dist_work_drive_min": 16,
+      "utilities": null,
+      "notes": "1920s charm, hardwood floors refinished, high ceilings, central AC, radiator heat. Steps from Minnehaha Creek. Cats + small dogs OK (inquire). Shared laundry in basement. Burroughs zone (F4, 1.1 mi). Desc is inconsistent main-level vs lower-level — confirm with lister."
+    },
+    {
       "id": "4641-lyndale-ave-s",
       "lodging": "4641 Lyndale Ave S (upper duplex)",
       "address": "4641 Lyndale Ave S, Minneapolis, MN 55419",
