@@ -1,4 +1,5 @@
 import { type Listing, type Place } from "../data";
+import { type Notes, type Ratings } from "../userdata";
 import { chainTimeFor } from "./ListingCard";
 
 type Row = {
@@ -39,11 +40,15 @@ export function CompareView({
   listings,
   schools,
   daycares,
+  notes,
+  ratings,
   onClose,
 }: {
   listings: Listing[];
   schools: Place[];
   daycares: Place[];
+  notes: Notes;
+  ratings: Ratings;
   onClose: () => void;
 }) {
   if (listings.length === 0) {
@@ -58,6 +63,19 @@ export function CompareView({
   const chains = listings.map((l) => chainTimeFor(l, schools, daycares));
 
   const rows: Row[] = [
+    {
+      label: "Your rating",
+      values: listings.map((l) => {
+        const r = ratings[l.id];
+        return r ? "★".repeat(r) + "☆".repeat(5 - r) : "—";
+      }),
+      bestIndex: bestMax(listings.map((l) => asNum(ratings[l.id]))),
+    },
+    {
+      label: "Your notes",
+      values: listings.map((l) => notes[l.id] ?? ""),
+      bestIndex: null,
+    },
     {
       label: "Price",
       values: listings.map((l) => l.price),

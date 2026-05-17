@@ -26,6 +26,8 @@ export function ListingCard({
   onToggleStar,
   schools,
   daycares,
+  note,
+  rating,
 }: {
   listing: Listing;
   shortlisted: boolean;
@@ -34,10 +36,12 @@ export function ListingCard({
   onToggleStar: () => void;
   schools: Place[];
   daycares: Place[];
+  note: string | undefined;
+  rating: number | undefined;
 }) {
   const chain = chainTimeFor(listing, schools, daycares);
-
   const removed = listing.status === "removed";
+  const hasNote = note != null && note.trim() !== "";
 
   return (
     <div
@@ -48,6 +52,12 @@ export function ListingCard({
         <span className="card__price">${listing.price?.toLocaleString() ?? "?"}</span>
         <span className="card__br">{listing.bedrooms ?? "?"}BR {listing.housing_type ?? ""}</span>
         {removed ? <span className="card__removed-tag">OFF MARKET</span> : null}
+        {rating ? (
+          <span className="card__rating" title={`Your rating: ${rating}/5`}>
+            {"★".repeat(rating)}<span className="card__rating--empty">{"★".repeat(5 - rating)}</span>
+          </span>
+        ) : null}
+        {hasNote ? <span className="card__note-indicator" title="You have notes on this listing">📝</span> : null}
         <button
           className={`card__star ${shortlisted ? "card__star--on" : ""}`}
           onClick={(e) => {

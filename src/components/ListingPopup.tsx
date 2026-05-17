@@ -8,21 +8,58 @@ function fmtDist(d: { walk_min: number | null; drive_min: number | null }) {
   return parts.length ? parts.join(", ") : "—";
 }
 
+function RatingStars({
+  rating,
+  onChange,
+}: {
+  rating: number;
+  onChange: (next: number | null) => void;
+}) {
+  return (
+    <div className="rating" role="radiogroup" aria-label="Your rating">
+      {[1, 2, 3, 4, 5].map((n) => (
+        <button
+          key={n}
+          type="button"
+          className={`rating__star ${rating >= n ? "rating__star--on" : ""}`}
+          onClick={() => onChange(rating === n ? null : n)}
+          title={`${n} star${n === 1 ? "" : "s"}`}
+          aria-label={`${n} star${n === 1 ? "" : "s"}`}
+        >
+          {rating >= n ? "★" : "☆"}
+        </button>
+      ))}
+      {rating > 0 ? (
+        <button type="button" className="rating__clear" onClick={() => onChange(null)} title="Clear rating">
+          ✕
+        </button>
+      ) : null}
+    </div>
+  );
+}
+
 export function ListingPopup({
   listing,
   shortlisted,
   onToggleStar,
   schools,
   daycares,
+  note,
+  rating,
+  onNoteChange,
+  onRatingChange,
 }: {
   listing: Listing;
   shortlisted: boolean;
   onToggleStar: () => void;
   schools: Place[];
   daycares: Place[];
+  note: string;
+  rating: number;
+  onNoteChange: (text: string) => void;
+  onRatingChange: (rating: number | null) => void;
 }) {
   const chain = chainTimeFor(listing, schools, daycares);
-
   const removed = listing.status === "removed";
 
   return (
@@ -73,6 +110,15 @@ export function ListingPopup({
           </a>
         ) : null}
       </div>
+      <hr />
+      <RatingStars rating={rating} onChange={onRatingChange} />
+      <textarea
+        className="popup__note-input"
+        placeholder="Your notes…"
+        value={note}
+        onChange={(e) => onNoteChange(e.target.value)}
+        rows={3}
+      />
       <hr />
       <div>School: {listing.school ?? "—"} ({fmtDist(listing.dist_school)})</div>
       <div>Daycare: {listing.daycare ?? "—"} ({fmtDist(listing.dist_daycare)})</div>

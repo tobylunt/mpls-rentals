@@ -121,6 +121,50 @@ body {
 .popup--removed { opacity: 0.85; }
 .popup--removed .popup__price { text-decoration: line-through; color: #888; }
 
+.rating { display: flex; align-items: center; gap: 2px; margin: 4px 0; }
+.rating__star {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #ccc;
+  cursor: pointer;
+  padding: 0 2px;
+  line-height: 1;
+}
+.rating__star--on { color: #f9a825; }
+.rating__clear {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0 6px;
+}
+
+.popup__note-input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 12px;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 4px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+.popup__note-input:focus { outline: none; border-color: #1565c0; }
+
+.card__rating {
+  font-size: 11px;
+  color: #f9a825;
+  letter-spacing: -1px;
+}
+.card__rating--empty { color: #ddd; }
+.card__note-indicator {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
 .popup { font-size: 12px; line-height: 1.4; }
 .popup__head { display: flex; align-items: center; gap: 8px; }
 .popup__star {
@@ -160,6 +204,7 @@ body {
 .popup__link:hover { text-decoration: underline; }
 
 .topbar__tabs { margin-left: 24px; display: flex; gap: 4px; }
+.topbar__actions { margin-left: 16px; display: flex; gap: 4px; }
 .tab {
   padding: 4px 12px;
   border-radius: 6px;

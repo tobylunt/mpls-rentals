@@ -1,13 +1,15 @@
 import { type Listing, type Place } from "../data";
+import { type Notes, type Ratings } from "../userdata";
 import { ListingCard, chainTimeFor } from "./ListingCard";
 
-export type SortKey = "price" | "ppsf" | "chain" | "bedrooms";
+export type SortKey = "price" | "ppsf" | "chain" | "bedrooms" | "rating";
 
 export function sortListings(
   listings: Listing[],
   sortKey: SortKey,
   schools: Place[],
-  daycares: Place[]
+  daycares: Place[],
+  ratings: Ratings
 ): Listing[] {
   const arr = [...listings];
   // Always sink removed listings to the bottom regardless of primary sort.
@@ -20,6 +22,10 @@ export function sortListings(
       return arr.sort((a, b) => byStatus(a, b) || (a.price_per_sqft ?? Infinity) - (b.price_per_sqft ?? Infinity));
     case "bedrooms":
       return arr.sort((a, b) => byStatus(a, b) || (b.bedrooms ?? 0) - (a.bedrooms ?? 0));
+    case "rating":
+      return arr.sort(
+        (a, b) => byStatus(a, b) || (ratings[b.id] ?? 0) - (ratings[a.id] ?? 0)
+      );
     case "chain":
       return arr.sort((a, b) => {
         const s = byStatus(a, b);
@@ -41,6 +47,8 @@ export function ListingList({
   setSortKey,
   schools,
   daycares,
+  notes,
+  ratings,
 }: {
   listings: Listing[];
   shortlist: Set<string>;
@@ -51,8 +59,10 @@ export function ListingList({
   setSortKey: (k: SortKey) => void;
   schools: Place[];
   daycares: Place[];
+  notes: Notes;
+  ratings: Ratings;
 }) {
-  const sorted = sortListings(listings, sortKey, schools, daycares);
+  const sorted = sortListings(listings, sortKey, schools, daycares, ratings);
 
   return (
     <div className="list">
@@ -64,6 +74,7 @@ export function ListingList({
             <option value="price">Price</option>
             <option value="ppsf">$/sqft</option>
             <option value="bedrooms">Bedrooms</option>
+            <option value="rating">Rating</option>
           </select>
         </label>
       </div>
@@ -78,6 +89,8 @@ export function ListingList({
             onToggleStar={() => onToggleStar(l.id)}
             schools={schools}
             daycares={daycares}
+            note={notes[l.id]}
+            rating={ratings[l.id]}
           />
         ))}
         {sorted.length === 0 ? <div className="list__empty">No listings match.</div> : null}

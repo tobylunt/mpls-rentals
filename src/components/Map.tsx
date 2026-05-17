@@ -11,6 +11,7 @@ import {
 import L from "leaflet";
 import { useEffect, useMemo, useRef } from "react";
 import { type Listing, type Place } from "../data";
+import { type Notes, type Ratings } from "../userdata";
 import { ListingPopup } from "./ListingPopup";
 
 const MPLS_CENTER: [number, number] = [44.93, -93.27];
@@ -124,6 +125,10 @@ export function Map({
   selectedId,
   onSelect,
   onToggleStar,
+  notes,
+  ratings,
+  setNote,
+  setRating,
 }: {
   listings: Listing[];
   shortlist: Set<string>;
@@ -133,6 +138,10 @@ export function Map({
   selectedId: string | null;
   onSelect: (id: string) => void;
   onToggleStar: (id: string) => void;
+  notes: Notes;
+  ratings: Ratings;
+  setNote: (id: string, text: string) => void;
+  setRating: (id: string, rating: number | null) => void;
 }) {
   const breaks = useMemo(
     () => computeBreaks(listings.map((l) => l.price ?? 0).filter((p) => p > 0)),
@@ -186,6 +195,10 @@ export function Map({
                       onToggleStar={() => onToggleStar(l.id)}
                       schools={schools}
                       daycares={daycares}
+                      note={notes[l.id] ?? ""}
+                      rating={ratings[l.id] ?? 0}
+                      onNoteChange={(text) => setNote(l.id, text)}
+                      onRatingChange={(r) => setRating(l.id, r)}
                     />
                   </Popup>
                 </Marker>
