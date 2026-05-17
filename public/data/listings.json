@@ -142,12 +142,12 @@
     },
     {
       "id": "sabbatical-175281-uptown",
-      "lodging": "Classic Uptown Foursquare (sabbatical)",
-      "address": "Uptown Minneapolis, MN (exact addr TBD)",
+      "lodging": "3224 Holmes Ave S (sabbatical sublet)",
+      "address": "3224 Holmes Ave S, Minneapolis, MN 55408",
       "url": "https://www.sabbaticalhomes.com/rental/175281",
       "image_url": "/images/sabbatical-175281-uptown.webp",
-      "lat": 44.945,
-      "lng": -93.301,
+      "lat": 44.943876,
+      "lng": -93.2998812,
       "bedrooms": 5,
       "housing_type": "house",
       "neighborhood": "Uptown",
@@ -173,7 +173,7 @@
       },
       "dist_work_drive_min": 12,
       "utilities": null,
-      "notes": "Beautiful foursquare, 5BR/4BA, 3711 sqft, UNFURNISHED. SabbaticalHomes #175281. Walk Score 88. Around the corner from Black Walnut bakery (3155 Hennepin). 'Ask about pets'. Coords approximate — confirm exact address with lister. School zone is C3 → Kenwood (different from Burroughs/Lake Harriet)."
+      "notes": "Beautiful foursquare, 5BR/4BA, 3711 sqft, UNFURNISHED. SabbaticalHomes #175281. Walk Score 88. Around the corner from Black Walnut bakery. 'Ask about pets'. School zone C3 → Kenwood (different from Burroughs/Lake Harriet)."
     },
     {
       "id": "sabbatical-179679-4515-grand",
@@ -243,7 +243,7 @@
       },
       "dist_work_drive_min": 13,
       "utilities": "Included",
-      "notes": "3BR/3BA + office, 2300 sqft, furnished. Architecturally designed home on 'scenic boulevard' near Bde Maka Ska + Lake Harriet. SabbaticalHomes lister: Paul/Sara. Dates flexible; 'ask about pets'. TODO: get exact address from lister, then re-check school zone (Barton OR Lyndale Elementary depending on which side of F1/F2 boundary)."
+      "notes": "3BR/3BA + office, 2300 sqft, furnished. Architecturally designed home on 'scenic boulevard' near Bde Maka Ska + Lake Harriet. SabbaticalHomes lister: Paul/Sara. Dates flexible; 'ask about pets'. School zone confirmed F2 → Barton. Exact address still TBD; coords are Lyndale Farmstead approximate."
     },
     {
       "id": "5432-25th-ave-s",
