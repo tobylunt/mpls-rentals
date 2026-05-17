@@ -255,5 +255,19 @@ body {
 }
 .compare__best { background: #e8f5e9; font-weight: 600; }
 .compare__sub { font-size: 11px; color: #888; font-weight: normal; }
+.compare__thumb {
+  display: block;
+  margin: 0 0 6px;
+  border-radius: 4px;
+  overflow: hidden;
+  line-height: 0;
+}
+.compare__thumb img {
+  width: 100%;
+  max-width: 180px;
+  height: 100px;
+  object-fit: cover;
+  display: block;
+}
 .compare-empty { padding: 48px; text-align: center; color: #666; }
 .compare-empty button { margin-top: 12px; padding: 6px 16px; }

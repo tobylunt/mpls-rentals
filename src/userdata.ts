@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const KEY = "mpls-rentals.userdata";
+const SEED_URL = `${import.meta.env.BASE_URL}data/seed-notes.json`;
 
 export type Notes = Record<string, string>;
 export type Ratings = Record<string, number>; // 1-5
@@ -23,8 +24,35 @@ function read(): Stored {
 
 export function useUserData() {
   const [data, setData] = useState<Stored>(() => read());
+  // Track whether localStorage was empty on mount — if so, we'll seed from JSON
+  // and suppress the persist effect until the seed has been resolved.
+  const wasEmpty = useRef<boolean>(!localStorage.getItem(KEY));
+
+  // First-visit seed: fetch the repo-versioned defaults if the user has no local state.
+  useEffect(() => {
+    if (!wasEmpty.current) return;
+    let cancelled = false;
+    fetch(SEED_URL)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((seed) => {
+        if (cancelled) return;
+        wasEmpty.current = false;
+        setData({
+          notes: seed?.notes ?? {},
+          ratings: seed?.ratings ?? {},
+        });
+      })
+      .catch(() => {
+        wasEmpty.current = false;
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
+    // Don't overwrite the on-disk seed with an empty object before it loads.
+    if (wasEmpty.current) return;
     try {
       localStorage.setItem(KEY, JSON.stringify(data));
     } catch {

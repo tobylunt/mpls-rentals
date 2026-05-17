@@ -176,6 +176,24 @@ export function CompareView({
               <th>Field</th>
               {listings.map((l) => (
                 <th key={l.id}>
+                  {l.image_url ? (
+                    <a
+                      href={l.url ?? "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="compare__thumb"
+                      title="Open original listing"
+                    >
+                      <img
+                        src={l.image_url}
+                        alt={l.lodging}
+                        referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          (e.currentTarget.parentElement as HTMLAnchorElement).style.display = "none";
+                        }}
+                      />
+                    </a>
+                  ) : null}
                   <div>{l.lodging}</div>
                   <div className="compare__sub">{l.neighborhood ?? "—"}</div>
                 </th>
