@@ -141,6 +141,41 @@
       "notes": "Cats and dogs under 15 lbs OK. $250 pet deposit + $25/mo pet rent. Burroughs is 0.6 mi away."
     },
     {
+      "id": "4010-colfax-ave-s",
+      "lodging": "4010 Colfax Ave S",
+      "address": "4010 Colfax Ave S, Minneapolis, MN 55409",
+      "url": "https://www.zillow.com/homedetails/4010-Colfax-Ave-S-Minneapolis-MN-55409/2061694671_zpid/",
+      "image_url": "/images/4010-colfax-ave-s.jpg",
+      "lat": 44.9301668,
+      "lng": -93.2922,
+      "bedrooms": 2,
+      "housing_type": "duplex",
+      "neighborhood": "Lyndale Farmstead",
+      "price": 1800.0,
+      "pet_rent": "unknown",
+      "furnished": false,
+      "parking": "?",
+      "size_sqft": 1400.0,
+      "price_per_sqft": 1.29,
+      "available": "2026-07-01",
+      "term": "1 year",
+      "school": "Barton",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 6,
+        "drive_min": 2,
+        "raw": "~6 min walk (2) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 14,
+        "drive_min": 3,
+        "raw": "~14 min walk (3) (est)"
+      },
+      "dist_work_drive_min": 14,
+      "utilities": "Tenant pays heat + electric",
+      "notes": "First floor craftsman duplex, hardwoods, fireplace. 2 blocks from Lake Harriet + Rose Gardens. Cats OK; small pets up to 30lb. Shared laundry. Lister: Peter Brunelle. Very close to Barton (3 blocks)."
+    },
+    {
       "id": "1735-graham-ave-a128",
       "lodging": "1735 Graham Ave #A128 (River Crossing)",
       "address": "1735 Graham Ave #A128, Saint Paul, MN 55116",
