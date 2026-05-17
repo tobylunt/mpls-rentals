@@ -141,6 +141,41 @@
       "notes": "Cats and dogs under 15 lbs OK. $250 pet deposit + $25/mo pet rent. Burroughs is 0.6 mi away."
     },
     {
+      "id": "4641-lyndale-ave-s",
+      "lodging": "4641 Lyndale Ave S (upper duplex)",
+      "address": "4641 Lyndale Ave S, Minneapolis, MN 55419",
+      "url": "https://www.zillow.com/homedetails/4641-Lyndale-Ave-S-Minneapolis-MN-55419/351475329_zpid/",
+      "image_url": "/images/4641-lyndale-ave-s.jpg",
+      "lat": 44.918802,
+      "lng": -93.2881961,
+      "bedrooms": 3,
+      "housing_type": "duplex",
+      "neighborhood": "Tangletown",
+      "price": 2150.0,
+      "pet_rent": "unknown",
+      "furnished": false,
+      "parking": "1 garage stall + 2 surface",
+      "size_sqft": 1350.0,
+      "price_per_sqft": 1.59,
+      "available": "2026-07-01",
+      "term": "?",
+      "school": "Burroughs",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 15,
+        "drive_min": 3,
+        "raw": "~15 min walk (3) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 20,
+        "drive_min": 4,
+        "raw": "~20 min walk (4) (est)"
+      },
+      "dist_work_drive_min": 14,
+      "utilities": "Water + trash included; tenant pays heat/electric/gas",
+      "notes": "Charming upper level of 1920s up-down duplex. Hardwoods, new appliances, large kitchen, free laundry, fiber internet. Cats + small dogs (up to 40lb) OK. No smoking/vaping. Listed 3 days ago. Burroughs zone (F4)."
+    },
+    {
       "id": "4010-colfax-ave-s",
       "lodging": "4010 Colfax Ave S",
       "address": "4010 Colfax Ave S, Minneapolis, MN 55409",
