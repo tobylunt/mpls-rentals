@@ -1,4 +1,5 @@
 import { type Listing, type Place } from "../data";
+import { type MarketStatus, type Tour } from "../userdata";
 import { chainTimeMin } from "../score";
 
 export function chainTimeFor(l: Listing, schools: Place[], daycares: Place[]): number | null {
@@ -18,6 +19,19 @@ function fmt(n: number | null | undefined, suffix = ""): string {
   return n == null ? "—" : `${n}${suffix}`;
 }
 
+export function formatTour(tour: Tour): string {
+  if (!tour.at) return tour.status === "confirmed" ? "Tour ✓" : "Tour TBD";
+  const d = new Date(tour.at);
+  const day = d.toLocaleDateString("en-US", { weekday: "short" });
+  const time = d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" }).replace(/\s/g, "").toLowerCase();
+  const prefix = tour.status === "confirmed" ? "Tour ✓" : "Tour";
+  return `${prefix} ${day} ${time}`;
+}
+
+export function marketStatusLabel(s: MarketStatus): string {
+  return s === "probably_rented" ? "Likely rented" : s === "rented" ? "Rented" : "On hold";
+}
+
 export function ListingCard({
   listing,
   shortlisted,
@@ -28,6 +42,8 @@ export function ListingCard({
   daycares,
   note,
   rating,
+  tour,
+  marketStatus,
 }: {
   listing: Listing;
   shortlisted: boolean;
@@ -38,6 +54,8 @@ export function ListingCard({
   daycares: Place[];
   note: string | undefined;
   rating: number | undefined;
+  tour: Tour | undefined;
+  marketStatus: MarketStatus | undefined;
 }) {
   const chain = chainTimeFor(listing, schools, daycares);
   const removed = listing.status === "removed";
@@ -52,6 +70,19 @@ export function ListingCard({
         <span className="card__price">${listing.price?.toLocaleString() ?? "?"}</span>
         <span className="card__br">{listing.bedrooms ?? "?"}BR {listing.housing_type ?? ""}</span>
         {removed ? <span className="card__removed-tag">OFF MARKET</span> : null}
+        {tour ? (
+          <span className={`card__tour-tag ${tour.status === "confirmed" ? "card__tour-tag--confirmed" : ""}`} title={tour.at ? `Tour ${tour.status}: ${new Date(tour.at).toLocaleString()}` : `Tour ${tour.status}`}>
+            {formatTour(tour)}
+          </span>
+        ) : null}
+        {marketStatus ? (
+          <span
+            className={`card__status-tag card__status-tag--${marketStatus}`}
+            title={marketStatusLabel(marketStatus)}
+          >
+            {marketStatusLabel(marketStatus)}
+          </span>
+        ) : null}
         {rating ? (
           <span className="card__rating" title={`Your rating: ${rating}/5`}>
             {"★".repeat(rating)}<span className="card__rating--empty">{"★".repeat(5 - rating)}</span>

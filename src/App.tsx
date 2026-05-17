@@ -9,7 +9,16 @@ import { useUserData } from "./userdata";
 
 export default function App() {
   const { ids: shortlist, toggle: toggleShortlist } = useShortlist();
-  const { notes, ratings, setNote, setRating, exportData, importData } = useUserData();
+  const {
+    notes,
+    ratings,
+    tours,
+    marketStatuses,
+    setNote,
+    setRating,
+    exportData,
+    importData,
+  } = useUserData();
   const [filters, setFilters] = useState<Filters>(() => defaultFilters(data.listings));
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [sortKey, setSortKey] = useState<SortKey>("chain");
@@ -20,8 +29,10 @@ export default function App() {
     const file = e.target.files?.[0];
     if (!file) return;
     try {
-      const { notesCount, ratingsCount } = await importData(file);
-      alert(`Imported ${notesCount} note(s), ${ratingsCount} rating(s).`);
+      const { notesCount, ratingsCount, toursCount, marketStatusCount } = await importData(file);
+      alert(
+        `Imported ${notesCount} note(s), ${ratingsCount} rating(s), ${toursCount} tour(s), ${marketStatusCount} market-status flag(s).`
+      );
     } catch (err) {
       alert(`Import failed: ${err instanceof Error ? err.message : String(err)}`);
     }
@@ -89,6 +100,8 @@ export default function App() {
                 daycares={data.daycares}
                 notes={notes}
                 ratings={ratings}
+                tours={tours}
+                marketStatuses={marketStatuses}
               />
             </aside>
             <section className="map-area">
@@ -115,6 +128,8 @@ export default function App() {
             daycares={data.daycares}
             notes={notes}
             ratings={ratings}
+            tours={tours}
+            marketStatuses={marketStatuses}
             onClose={() => setView("map")}
           />
         )}

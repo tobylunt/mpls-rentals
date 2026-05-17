@@ -6,19 +6,33 @@ const SEED_URL = `${import.meta.env.BASE_URL}data/seed-notes.json`;
 export type Notes = Record<string, string>;
 export type Ratings = Record<string, number>; // 1-5
 
-type Stored = { notes: Notes; ratings: Ratings };
+export type TourStatus = "scheduled" | "confirmed";
+export type Tour = { at?: string; status: TourStatus }; // at = ISO datetime, optional
+export type Tours = Record<string, Tour>;
+
+export type MarketStatus = "probably_rented" | "rented" | "on_hold";
+export type MarketStatuses = Record<string, MarketStatus>;
+
+type Stored = {
+  notes: Notes;
+  ratings: Ratings;
+  tours: Tours;
+  marketStatuses: MarketStatuses;
+};
 
 function read(): Stored {
   try {
     const raw = localStorage.getItem(KEY);
-    if (!raw) return { notes: {}, ratings: {} };
+    if (!raw) return { notes: {}, ratings: {}, tours: {}, marketStatuses: {} };
     const parsed = JSON.parse(raw);
     return {
       notes: parsed?.notes ?? {},
       ratings: parsed?.ratings ?? {},
+      tours: parsed?.tours ?? {},
+      marketStatuses: parsed?.marketStatuses ?? {},
     };
   } catch {
-    return { notes: {}, ratings: {} };
+    return { notes: {}, ratings: {}, tours: {}, marketStatuses: {} };
   }
 }
 
@@ -28,19 +42,41 @@ export function useUserData() {
   // and suppress the persist effect until the seed has been resolved.
   const wasEmpty = useRef<boolean>(!localStorage.getItem(KEY));
 
-  // First-visit seed: fetch the repo-versioned defaults if the user has no local state.
+  // Seed merge: always fetch the repo seed. If localStorage was empty, the
+  // seed becomes the initial state. If localStorage exists, only NEW entries
+  // (listing IDs not already in user state) for tours + marketStatuses are
+  // pulled in — notes/ratings are left untouched so we don't clobber edits.
   useEffect(() => {
-    if (!wasEmpty.current) return;
     let cancelled = false;
     fetch(SEED_URL)
       .then((r) => (r.ok ? r.json() : null))
       .then((seed) => {
-        if (cancelled) return;
-        wasEmpty.current = false;
-        setData({
-          notes: seed?.notes ?? {},
-          ratings: seed?.ratings ?? {},
-        });
+        if (cancelled || !seed) {
+          wasEmpty.current = false;
+          return;
+        }
+        if (wasEmpty.current) {
+          wasEmpty.current = false;
+          setData({
+            notes: seed?.notes ?? {},
+            ratings: seed?.ratings ?? {},
+            tours: seed?.tours ?? {},
+            marketStatuses: seed?.marketStatuses ?? {},
+          });
+        } else {
+          // Additive merge for tours + marketStatuses only
+          setData((prev) => {
+            const tours = { ...prev.tours };
+            for (const [id, t] of Object.entries((seed?.tours ?? {}) as Tours)) {
+              if (!(id in tours)) tours[id] = t;
+            }
+            const marketStatuses = { ...prev.marketStatuses };
+            for (const [id, s] of Object.entries((seed?.marketStatuses ?? {}) as MarketStatuses)) {
+              if (!(id in marketStatuses)) marketStatuses[id] = s;
+            }
+            return { ...prev, tours, marketStatuses };
+          });
+        }
       })
       .catch(() => {
         wasEmpty.current = false;
@@ -78,6 +114,24 @@ export function useUserData() {
     });
   }, []);
 
+  const setTour = useCallback((id: string, tour: Tour | null) => {
+    setData((prev) => {
+      const tours = { ...prev.tours };
+      if (tour == null) delete tours[id];
+      else tours[id] = tour;
+      return { ...prev, tours };
+    });
+  }, []);
+
+  const setMarketStatus = useCallback((id: string, status: MarketStatus | null) => {
+    setData((prev) => {
+      const marketStatuses = { ...prev.marketStatuses };
+      if (status == null) delete marketStatuses[id];
+      else marketStatuses[id] = status;
+      return { ...prev, marketStatuses };
+    });
+  }, []);
+
   const exportData = useCallback(() => {
     const payload = { exportedAt: new Date().toISOString(), ...data };
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
@@ -90,37 +144,65 @@ export function useUserData() {
   }, [data]);
 
   const importData = useCallback(
-    async (file: File): Promise<{ notesCount: number; ratingsCount: number }> => {
+    async (
+      file: File
+    ): Promise<{ notesCount: number; ratingsCount: number; toursCount: number; marketStatusCount: number }> => {
       const text = await file.text();
       const parsed = JSON.parse(text);
-      const incomingNotes: unknown = parsed?.notes ?? {};
-      const incomingRatings: unknown = parsed?.ratings ?? {};
-      if (typeof incomingNotes !== "object" || typeof incomingRatings !== "object") {
-        throw new Error("Invalid notes file: expected { notes: {...}, ratings: {...} }");
-      }
+      const incomingNotes = (parsed?.notes ?? {}) as Notes;
+      const incomingRatings = (parsed?.ratings ?? {}) as Ratings;
+      const incomingTours = (parsed?.tours ?? {}) as Tours;
+      const incomingMarket = (parsed?.marketStatuses ?? {}) as MarketStatuses;
       let notesCount = 0;
       let ratingsCount = 0;
+      let toursCount = 0;
+      let marketStatusCount = 0;
       setData((prev) => {
         const notes = { ...prev.notes };
-        for (const [id, val] of Object.entries(incomingNotes as Notes)) {
+        for (const [id, val] of Object.entries(incomingNotes)) {
           if (typeof val === "string" && val.trim() !== "") {
             notes[id] = val;
             notesCount++;
           }
         }
         const ratings = { ...prev.ratings };
-        for (const [id, val] of Object.entries(incomingRatings as Ratings)) {
+        for (const [id, val] of Object.entries(incomingRatings)) {
           if (typeof val === "number" && val >= 1 && val <= 5) {
             ratings[id] = Math.round(val);
             ratingsCount++;
           }
         }
-        return { notes, ratings };
+        const tours = { ...prev.tours };
+        for (const [id, val] of Object.entries(incomingTours)) {
+          if (val && (val.status === "scheduled" || val.status === "confirmed")) {
+            tours[id] = val;
+            toursCount++;
+          }
+        }
+        const marketStatuses = { ...prev.marketStatuses };
+        for (const [id, val] of Object.entries(incomingMarket)) {
+          if (val === "probably_rented" || val === "rented" || val === "on_hold") {
+            marketStatuses[id] = val;
+            marketStatusCount++;
+          }
+        }
+        return { notes, ratings, tours, marketStatuses };
       });
-      return { notesCount, ratingsCount };
+      return { notesCount, ratingsCount, toursCount, marketStatusCount };
     },
     []
   );
 
-  return { notes: data.notes, ratings: data.ratings, setNote, setRating, exportData, importData };
+  return {
+    notes: data.notes,
+    ratings: data.ratings,
+    tours: data.tours,
+    marketStatuses: data.marketStatuses,
+    setNote,
+    setRating,
+    setTour,
+    setMarketStatus,
+    exportData,
+    importData,
+  };
 }
