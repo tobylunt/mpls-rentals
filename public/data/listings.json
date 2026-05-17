@@ -141,6 +141,41 @@
       "notes": "Cats and dogs under 15 lbs OK. $250 pet deposit + $25/mo pet rent. Burroughs is 0.6 mi away."
     },
     {
+      "id": "1735-graham-ave-a128",
+      "lodging": "1735 Graham Ave #A128 (River Crossing)",
+      "address": "1735 Graham Ave #A128, Saint Paul, MN 55116",
+      "url": "https://www.zillow.com/homedetails/1735-Graham-Ave-A128-Saint-Paul-MN-55116/2091636858_zpid/",
+      "image_url": "/images/1735-graham-ave-a128.jpg",
+      "lat": 44.8990497,
+      "lng": -93.1730451,
+      "bedrooms": 2,
+      "housing_type": "apt",
+      "neighborhood": "Highland Park",
+      "price": 2025.0,
+      "pet_rent": 25.0,
+      "furnished": false,
+      "parking": "Underground heated garage",
+      "size_sqft": 1474.0,
+      "price_per_sqft": 1.37,
+      "available": "2026-08-01",
+      "term": "?",
+      "school": "Horace Mann",
+      "daycare": "Casa Highland Park",
+      "dist_school": {
+        "walk_min": 30,
+        "drive_min": 6,
+        "raw": "~30 min walk (6) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 28,
+        "drive_min": 5,
+        "raw": "~28 min walk (5) (est)"
+      },
+      "dist_work_drive_min": 18,
+      "utilities": null,
+      "notes": "The Communities of River Crossing complex. 2BR/2.5BA, 1474 sqft, fireplace, in-unit W/D. Cats OK ($25/mo + $250 fee). Amenities incl. pool, fitness center, 24hr. Horace Mann school zone."
+    },
+    {
       "id": "sabbatical-175281-uptown",
       "lodging": "3224 Holmes Ave S (sabbatical sublet)",
       "address": "3224 Holmes Ave S, Minneapolis, MN 55408",
