@@ -141,6 +141,41 @@
       "notes": "Cats and dogs under 15 lbs OK. $250 pet deposit + $25/mo pet rent. Burroughs is 0.6 mi away."
     },
     {
+      "id": "4009-ewing-ave-s",
+      "lodging": "4009 Ewing Ave S",
+      "address": "4009 Ewing Ave S, Minneapolis, MN 55410",
+      "url": "https://www.zillow.com/homedetails/4009-Ewing-Ave-S-Minneapolis-MN-55410/1760484_zpid/",
+      "image_url": "/images/4009-ewing-ave-s.jpg",
+      "lat": 44.9303532,
+      "lng": -93.3276802,
+      "bedrooms": 2,
+      "housing_type": "house",
+      "neighborhood": "Linden Hills",
+      "price": 2850.0,
+      "pet_rent": "unknown",
+      "furnished": false,
+      "parking": "Attached garage",
+      "size_sqft": 1395.0,
+      "price_per_sqft": 2.04,
+      "available": "2026-07-01",
+      "term": "?",
+      "school": "Lake Harriet",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": 3,
+        "drive_min": 1,
+        "raw": "~3 min walk (1) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 30,
+        "drive_min": 4,
+        "raw": "~30 min walk (4) (est)"
+      },
+      "dist_work_drive_min": 14,
+      "utilities": null,
+      "notes": "Sunny single-family house, 2BR/2BA, formal DR, large eat-in kitchen, fenced yard, deck/terrace. In-unit laundry, attached garage. Cats and dogs OK. Lake Harriet Lower is 0.1 mi away — across the street."
+    },
+    {
       "id": "5207-belmont-ave-s",
       "lodging": "5207 Belmont Ave S (main level)",
       "address": "5207 Belmont Ave S, Minneapolis, MN 55419",
