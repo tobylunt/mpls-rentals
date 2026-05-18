@@ -83,6 +83,21 @@ body {
 .filter { display: flex; flex-direction: column; gap: 6px; font-size: 13px; }
 .filter--check { flex-direction: row; align-items: center; gap: 8px; }
 .filter__label { color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* Native <details>/<summary> behavior; just style the summary to match
+   .filter__label and tighten spacing when collapsed. */
+.filter--collapsible { gap: 6px; }
+.filter--collapsible[open] { gap: 6px; }
+.filter__summary { cursor: pointer; user-select: none; list-style: none; }
+.filter__summary::-webkit-details-marker { display: none; }
+.filter__summary::before {
+  content: "▸ ";
+  display: inline-block;
+  transition: transform 0.1s ease;
+}
+.filter--collapsible[open] > .filter__summary::before {
+  transform: rotate(90deg);
+}
 .filter input[type="range"] { width: 100%; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip {

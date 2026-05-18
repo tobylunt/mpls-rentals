@@ -89,8 +89,10 @@ export function FilterBar({
         </div>
       </div>
 
-      <div className="filter">
-        <span className="filter__label">Neighborhood</span>
+      <details className="filter filter--collapsible">
+        <summary className="filter__label filter__summary">
+          Neighborhood{filters.neighborhoods.size > 0 ? ` (${filters.neighborhoods.size})` : ""}
+        </summary>
         <div className="chips">
           {allHoods.map((h) => (
             <button
@@ -102,7 +104,7 @@ export function FilterBar({
             </button>
           ))}
         </div>
-      </div>
+      </details>
 
       <label className="filter filter--check">
         <input
