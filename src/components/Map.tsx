@@ -7,16 +7,28 @@ import {
   LayersControl,
   LayerGroup,
   Polyline,
+  GeoJSON,
   useMap,
 } from "react-leaflet";
 import L from "leaflet";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import type { FeatureCollection, Feature } from "geojson";
 import { type Listing, type Place } from "../data";
 import { type Notes, type Ratings, type Disqualifications, type Tours, type MarketStatuses, statusLabel } from "../userdata";
 import { ListingPopup } from "./ListingPopup";
 
 const MPLS_CENTER: [number, number] = [44.93, -93.27];
 const QUARTILE_COLORS = ["#2e7d32", "#9ccc65", "#ffb300", "#e53935"];
+const ATTENDANCE_GEOJSON_URL = `${import.meta.env.BASE_URL}data/mpls-elementary-attendance.geojson`;
+
+// Deterministic-ish per-school color so each attendance area gets a distinct
+// (but muted) fill.
+function hashColor(s: string): string {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0;
+  const hue = Math.abs(h) % 360;
+  return `hsl(${hue}, 65%, 70%)`;
+}
 
 function quartileFor(price: number, breaks: number[]): number {
   for (let i = 0; i < breaks.length; i++) if (price <= breaks[i]) return i;
@@ -169,6 +181,38 @@ export function Map({
   const markerRef = useRef(new globalThis.Map<string, L.Marker>());
   const selected = listings.find((l) => l.id === selectedId) ?? null;
 
+  // Lazy-load attendance GeoJSON only once. It's small (~43KB) so we just
+  // keep it in state.
+  const [attendance, setAttendance] = useState<FeatureCollection | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    fetch(ATTENDANCE_GEOJSON_URL)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        if (!cancelled) setAttendance(j as FeatureCollection);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const attendanceStyle = (feature?: Feature) => {
+    const name = (feature?.properties as { elem_name?: string } | undefined)?.elem_name ?? "";
+    return {
+      color: "#555",
+      weight: 1,
+      opacity: 0.7,
+      fillColor: hashColor(name),
+      fillOpacity: 0.25,
+    };
+  };
+
+  const onEachAttendance = (feature: Feature, layer: L.Layer) => {
+    const name = (feature.properties as { elem_name?: string } | undefined)?.elem_name ?? "Unknown";
+    layer.bindTooltip(`Elem: ${name}`, { sticky: true });
+  };
+
   return (
     <MapContainer
       center={MPLS_CENTER}
@@ -188,6 +232,14 @@ export function Map({
         <ChainLines selected={selected} schools={schools} daycares={daycares} />
       ) : null}
       <LayersControl position="topright">
+        <LayersControl.Overlay name="Elem school zones">
+          <LayerGroup>
+            {attendance ? (
+              <GeoJSON data={attendance} style={attendanceStyle} onEachFeature={onEachAttendance} />
+            ) : null}
+          </LayerGroup>
+        </LayersControl.Overlay>
+
         <LayersControl.Overlay checked name="Listings">
           <LayerGroup>
             {listings.map((l) => {
