@@ -65,20 +65,24 @@ function rentalIcon(color: string, starred: boolean, approximate: boolean): L.Di
   });
 }
 
-function placeIcon(emoji: string): L.DivIcon {
+function placeIcon(emoji: string, active = false): L.DivIcon {
   // Bare emoji, no container. A white text-shadow halo keeps it legible
   // against any basemap color (dark roads, parks, water, etc.).
+  const cls = active ? "place-pin__emoji place-pin__emoji--active" : "place-pin__emoji";
   return L.divIcon({
     className: "place-pin",
-    html: `<span class="place-pin__emoji">${emoji}</span>`,
+    html: `<span class="${cls}">${emoji}</span>`,
     iconSize: [24, 24],
     iconAnchor: [12, 12],
   });
 }
 
 const SCHOOL_ICON = placeIcon("🎓");
+const SCHOOL_ICON_ACTIVE = placeIcon("🎓", true);
 const DAYCARE_ICON = placeIcon("🧸");
+const DAYCARE_ICON_ACTIVE = placeIcon("🧸", true);
 const WORK_ICON = placeIcon("💼");
+const WORK_ICON_ACTIVE = placeIcon("💼", true);
 
 function ChainLines({
   selected,
@@ -188,6 +192,14 @@ export function Map({
   );
 
   const markerRef = useRef(new globalThis.Map<string, L.Marker>());
+  // Place pins (school/daycare/work) render at low opacity by default; the
+  // currently open one bumps to full opacity. Tracked here, toggled on
+  // popup open/close.
+  const [activePlace, setActivePlace] = useState<string | null>(null);
+  const placeHandlers = (name: string) => ({
+    popupopen: () => setActivePlace(name),
+    popupclose: () => setActivePlace((p) => (p === name ? null : p)),
+  });
   const selected = listings.find((l) => l.id === selectedId) ?? null;
 
   // Lazy-load the three attendance GeoJSONs (elem / middle / high) once.
@@ -358,7 +370,12 @@ export function Map({
           <LayerGroup>
             {schools.map((s) =>
               s.lat != null && s.lng != null ? (
-                <Marker key={s.name} position={[s.lat, s.lng]} icon={SCHOOL_ICON}>
+                <Marker
+                  key={s.name}
+                  position={[s.lat, s.lng]}
+                  icon={activePlace === s.name ? SCHOOL_ICON_ACTIVE : SCHOOL_ICON}
+                  eventHandlers={placeHandlers(s.name)}
+                >
                   <Popup><strong>{s.name}</strong> (school)</Popup>
                 </Marker>
               ) : null
@@ -370,7 +387,12 @@ export function Map({
           <LayerGroup>
             {daycares.map((d) =>
               d.lat != null && d.lng != null ? (
-                <Marker key={d.name} position={[d.lat, d.lng]} icon={DAYCARE_ICON}>
+                <Marker
+                  key={d.name}
+                  position={[d.lat, d.lng]}
+                  icon={activePlace === d.name ? DAYCARE_ICON_ACTIVE : DAYCARE_ICON}
+                  eventHandlers={placeHandlers(d.name)}
+                >
                   <Popup><strong>{d.name}</strong> (daycare)</Popup>
                 </Marker>
               ) : null
@@ -381,7 +403,11 @@ export function Map({
         <LayersControl.Overlay checked name="Work">
           <LayerGroup>
             {work.lat != null && work.lng != null ? (
-              <Marker position={[work.lat, work.lng]} icon={WORK_ICON}>
+              <Marker
+                position={[work.lat, work.lng]}
+                icon={activePlace === work.name ? WORK_ICON_ACTIVE : WORK_ICON}
+                eventHandlers={placeHandlers(work.name)}
+              >
                 <Popup><strong>{work.name}</strong></Popup>
               </Marker>
             ) : null}
