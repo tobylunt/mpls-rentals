@@ -76,5 +76,12 @@
   "marketStatuses": {
     "4934-lyndale-ave-s-2": "on_hold"
   },
-  "shortlist": []
+  "shortlist": [
+    "4749-harriet-ave-2",
+    "5207-belmont-ave-s"
+  ],
+  "disqualifications": {
+    "4430-w-lake-harriet-pkwy": "Dumpy looking with bad reviews",
+    "sabbatical-175281-uptown": "Don't like the Kenwood school vibes"
+  }
 }
