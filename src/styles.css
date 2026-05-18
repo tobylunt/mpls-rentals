@@ -31,6 +31,9 @@ body {
   line-height: 1;
 }
 
+/* Leaflet tooltips default to white-space: nowrap; override so our wider
+   listing titles wrap to multiple lines instead of spilling out the side. */
+.leaflet-tooltip:has(.pin-tooltip) { white-space: normal; }
 .pin-tooltip {
   display: flex;
   flex-direction: column;
