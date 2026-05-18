@@ -1,4 +1,4 @@
-import raw from "../public/data/listings.json";
+import raw from "./data/listings.json";
 
 export type Distance = {
   walk_min: number | null;
