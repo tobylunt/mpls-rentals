@@ -1,6 +1,41 @@
 {
   "listings": [
     {
+      "id": "4829-chicago-ave-1",
+      "lodging": "4829 Chicago Ave #1 (Tudor duplex)",
+      "address": "4829 Chicago Ave #1, Minneapolis, MN 55417",
+      "url": "https://www.zillow.com/homedetails/4829-Chicago-Ave-1-Minneapolis-MN-55417/2064205256_zpid/",
+      "image_url": "/images/4829-chicago-ave-1.jpg",
+      "lat": 44.9155642,
+      "lng": -93.2625598,
+      "bedrooms": 2,
+      "housing_type": "duplex",
+      "neighborhood": "Field",
+      "price": 2100.0,
+      "pet_rent": "unknown",
+      "furnished": false,
+      "parking": "Attached garage",
+      "size_sqft": 1350.0,
+      "price_per_sqft": 1.56,
+      "available": "Now",
+      "term": "?",
+      "school": "Hale",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 15,
+        "drive_min": 3,
+        "raw": "~15 min walk (3) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": null,
+        "drive_min": 7,
+        "raw": "~7 min drive (est)"
+      },
+      "dist_work_drive_min": 14,
+      "utilities": null,
+      "notes": "Charming Tudor-style duplex, first-floor unit. 2BR/1BA, 1350 sqft. Hardwoods throughout, formal DR, eat-in kitchen w/ stainless + dishwasher, newly remodeled bathroom. Free shared laundry in basement, shared flagstone patio. Cats + dogs OK ($300 non-refundable pet deposit). 1 block from Minnehaha Parkway. Hale school zone (F3, 0.7 mi)."
+    },
+    {
       "id": "4544-bryant-ave-s",
       "lodging": "4544 Bryant Ave S (lower unit)",
       "address": "4544 Bryant Ave S, Minneapolis, MN 55419",
@@ -33,7 +68,7 @@
       },
       "dist_work_drive_min": 14,
       "utilities": null,
-      "notes": "LOWER unit, owner-occupied duplex. 2BR/1BA, 1500 sqft. Hardwoods, built-ins, crown molding, updated bath/appliances. Shared laundry + storage in basement. Close to Lake Harriet + Minnehaha Creek. WARNING: listing explicitly says 'No pets' \u2014 verify with manager before applying. Barton zone (F2, 0.4 mi)."
+      "notes": "LOWER unit, owner-occupied duplex. 2BR/1BA, 1500 sqft. Hardwoods, built-ins, crown molding, updated bath/appliances. Shared laundry + storage in basement. Close to Lake Harriet + Minnehaha Creek. Listing says 'No pets' but lessor confirmed it's negotiable. Barton zone (F2, 0.4 mi)."
     },
     {
       "id": "4733-xerxes-ave-s",
@@ -1430,6 +1465,12 @@
       "query": "Kenwood Elementary School, 2013 Penn Ave S, Minneapolis, MN",
       "lat": 44.9622329,
       "lng": -93.307784
+    },
+    {
+      "name": "Hale",
+      "query": "Hale Elementary School, 5330 13th Ave S, Minneapolis, MN",
+      "lat": 44.906494,
+      "lng": -93.256372
     }
   ],
   "daycares": [
