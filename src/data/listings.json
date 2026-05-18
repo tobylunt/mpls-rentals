@@ -1,6 +1,41 @@
 {
   "listings": [
     {
+      "id": "4733-xerxes-ave-s",
+      "lodging": "4733 Xerxes Ave S",
+      "address": "4733 Xerxes Ave S, Minneapolis, MN 55410",
+      "url": "https://www.zillow.com/homedetails/4733-Xerxes-Ave-S-Minneapolis-MN-55410/1846990_zpid/",
+      "image_url": "/images/4733-xerxes-ave-s.jpg",
+      "lat": 44.9172895,
+      "lng": -93.3187918,
+      "bedrooms": 4,
+      "housing_type": "house",
+      "neighborhood": "Linden Hills",
+      "price": 3300.0,
+      "pet_rent": "unknown",
+      "furnished": false,
+      "parking": "Attached garage",
+      "size_sqft": 1788.0,
+      "price_per_sqft": 1.85,
+      "available": "2026-06-15",
+      "term": "?",
+      "school": "Lake Harriet",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": 20,
+        "drive_min": 4,
+        "raw": "~20 min walk (4) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 22,
+        "drive_min": 4,
+        "raw": "~22 min walk (4) (est)"
+      },
+      "dist_work_drive_min": 17,
+      "utilities": "Tenant pays all",
+      "notes": "Completely remodeled SFH, 4BR/2BA, 1788 sqft. 3 BR main + 1 basement, 2 living rooms. Attached garage wired for EV. Large backyard. Cats + small dogs OK. No smoking. Rental insurance required. Available Jun 15."
+    },
+    {
       "id": "4927-ewing-ave-s-3",
       "lodging": "4927 Ewing Ave S #3",
       "address": "4927 Ewing Ave S, Minneapolis, MN 55410",
