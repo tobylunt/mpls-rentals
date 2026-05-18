@@ -29,11 +29,17 @@ function computeBreaks(prices: number[]): number[] {
   return [q(0.25), q(0.5), q(0.75)];
 }
 
-function rentalIcon(color: string, starred: boolean): L.DivIcon {
+function rentalIcon(color: string, starred: boolean, approximate: boolean): L.DivIcon {
+  // Approximate-coord listings render hollow with a dashed border so they're
+  // visually distinct from real-address pins.
+  const bodyStyle = approximate
+    ? `background:rgba(255,255,255,0.85); border-color:${color}; border-width:2px; border-style:dashed;`
+    : `background:${color}`;
+  const starColor = approximate ? color : "#fff";
   return L.divIcon({
     className: "rental-pin",
-    html: `<div class="rental-pin__body" style="background:${color}">
-      ${starred ? '<span class="rental-pin__star">★</span>' : ""}
+    html: `<div class="rental-pin__body" style="${bodyStyle}">
+      ${starred ? `<span class="rental-pin__star" style="color:${starColor}">★</span>` : ""}
     </div>`,
     iconSize: [22, 22],
     iconAnchor: [11, 11],
@@ -62,6 +68,9 @@ function ChainLines({
   schools: Place[];
   daycares: Place[];
 }) {
+  // Don't draw chain lines if the listing's coords are approximate — they'd
+  // be misleading.
+  if (selected.coords_approximate) return null;
   const home: [number, number] | null = selected.lat != null && selected.lng != null ? [selected.lat, selected.lng] : null;
   const school = schools.find((s) => s.name === selected.school);
   const daycare = daycares.find((d) => d.name === selected.daycare);
@@ -185,7 +194,7 @@ export function Map({
               if (l.lat == null || l.lng == null) return null;
               const q = l.price ? quartileFor(l.price, breaks) : 1;
               const color = l.status === "removed" ? "#9e9e9e" : QUARTILE_COLORS[q];
-              const icon = rentalIcon(color, shortlist.has(l.id));
+              const icon = rentalIcon(color, shortlist.has(l.id), !!l.coords_approximate);
               const status = statusLabel(l.id, l.status, tours, marketStatuses, disqualifications, notes);
               const priceStr = l.price ? `$${l.price.toLocaleString()}` : "—";
               return (

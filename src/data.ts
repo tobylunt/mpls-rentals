@@ -33,6 +33,11 @@ export type Listing = {
   utilities: string | null;
   notes: string | null;
   status?: "active" | "removed";
+  // True for listings whose exact address we don't know yet (e.g. Furnished
+  // Finder pins, sabbaticalhomes approximations). Map pins render hollow/
+  // dashed to signal "approximate" and chain lines are suppressed since the
+  // distance estimates would be meaningless.
+  coords_approximate?: boolean;
 };
 
 export type Place = { name: string; query: string; lat: number | null; lng: number | null };
