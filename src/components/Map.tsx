@@ -19,15 +19,22 @@ import { ListingPopup } from "./ListingPopup";
 
 const MPLS_CENTER: [number, number] = [44.93, -93.27];
 const QUARTILE_COLORS = ["#2e7d32", "#9ccc65", "#ffb300", "#e53935"];
-const ATTENDANCE_GEOJSON_URL = `${import.meta.env.BASE_URL}data/mpls-elementary-attendance.geojson`;
+const ELEM_GEOJSON_URL = `${import.meta.env.BASE_URL}data/mpls-elementary-attendance.geojson`;
+const MIDDLE_GEOJSON_URL = `${import.meta.env.BASE_URL}data/mpls-middle-attendance.geojson`;
+const HIGH_GEOJSON_URL = `${import.meta.env.BASE_URL}data/mpls-high-attendance.geojson`;
 
 // Deterministic-ish per-school color so each attendance area gets a distinct
-// (but muted) fill.
-function hashColor(s: string): string {
+// (but muted) fill. We pick from a curated set of soft pastel hues — golden
+// ratio hue stepping for max visual separation.
+function hashColor(s: string, saturation = 45, lightness = 78): string {
   let h = 0;
   for (let i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0;
   const hue = Math.abs(h) % 360;
-  return `hsl(${hue}, 65%, 70%)`;
+  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+}
+
+function hashColorDark(s: string): string {
+  return hashColor(s, 55, 45);
 }
 
 function quartileFor(price: number, breaks: number[]): number {
@@ -181,36 +188,77 @@ export function Map({
   const markerRef = useRef(new globalThis.Map<string, L.Marker>());
   const selected = listings.find((l) => l.id === selectedId) ?? null;
 
-  // Lazy-load attendance GeoJSON only once. It's small (~43KB) so we just
-  // keep it in state.
-  const [attendance, setAttendance] = useState<FeatureCollection | null>(null);
+  // Lazy-load the three attendance GeoJSONs (elem / middle / high) once.
+  // ~75KB combined, so just keep them in state.
+  const [elemFC, setElemFC] = useState<FeatureCollection | null>(null);
+  const [middleFC, setMiddleFC] = useState<FeatureCollection | null>(null);
+  const [highFC, setHighFC] = useState<FeatureCollection | null>(null);
   useEffect(() => {
     let cancelled = false;
-    fetch(ATTENDANCE_GEOJSON_URL)
-      .then((r) => (r.ok ? r.json() : null))
-      .then((j) => {
-        if (!cancelled) setAttendance(j as FeatureCollection);
-      })
-      .catch(() => {});
+    const grab = (url: string, set: (j: FeatureCollection) => void) =>
+      fetch(url)
+        .then((r) => (r.ok ? r.json() : null))
+        .then((j) => {
+          if (!cancelled && j) set(j as FeatureCollection);
+        })
+        .catch(() => {});
+    grab(ELEM_GEOJSON_URL, setElemFC);
+    grab(MIDDLE_GEOJSON_URL, setMiddleFC);
+    grab(HIGH_GEOJSON_URL, setHighFC);
     return () => {
       cancelled = true;
     };
   }, []);
 
-  const attendanceStyle = (feature?: Feature) => {
+  // Elementary: soft pastel fill, thin gray border.
+  const elemStyle = (feature?: Feature) => {
     const name = (feature?.properties as { elem_name?: string } | undefined)?.elem_name ?? "";
     return {
-      color: "#555",
-      weight: 1,
-      opacity: 0.7,
+      color: "#888",
+      weight: 0.8,
+      opacity: 0.55,
       fillColor: hashColor(name),
-      fillOpacity: 0.25,
+      fillOpacity: 0.2,
     };
   };
-
-  const onEachAttendance = (feature: Feature, layer: L.Layer) => {
+  const onEachElem = (feature: Feature, layer: L.Layer) => {
     const name = (feature.properties as { elem_name?: string } | undefined)?.elem_name ?? "Unknown";
     layer.bindTooltip(`Elem: ${name}`, { sticky: true });
+  };
+
+  // Middle: muted fill, dashed darker border for visual distinction when
+  // stacked with elem.
+  const middleStyle = (feature?: Feature) => {
+    const name = (feature?.properties as { midd_name?: string } | undefined)?.midd_name ?? "";
+    return {
+      color: hashColorDark(name),
+      weight: 2,
+      opacity: 0.85,
+      dashArray: "6 4",
+      fillColor: hashColor(name),
+      fillOpacity: 0.12,
+    };
+  };
+  const onEachMiddle = (feature: Feature, layer: L.Layer) => {
+    const name = (feature.properties as { midd_name?: string } | undefined)?.midd_name ?? "Unknown";
+    layer.bindTooltip(`Middle: ${name}`, { sticky: true });
+  };
+
+  // High: outline-only (no fill) with thick solid border in a dark color
+  // sampled from the school name.
+  const highStyle = (feature?: Feature) => {
+    const name = (feature?.properties as { high_name?: string } | undefined)?.high_name ?? "";
+    return {
+      color: hashColorDark(name),
+      weight: 3,
+      opacity: 0.85,
+      fillColor: "#000",
+      fillOpacity: 0,
+    };
+  };
+  const onEachHigh = (feature: Feature, layer: L.Layer) => {
+    const name = (feature.properties as { high_name?: string } | undefined)?.high_name ?? "Unknown";
+    layer.bindTooltip(`High: ${name}`, { sticky: true });
   };
 
   return (
@@ -232,10 +280,26 @@ export function Map({
         <ChainLines selected={selected} schools={schools} daycares={daycares} />
       ) : null}
       <LayersControl position="topright">
-        <LayersControl.Overlay name="Elem school zones">
+        <LayersControl.Overlay name="Elem zones">
           <LayerGroup>
-            {attendance ? (
-              <GeoJSON data={attendance} style={attendanceStyle} onEachFeature={onEachAttendance} />
+            {elemFC ? (
+              <GeoJSON data={elemFC} style={elemStyle} onEachFeature={onEachElem} />
+            ) : null}
+          </LayerGroup>
+        </LayersControl.Overlay>
+
+        <LayersControl.Overlay name="Middle zones">
+          <LayerGroup>
+            {middleFC ? (
+              <GeoJSON data={middleFC} style={middleStyle} onEachFeature={onEachMiddle} />
+            ) : null}
+          </LayerGroup>
+        </LayersControl.Overlay>
+
+        <LayersControl.Overlay name="High zones">
+          <LayerGroup>
+            {highFC ? (
+              <GeoJSON data={highFC} style={highStyle} onEachFeature={onEachHigh} />
             ) : null}
           </LayerGroup>
         </LayersControl.Overlay>
