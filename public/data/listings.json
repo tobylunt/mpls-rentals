@@ -33,7 +33,7 @@
       },
       "dist_work_drive_min": 18,
       "utilities": null,
-      "notes": "Triplex, top finish. Pets allowed (fee $500) but listing only says 'Small dogs OK' — VERIFY cats with manager."
+      "notes": "Triplex, top finish. Pets allowed (fee $500) but listing only says 'Small dogs OK' \u2014 VERIFY cats with manager."
     },
     {
       "id": "ewing-place-203",
@@ -174,7 +174,8 @@
       },
       "dist_work_drive_min": 14,
       "utilities": null,
-      "notes": "Sunny single-family house, 2BR/2BA, formal DR, large eat-in kitchen, fenced yard, deck/terrace. In-unit laundry, attached garage. Cats and dogs OK. Lake Harriet Lower is 0.1 mi away — across the street."
+      "notes": "Sunny single-family house, 2BR/2BA, formal DR, large eat-in kitchen, fenced yard, deck/terrace. In-unit laundry, attached garage. Cats and dogs OK. Lake Harriet Lower is 0.1 mi away \u2014 across the street.",
+      "status": "removed"
     },
     {
       "id": "5207-belmont-ave-s",
@@ -209,7 +210,7 @@
       },
       "dist_work_drive_min": 16,
       "utilities": null,
-      "notes": "1920s charm, hardwood floors refinished, high ceilings, central AC, radiator heat. Steps from Minnehaha Creek. Cats + small dogs OK (inquire). Shared laundry in basement. Burroughs zone (F4, 1.1 mi). Desc is inconsistent main-level vs lower-level — confirm with lister."
+      "notes": "1920s charm, hardwood floors refinished, high ceilings, central AC, radiator heat. Steps from Minnehaha Creek. Cats + small dogs OK (inquire). Shared laundry in basement. Burroughs zone (F4, 1.1 mi). Desc is inconsistent main-level vs lower-level \u2014 confirm with lister."
     },
     {
       "id": "4641-lyndale-ave-s",
@@ -338,16 +339,24 @@
       "term": "3mo min",
       "school": null,
       "daycare": null,
-      "dist_school": { "walk_min": null, "drive_min": null, "raw": "" },
-      "dist_daycare": { "walk_min": null, "drive_min": null, "raw": "" },
+      "dist_school": {
+        "walk_min": null,
+        "drive_min": null,
+        "raw": ""
+      },
+      "dist_daycare": {
+        "walk_min": null,
+        "drive_min": null,
+        "raw": ""
+      },
       "dist_work_drive_min": null,
       "utilities": null,
-      "notes": "Furnished. 3BR/2.5BA, 1788 sqft, fenced yard, garage. Cleaning fee $150, deposit $1500, pet deposit $500. Pets OK, no smoking. 3-month minimum. Exact address hidden — coords are the Furnished Finder map pin.",
+      "notes": "Furnished. 3BR/2.5BA, 1788 sqft, fenced yard, garage. Cleaning fee $150, deposit $1500, pet deposit $500. Pets OK, no smoking. 3-month minimum. Exact address hidden \u2014 coords are the Furnished Finder map pin.",
       "coords_approximate": true
     },
     {
       "id": "ff-436496-sheridan-haven",
-      "lodging": "Sheridan Haven — 4956 Sheridan Ave S",
+      "lodging": "Sheridan Haven \u2014 4956 Sheridan Ave S",
       "address": "4956 Sheridan Ave S, Minneapolis, MN 55410",
       "url": "https://www.furnishedfinder.com/property/436496_1",
       "image_url": "/images/ff-436496.jpg",
@@ -378,7 +387,7 @@
       },
       "dist_work_drive_min": 17,
       "utilities": "Included",
-      "notes": "Furnished. 3BR/2BA. 2 blocks from Lake Harriet. Cleaning fee $150, deposit $3600, pet deposit $150. Pets OK. Address revealed in FF description (4956 Sheridan Ave S) — Lake Harriet Lower zone (E1)."
+      "notes": "Furnished. 3BR/2BA. 2 blocks from Lake Harriet. Cleaning fee $150, deposit $3600, pet deposit $150. Pets OK. Address revealed in FF description (4956 Sheridan Ave S) \u2014 Lake Harriet Lower zone (E1)."
     },
     {
       "id": "ff-982084-lynnhurst",
@@ -401,11 +410,20 @@
       "term": "1mo min",
       "school": null,
       "daycare": null,
-      "dist_school": { "walk_min": null, "drive_min": null, "raw": "" },
-      "dist_daycare": { "walk_min": null, "drive_min": null, "raw": "" },
+      "dist_school": {
+        "walk_min": null,
+        "drive_min": null,
+        "raw": ""
+      },
+      "dist_daycare": {
+        "walk_min": null,
+        "drive_min": null,
+        "raw": ""
+      },
       "dist_work_drive_min": null,
       "utilities": "Included",
-      "notes": "Furnished 1st-floor apt in triplex. Between Lake Harriet & Minnehaha Creek. Owner-occupied, dog lives upstairs. Pet deposit $250 refundable. Pets allowed. Coords approximate (FF map pin)."
+      "notes": "Furnished 1st-floor apt in triplex. Between Lake Harriet & Minnehaha Creek. Owner-occupied, dog lives upstairs. Pet deposit $250 refundable. Pets allowed. Coords approximate (FF map pin).",
+      "coords_approximate": true
     },
     {
       "id": "ff-627700-craftsman",
@@ -428,11 +446,20 @@
       "term": "1mo min",
       "school": null,
       "daycare": null,
-      "dist_school": { "walk_min": null, "drive_min": null, "raw": "" },
-      "dist_daycare": { "walk_min": null, "drive_min": null, "raw": "" },
+      "dist_school": {
+        "walk_min": null,
+        "drive_min": null,
+        "raw": ""
+      },
+      "dist_daycare": {
+        "walk_min": null,
+        "drive_min": null,
+        "raw": ""
+      },
       "dist_work_drive_min": null,
       "utilities": "Included",
-      "notes": "Furnished craftsman. 2BR/2BA. Cleaning fee $200, deposit $1000, pet deposit $200. Pets allowed. Coords approximate (FF map pin)."
+      "notes": "Furnished craftsman. 2BR/2BA. Cleaning fee $200, deposit $1000, pet deposit $200. Pets allowed. Coords approximate (FF map pin).",
+      "coords_approximate": true
     },
     {
       "id": "ff-908986-standish",
@@ -455,11 +482,20 @@
       "term": "1mo min",
       "school": null,
       "daycare": null,
-      "dist_school": { "walk_min": null, "drive_min": null, "raw": "" },
-      "dist_daycare": { "walk_min": null, "drive_min": null, "raw": "" },
+      "dist_school": {
+        "walk_min": null,
+        "drive_min": null,
+        "raw": ""
+      },
+      "dist_daycare": {
+        "walk_min": null,
+        "drive_min": null,
+        "raw": ""
+      },
       "dist_work_drive_min": null,
       "utilities": "Included",
-      "notes": "Furnished. 3BR/1.5BA, 2021 sqft, garage. Walking distance to Turtle Bread + Matthews Park. Cleaning fee $300, deposit $1600, pet deposit $300. Pets allowed. Coords approximate (FF map pin)."
+      "notes": "Furnished. 3BR/1.5BA, 2021 sqft, garage. Walking distance to Turtle Bread + Matthews Park. Cleaning fee $300, deposit $1600, pet deposit $300. Pets allowed. Coords approximate (FF map pin).",
+      "coords_approximate": true
     },
     {
       "id": "ff-835517-cozy",
@@ -482,11 +518,20 @@
       "term": "1mo min",
       "school": null,
       "daycare": null,
-      "dist_school": { "walk_min": null, "drive_min": null, "raw": "" },
-      "dist_daycare": { "walk_min": null, "drive_min": null, "raw": "" },
+      "dist_school": {
+        "walk_min": null,
+        "drive_min": null,
+        "raw": ""
+      },
+      "dist_daycare": {
+        "walk_min": null,
+        "drive_min": null,
+        "raw": ""
+      },
       "dist_work_drive_min": null,
       "utilities": "Included",
-      "notes": "Furnished. 3BR/1BA, 1000 sqft (smallish). Fenced yard, 4-season porch. Pet deposit $200. Pets allowed. Close to MSP airport. Coords approximate (FF map pin)."
+      "notes": "Furnished. 3BR/1BA, 1000 sqft (smallish). Fenced yard, 4-season porch. Pet deposit $200. Pets allowed. Close to MSP airport. Coords approximate (FF map pin).",
+      "coords_approximate": true
     },
     {
       "id": "ff-780453-nokomis",
@@ -509,11 +554,20 @@
       "term": "1mo min",
       "school": null,
       "daycare": null,
-      "dist_school": { "walk_min": null, "drive_min": null, "raw": "" },
-      "dist_daycare": { "walk_min": null, "drive_min": null, "raw": "" },
+      "dist_school": {
+        "walk_min": null,
+        "drive_min": null,
+        "raw": ""
+      },
+      "dist_daycare": {
+        "walk_min": null,
+        "drive_min": null,
+        "raw": ""
+      },
       "dist_work_drive_min": null,
       "utilities": "Included",
-      "notes": "Furnished. 3BR/2BA, 1800 sqft, newly renovated. Few blocks from Lake Nokomis. Cleaning fee $250, app fee $55, pet deposit $250. Pets allowed. Coords approximate (FF map pin)."
+      "notes": "Furnished. 3BR/2BA, 1800 sqft, newly renovated. Few blocks from Lake Nokomis. Cleaning fee $250, app fee $55, pet deposit $250. Pets allowed. Coords approximate (FF map pin).",
+      "coords_approximate": true
     },
     {
       "id": "ff-935587-sw-mpls",
@@ -536,11 +590,20 @@
       "term": "1mo min",
       "school": null,
       "daycare": null,
-      "dist_school": { "walk_min": null, "drive_min": null, "raw": "" },
-      "dist_daycare": { "walk_min": null, "drive_min": null, "raw": "" },
+      "dist_school": {
+        "walk_min": null,
+        "drive_min": null,
+        "raw": ""
+      },
+      "dist_daycare": {
+        "walk_min": null,
+        "drive_min": null,
+        "raw": ""
+      },
       "dist_work_drive_min": null,
       "utilities": null,
-      "notes": "Furnished. 3BR/2.5BA, 1962 sqft, finished basement, custom closets. Deposit $3000, pet deposit $200. Pets allowed. Coords approximate (FF map pin)."
+      "notes": "Furnished. 3BR/2.5BA, 1962 sqft, finished basement, custom closets. Deposit $3000, pet deposit $200. Pets allowed. Coords approximate (FF map pin).",
+      "coords_approximate": true
     },
     {
       "id": "sabbatical-175281-uptown",
@@ -575,7 +638,7 @@
       },
       "dist_work_drive_min": 12,
       "utilities": null,
-      "notes": "Beautiful foursquare, 5BR/4BA, 3711 sqft, UNFURNISHED. SabbaticalHomes #175281. Walk Score 88. Around the corner from Black Walnut bakery. 'Ask about pets'. School zone C3 → Kenwood (different from Burroughs/Lake Harriet)."
+      "notes": "Beautiful foursquare, 5BR/4BA, 3711 sqft, UNFURNISHED. SabbaticalHomes #175281. Walk Score 88. Around the corner from Black Walnut bakery. 'Ask about pets'. School zone C3 \u2192 Kenwood (different from Burroughs/Lake Harriet)."
     },
     {
       "id": "sabbatical-179679-4515-grand",
@@ -645,7 +708,7 @@
       },
       "dist_work_drive_min": 13,
       "utilities": "Included",
-      "notes": "3BR/3BA + office, 2300 sqft, furnished. Architecturally designed home on 'scenic boulevard' near Bde Maka Ska + Lake Harriet. SabbaticalHomes lister: Paul/Sara. Dates flexible; 'ask about pets'. School zone confirmed F2 → Barton. Exact address still TBD; coords are Lyndale Farmstead approximate.",
+      "notes": "3BR/3BA + office, 2300 sqft, furnished. Architecturally designed home on 'scenic boulevard' near Bde Maka Ska + Lake Harriet. SabbaticalHomes lister: Paul/Sara. Dates flexible; 'ask about pets'. School zone confirmed F2 \u2192 Barton. Exact address still TBD; coords are Lyndale Farmstead approximate.",
       "coords_approximate": true
     },
     {
