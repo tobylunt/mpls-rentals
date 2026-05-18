@@ -1238,7 +1238,8 @@
       },
       "dist_work_drive_min": 13,
       "utilities": "Tenant pays all",
-      "notes": "Close to Hiawatha / Nokomis park"
+      "notes": "Close to Hiawatha / Nokomis park",
+      "status": "removed"
     },
     {
       "id": "noko-apartments",
