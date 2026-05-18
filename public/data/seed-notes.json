@@ -39,7 +39,7 @@
     "4749-harriet-ave-2": { "at": "2026-05-23T15:00:00", "status": "confirmed" },
     "4009-ewing-ave-s": { "at": "2026-05-24T10:30:00", "status": "scheduled" },
     "4453-york-ave-s": { "at": "2026-05-26T11:00:00", "status": "scheduled" },
-    "5100-xerxes-ave-s": { "status": "scheduled" }
+    "5100-xerxes-ave-s": { "at": "2026-05-23T13:00:00", "status": "scheduled" }
   },
   "marketStatuses": {
     "5432-25th-ave-s": "probably_rented",

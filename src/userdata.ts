@@ -64,18 +64,14 @@ export function useUserData() {
             marketStatuses: seed?.marketStatuses ?? {},
           });
         } else {
-          // Additive merge for tours + marketStatuses only
-          setData((prev) => {
-            const tours = { ...prev.tours };
-            for (const [id, t] of Object.entries((seed?.tours ?? {}) as Tours)) {
-              if (!(id in tours)) tours[id] = t;
-            }
-            const marketStatuses = { ...prev.marketStatuses };
-            for (const [id, s] of Object.entries((seed?.marketStatuses ?? {}) as MarketStatuses)) {
-              if (!(id in marketStatuses)) marketStatuses[id] = s;
-            }
-            return { ...prev, tours, marketStatuses };
-          });
+          // Seed wins for tours + marketStatuses (file is the source of truth
+          // until we have in-app edit UI). Notes + ratings are user-owned and
+          // left untouched here.
+          setData((prev) => ({
+            ...prev,
+            tours: { ...prev.tours, ...((seed?.tours ?? {}) as Tours) },
+            marketStatuses: { ...prev.marketStatuses, ...((seed?.marketStatuses ?? {}) as MarketStatuses) },
+          }));
         }
       })
       .catch(() => {
