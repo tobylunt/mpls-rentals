@@ -51,14 +51,27 @@
     "2079-st-clair": 3
   },
   "tours": {
-    "4749-harriet-ave-2": { "at": "2026-05-23T15:00:00", "status": "confirmed" },
-    "4453-york-ave-s": { "at": "2026-05-26T11:00:00", "status": "scheduled" },
-    "4927-ewing-ave-s-3": { "status": "scheduled" },
-    "4804-france-ave-s-2": { "at": "2026-05-23T16:30:00", "status": "confirmed" },
-    "5100-xerxes-ave-s": { "at": "2026-05-23T13:00:00", "status": "scheduled" }
+    "4749-harriet-ave-2": {
+      "at": "2026-05-23T15:00:00",
+      "status": "confirmed"
+    },
+    "4453-york-ave-s": {
+      "at": "2026-05-26T11:00:00",
+      "status": "scheduled"
+    },
+    "4927-ewing-ave-s-3": {
+      "status": "scheduled"
+    },
+    "4804-france-ave-s-2": {
+      "at": "2026-05-23T16:30:00",
+      "status": "confirmed"
+    },
+    "5100-xerxes-ave-s": {
+      "at": "2026-05-23T13:00:00",
+      "status": "scheduled"
+    }
   },
   "marketStatuses": {
-    "5432-25th-ave-s": "probably_rented",
     "4934-lyndale-ave-s-2": "on_hold"
   },
   "shortlist": []
