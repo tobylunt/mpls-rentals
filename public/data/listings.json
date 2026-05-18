@@ -317,6 +317,41 @@
       "notes": "The Communities of River Crossing complex. 2BR/2.5BA, 1474 sqft, fireplace, in-unit W/D. Cats OK ($25/mo + $250 fee). Amenities incl. pool, fitness center, 24hr. Horace Mann school zone."
     },
     {
+      "id": "ff-960786-lake-harriet",
+      "lodging": "3BR House near Lake Harriet (Furnished Finder)",
+      "address": "Lake Harriet area, Minneapolis, MN (exact addr TBD)",
+      "url": "https://www.furnishedfinder.com/property/960786_1?moveDate=%7B%22in%22%3A%222026-08-14%22%7D&budget=%7B%7D&filters=%7B%7D",
+      "image_url": "/images/ff-960786-lake-harriet.jpg",
+      "lat": 44.9223,
+      "lng": -93.2863,
+      "bedrooms": 3,
+      "housing_type": "house",
+      "neighborhood": "Tangletown",
+      "price": 3100.0,
+      "pet_rent": "unknown",
+      "furnished": true,
+      "parking": "Garage",
+      "size_sqft": 1788.0,
+      "price_per_sqft": 1.73,
+      "available": "2026-08-14",
+      "term": "3mo min",
+      "school": "Burroughs",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 12,
+        "drive_min": 3,
+        "raw": "~12 min walk (3) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 18,
+        "drive_min": 4,
+        "raw": "~18 min walk (4) (est)"
+      },
+      "dist_work_drive_min": 14,
+      "utilities": null,
+      "notes": "Furnished. 3BR/2.5BA, 1788 sqft, fenced yard, garage. Cleaning fee $150, deposit $1500, pet deposit $500. Pets OK, no smoking. 3-month minimum. Listed on Furnished Finder (new source). Exact address hidden until you inquire — coords are the Furnished Finder map pin (near 47th & Bryant). School zone F4 → Burroughs assumes the pin is accurate."
+    },
+    {
       "id": "sabbatical-175281-uptown",
       "lodging": "3224 Holmes Ave S (sabbatical sublet)",
       "address": "3224 Holmes Ave S, Minneapolis, MN 55408",
