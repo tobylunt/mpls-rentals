@@ -65,17 +65,20 @@ function rentalIcon(color: string, starred: boolean, approximate: boolean): L.Di
   });
 }
 
-function placeIcon(emoji: string, bg: string): L.DivIcon {
+function placeIcon(emoji: string): L.DivIcon {
+  // Bare emoji, no container. A white text-shadow halo keeps it legible
+  // against any basemap color (dark roads, parks, water, etc.).
   return L.divIcon({
     className: "place-pin",
-    html: `<div class="place-pin__body" style="background:${bg}">${emoji}</div>`,
-    iconSize: [26, 26],
-    iconAnchor: [13, 13],
+    html: `<span class="place-pin__emoji">${emoji}</span>`,
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
   });
 }
 
-const DAYCARE_ICON = placeIcon("🧸", "#ef6c00");
-const WORK_ICON = placeIcon("💼", "#6a1b9a");
+const SCHOOL_ICON = placeIcon("🎓");
+const DAYCARE_ICON = placeIcon("🧸");
+const WORK_ICON = placeIcon("💼");
 
 function ChainLines({
   selected,
@@ -348,6 +351,18 @@ export function Map({
                 </Marker>
               );
             })}
+          </LayerGroup>
+        </LayersControl.Overlay>
+
+        <LayersControl.Overlay checked name="Schools">
+          <LayerGroup>
+            {schools.map((s) =>
+              s.lat != null && s.lng != null ? (
+                <Marker key={s.name} position={[s.lat, s.lng]} icon={SCHOOL_ICON}>
+                  <Popup><strong>{s.name}</strong> (school)</Popup>
+                </Marker>
+              ) : null
+            )}
           </LayerGroup>
         </LayersControl.Overlay>
 
