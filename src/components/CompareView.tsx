@@ -1,5 +1,5 @@
 import { type Listing, type Place } from "../data";
-import { type Notes, type Ratings, type Tours, type MarketStatuses } from "../userdata";
+import { type Notes, type Ratings, type Tours, type MarketStatuses, type Disqualifications } from "../userdata";
 import { chainTimeFor, formatTour, marketStatusLabel } from "./ListingCard";
 
 type Row = {
@@ -44,6 +44,7 @@ export function CompareView({
   ratings,
   tours,
   marketStatuses,
+  disqualifications,
   onClose,
 }: {
   listings: Listing[];
@@ -53,6 +54,7 @@ export function CompareView({
   ratings: Ratings;
   tours: Tours;
   marketStatuses: MarketStatuses;
+  disqualifications: Disqualifications;
   onClose: () => void;
 }) {
   if (listings.length === 0) {
@@ -80,6 +82,11 @@ export function CompareView({
         if (l.status === "removed") return "Off market";
         return "Active";
       }),
+      bestIndex: null,
+    },
+    {
+      label: "Disqualified",
+      values: listings.map((l) => (disqualifications[l.id] ? `👎 ${disqualifications[l.id]}` : "—")),
       bestIndex: null,
     },
     {

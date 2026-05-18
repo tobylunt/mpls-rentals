@@ -11,7 +11,7 @@ import {
 import L from "leaflet";
 import { useEffect, useMemo, useRef } from "react";
 import { type Listing, type Place } from "../data";
-import { type Notes, type Ratings } from "../userdata";
+import { type Notes, type Ratings, type Disqualifications } from "../userdata";
 import { ListingPopup } from "./ListingPopup";
 
 const MPLS_CENTER: [number, number] = [44.93, -93.27];
@@ -127,8 +127,10 @@ export function Map({
   onToggleStar,
   notes,
   ratings,
+  disqualifications,
   setNote,
   setRating,
+  setDisqualification,
 }: {
   listings: Listing[];
   shortlist: Set<string>;
@@ -140,8 +142,10 @@ export function Map({
   onToggleStar: (id: string) => void;
   notes: Notes;
   ratings: Ratings;
+  disqualifications: Disqualifications;
   setNote: (id: string, text: string) => void;
   setRating: (id: string, rating: number | null) => void;
+  setDisqualification: (id: string, reason: string | null) => void;
 }) {
   const breaks = useMemo(
     () => computeBreaks(listings.map((l) => l.price ?? 0).filter((p) => p > 0)),
@@ -197,8 +201,10 @@ export function Map({
                       daycares={daycares}
                       note={notes[l.id] ?? ""}
                       rating={ratings[l.id] ?? 0}
+                      disqualification={disqualifications[l.id] ?? ""}
                       onNoteChange={(text) => setNote(l.id, text)}
                       onRatingChange={(r) => setRating(l.id, r)}
+                      onDisqualificationChange={(reason) => setDisqualification(l.id, reason)}
                     />
                   </Popup>
                 </Marker>

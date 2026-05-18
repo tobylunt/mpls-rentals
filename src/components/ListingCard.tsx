@@ -44,6 +44,7 @@ export function ListingCard({
   rating,
   tour,
   marketStatus,
+  disqualification,
 }: {
   listing: Listing;
   shortlisted: boolean;
@@ -56,20 +57,27 @@ export function ListingCard({
   rating: number | undefined;
   tour: Tour | undefined;
   marketStatus: MarketStatus | undefined;
+  disqualification: string | undefined;
 }) {
   const chain = chainTimeFor(listing, schools, daycares);
   const removed = listing.status === "removed";
   const hasNote = note != null && note.trim() !== "";
+  const disqualified = !!disqualification;
 
   return (
     <div
-      className={`card ${selected ? "card--selected" : ""} ${removed ? "card--removed" : ""}`}
+      className={`card ${selected ? "card--selected" : ""} ${removed ? "card--removed" : ""} ${disqualified ? "card--disqualified" : ""}`}
       onClick={onSelect}
     >
       <div className="card__head">
         <span className="card__price">${listing.price?.toLocaleString() ?? "?"}</span>
         <span className="card__br">{listing.bedrooms ?? "?"}BR {listing.housing_type ?? ""}</span>
         {removed ? <span className="card__removed-tag">OFF MARKET</span> : null}
+        {disqualified ? (
+          <span className="card__dq-tag" title={`Disqualified: ${disqualification}`}>
+            👎 {disqualification}
+          </span>
+        ) : null}
         {tour ? (
           <span className={`card__tour-tag ${tour.status === "confirmed" ? "card__tour-tag--confirmed" : ""}`} title={tour.at ? `Tour ${tour.status}: ${new Date(tour.at).toLocaleString()}` : `Tour ${tour.status}`}>
             {formatTour(tour)}

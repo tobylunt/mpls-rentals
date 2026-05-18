@@ -1,14 +1,15 @@
 import { type Listing, type Place } from "../data";
-import { type Notes, type Ratings, type Tours, type MarketStatuses } from "../userdata";
+import { type Notes, type Ratings, type Tours, type MarketStatuses, type Disqualifications } from "../userdata";
 import { ListingCard, chainTimeFor, formatTour } from "./ListingCard";
 
 export type SortKey = "price" | "ppsf" | "chain" | "bedrooms" | "rating";
 
-// 0 = active, 1 = on_hold, 2 = probably_rented, 3 = rented or status=removed
-function statusRank(l: Listing, marketStatuses: MarketStatuses): number {
-  if (l.status === "removed") return 3;
+// 0 = active, 1 = on_hold, 2 = probably_rented, 3 = disqualified, 4 = rented/removed
+function statusRank(l: Listing, marketStatuses: MarketStatuses, disqualifications: Disqualifications): number {
+  if (l.status === "removed") return 4;
   const ms = marketStatuses[l.id];
-  if (ms === "rented") return 3;
+  if (ms === "rented") return 4;
+  if (disqualifications[l.id]) return 3;
   if (ms === "probably_rented") return 2;
   if (ms === "on_hold") return 1;
   return 0;
@@ -20,11 +21,12 @@ export function sortListings(
   schools: Place[],
   daycares: Place[],
   ratings: Ratings,
-  marketStatuses: MarketStatuses
+  marketStatuses: MarketStatuses,
+  disqualifications: Disqualifications
 ): Listing[] {
   const arr = [...listings];
   const byStatus = (a: Listing, b: Listing) =>
-    statusRank(a, marketStatuses) - statusRank(b, marketStatuses);
+    statusRank(a, marketStatuses, disqualifications) - statusRank(b, marketStatuses, disqualifications);
   switch (sortKey) {
     case "price":
       return arr.sort((a, b) => byStatus(a, b) || (a.price ?? Infinity) - (b.price ?? Infinity));
@@ -103,6 +105,7 @@ export function ListingList({
   ratings,
   tours,
   marketStatuses,
+  disqualifications,
 }: {
   listings: Listing[];
   shortlist: Set<string>;
@@ -117,8 +120,9 @@ export function ListingList({
   ratings: Ratings;
   tours: Tours;
   marketStatuses: MarketStatuses;
+  disqualifications: Disqualifications;
 }) {
-  const sorted = sortListings(listings, sortKey, schools, daycares, ratings, marketStatuses);
+  const sorted = sortListings(listings, sortKey, schools, daycares, ratings, marketStatuses, disqualifications);
 
   return (
     <div className="list">
@@ -150,6 +154,7 @@ export function ListingList({
             rating={ratings[l.id]}
             tour={tours[l.id]}
             marketStatus={marketStatuses[l.id]}
+            disqualification={disqualifications[l.id]}
           />
         ))}
         {sorted.length === 0 ? <div className="list__empty">No listings match.</div> : null}

@@ -1,10 +1,12 @@
 import { type Listing } from "../data";
+import { type Disqualifications } from "../userdata";
 
 export type Filters = {
   priceMax: number;
   bedrooms: Set<number>;
   neighborhoods: Set<string>;
   shortlistOnly: boolean;
+  hideDisqualified: boolean;
 };
 
 export function defaultFilters(listings: Listing[]): Filters {
@@ -14,19 +16,22 @@ export function defaultFilters(listings: Listing[]): Filters {
     bedrooms: new Set(),
     neighborhoods: new Set(),
     shortlistOnly: false,
+    hideDisqualified: true,
   };
 }
 
 export function applyFilters(
   listings: Listing[],
   f: Filters,
-  shortlist: Set<string>
+  shortlist: Set<string>,
+  disqualifications: Disqualifications
 ): Listing[] {
   return listings.filter((l) => {
     if (l.price != null && l.price > f.priceMax) return false;
     if (f.bedrooms.size > 0 && (l.bedrooms == null || !f.bedrooms.has(l.bedrooms))) return false;
     if (f.neighborhoods.size > 0 && (!l.neighborhood || !f.neighborhoods.has(l.neighborhood))) return false;
     if (f.shortlistOnly && !shortlist.has(l.id)) return false;
+    if (f.hideDisqualified && disqualifications[l.id]) return false;
     return true;
   });
 }
@@ -103,6 +108,15 @@ export function FilterBar({
           onChange={(e) => setFilters({ ...filters, shortlistOnly: e.target.checked })}
         />
         Shortlist only
+      </label>
+
+      <label className="filter filter--check">
+        <input
+          type="checkbox"
+          checked={filters.hideDisqualified}
+          onChange={(e) => setFilters({ ...filters, hideDisqualified: e.target.checked })}
+        />
+        Hide disqualified
       </label>
     </div>
   );

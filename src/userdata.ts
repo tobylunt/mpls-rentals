@@ -13,26 +13,35 @@ export type Tours = Record<string, Tour>;
 export type MarketStatus = "probably_rented" | "rented" | "on_hold";
 export type MarketStatuses = Record<string, MarketStatus>;
 
+// Reason is required; presence of an entry means "ruled out".
+export type Disqualifications = Record<string, string>;
+
 type Stored = {
   notes: Notes;
   ratings: Ratings;
   tours: Tours;
   marketStatuses: MarketStatuses;
+  disqualifications: Disqualifications;
 };
+
+function emptyStored(): Stored {
+  return { notes: {}, ratings: {}, tours: {}, marketStatuses: {}, disqualifications: {} };
+}
 
 function read(): Stored {
   try {
     const raw = localStorage.getItem(KEY);
-    if (!raw) return { notes: {}, ratings: {}, tours: {}, marketStatuses: {} };
+    if (!raw) return emptyStored();
     const parsed = JSON.parse(raw);
     return {
       notes: parsed?.notes ?? {},
       ratings: parsed?.ratings ?? {},
       tours: parsed?.tours ?? {},
       marketStatuses: parsed?.marketStatuses ?? {},
+      disqualifications: parsed?.disqualifications ?? {},
     };
   } catch {
-    return { notes: {}, ratings: {}, tours: {}, marketStatuses: {} };
+    return emptyStored();
   }
 }
 
@@ -62,11 +71,12 @@ export function useUserData() {
             ratings: seed?.ratings ?? {},
             tours: seed?.tours ?? {},
             marketStatuses: seed?.marketStatuses ?? {},
+            disqualifications: seed?.disqualifications ?? {},
           });
         } else {
           // Seed wins for tours + marketStatuses (file is the source of truth
-          // until we have in-app edit UI). Notes + ratings are user-owned and
-          // left untouched here.
+          // until we have in-app edit UI). Notes + ratings + disqualifications
+          // are user-owned and left untouched here.
           setData((prev) => ({
             ...prev,
             tours: { ...prev.tours, ...((seed?.tours ?? {}) as Tours) },
@@ -128,6 +138,15 @@ export function useUserData() {
     });
   }, []);
 
+  const setDisqualification = useCallback((id: string, reason: string | null) => {
+    setData((prev) => {
+      const disqualifications = { ...prev.disqualifications };
+      if (reason == null || reason.trim() === "") delete disqualifications[id];
+      else disqualifications[id] = reason;
+      return { ...prev, disqualifications };
+    });
+  }, []);
+
   const exportData = useCallback(() => {
     const payload = { exportedAt: new Date().toISOString(), ...data };
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
@@ -142,17 +161,25 @@ export function useUserData() {
   const importData = useCallback(
     async (
       file: File
-    ): Promise<{ notesCount: number; ratingsCount: number; toursCount: number; marketStatusCount: number }> => {
+    ): Promise<{
+      notesCount: number;
+      ratingsCount: number;
+      toursCount: number;
+      marketStatusCount: number;
+      disqualificationCount: number;
+    }> => {
       const text = await file.text();
       const parsed = JSON.parse(text);
       const incomingNotes = (parsed?.notes ?? {}) as Notes;
       const incomingRatings = (parsed?.ratings ?? {}) as Ratings;
       const incomingTours = (parsed?.tours ?? {}) as Tours;
       const incomingMarket = (parsed?.marketStatuses ?? {}) as MarketStatuses;
+      const incomingDq = (parsed?.disqualifications ?? {}) as Disqualifications;
       let notesCount = 0;
       let ratingsCount = 0;
       let toursCount = 0;
       let marketStatusCount = 0;
+      let disqualificationCount = 0;
       setData((prev) => {
         const notes = { ...prev.notes };
         for (const [id, val] of Object.entries(incomingNotes)) {
@@ -182,9 +209,16 @@ export function useUserData() {
             marketStatusCount++;
           }
         }
-        return { notes, ratings, tours, marketStatuses };
+        const disqualifications = { ...prev.disqualifications };
+        for (const [id, val] of Object.entries(incomingDq)) {
+          if (typeof val === "string" && val.trim() !== "") {
+            disqualifications[id] = val;
+            disqualificationCount++;
+          }
+        }
+        return { notes, ratings, tours, marketStatuses, disqualifications };
       });
-      return { notesCount, ratingsCount, toursCount, marketStatusCount };
+      return { notesCount, ratingsCount, toursCount, marketStatusCount, disqualificationCount };
     },
     []
   );
@@ -194,10 +228,12 @@ export function useUserData() {
     ratings: data.ratings,
     tours: data.tours,
     marketStatuses: data.marketStatuses,
+    disqualifications: data.disqualifications,
     setNote,
     setRating,
     setTour,
     setMarketStatus,
+    setDisqualification,
     exportData,
     importData,
   };

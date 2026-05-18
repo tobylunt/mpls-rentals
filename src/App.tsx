@@ -14,8 +14,10 @@ export default function App() {
     ratings,
     tours,
     marketStatuses,
+    disqualifications,
     setNote,
     setRating,
+    setDisqualification,
     exportData,
     importData,
   } = useUserData();
@@ -29,9 +31,9 @@ export default function App() {
     const file = e.target.files?.[0];
     if (!file) return;
     try {
-      const { notesCount, ratingsCount, toursCount, marketStatusCount } = await importData(file);
+      const { notesCount, ratingsCount, toursCount, marketStatusCount, disqualificationCount } = await importData(file);
       alert(
-        `Imported ${notesCount} note(s), ${ratingsCount} rating(s), ${toursCount} tour(s), ${marketStatusCount} market-status flag(s).`
+        `Imported ${notesCount} note(s), ${ratingsCount} rating(s), ${toursCount} tour(s), ${marketStatusCount} market-status flag(s), ${disqualificationCount} disqualification(s).`
       );
     } catch (err) {
       alert(`Import failed: ${err instanceof Error ? err.message : String(err)}`);
@@ -40,8 +42,8 @@ export default function App() {
   }
 
   const visible = useMemo(
-    () => applyFilters(data.listings, filters, shortlist),
-    [filters, shortlist]
+    () => applyFilters(data.listings, filters, shortlist, disqualifications),
+    [filters, shortlist, disqualifications]
   );
   const shortlisted = useMemo(
     () => data.listings.filter((l) => shortlist.has(l.id)),
@@ -102,6 +104,7 @@ export default function App() {
                 ratings={ratings}
                 tours={tours}
                 marketStatuses={marketStatuses}
+                disqualifications={disqualifications}
               />
             </aside>
             <section className="map-area">
@@ -116,8 +119,10 @@ export default function App() {
                 onToggleStar={toggleShortlist}
                 notes={notes}
                 ratings={ratings}
+                disqualifications={disqualifications}
                 setNote={setNote}
                 setRating={setRating}
+                setDisqualification={setDisqualification}
               />
             </section>
           </>
@@ -130,6 +135,7 @@ export default function App() {
             ratings={ratings}
             tours={tours}
             marketStatuses={marketStatuses}
+            disqualifications={disqualifications}
             onClose={() => setView("map")}
           />
         )}

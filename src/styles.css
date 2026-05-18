@@ -109,6 +109,23 @@ body {
 .card--removed { opacity: 0.55; background: #f5f5f5; }
 .card--removed .card__price { text-decoration: line-through; color: #999; }
 .card--removed .card__addr { color: #777; }
+
+.card--disqualified { opacity: 0.65; background: #fff5f5; }
+.card--disqualified .card__price { text-decoration: line-through; color: #c62828; }
+.card--disqualified .card__addr { color: #777; }
+.card__dq-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: #ffebee;
+  color: #c62828;
+  padding: 2px 6px;
+  border-radius: 3px;
+  white-space: nowrap;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .card__removed-tag {
   font-size: 10px;
   font-weight: 600;
@@ -120,6 +137,40 @@ body {
 }
 .popup--removed { opacity: 0.85; }
 .popup--removed .popup__price { text-decoration: line-through; color: #888; }
+.popup--disqualified .popup__price { text-decoration: line-through; color: #c62828; }
+
+.popup__dq {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 12px;
+}
+.popup__dq-button {
+  background: #fff;
+  border: 1px dashed #c62828;
+  color: #c62828;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.popup__dq-button:hover { background: #ffebee; }
+.popup__dq-label {
+  background: #ffebee;
+  color: #c62828;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+.popup__dq-clear {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0 4px;
+}
 
 .rating { display: flex; align-items: center; gap: 2px; margin: 4px 0; }
 .rating__star {

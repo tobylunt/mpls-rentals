@@ -46,8 +46,10 @@ export function ListingPopup({
   daycares,
   note,
   rating,
+  disqualification,
   onNoteChange,
   onRatingChange,
+  onDisqualificationChange,
 }: {
   listing: Listing;
   shortlisted: boolean;
@@ -56,14 +58,17 @@ export function ListingPopup({
   daycares: Place[];
   note: string;
   rating: number;
+  disqualification: string;
   onNoteChange: (text: string) => void;
   onRatingChange: (rating: number | null) => void;
+  onDisqualificationChange: (reason: string | null) => void;
 }) {
   const chain = chainTimeFor(listing, schools, daycares);
   const removed = listing.status === "removed";
+  const disqualified = disqualification !== "";
 
   return (
-    <div className={`popup ${removed ? "popup--removed" : ""}`}>
+    <div className={`popup ${removed ? "popup--removed" : ""} ${disqualified ? "popup--disqualified" : ""}`}>
       <div className="popup__head">
         <strong>{listing.lodging}</strong>
         {removed ? <span className="card__removed-tag">OFF MARKET</span> : null}
@@ -119,6 +124,35 @@ export function ListingPopup({
         onChange={(e) => onNoteChange(e.target.value)}
         rows={3}
       />
+      <div className="popup__dq">
+        {disqualified ? (
+          <>
+            <span className="popup__dq-label" title={`Disqualified: ${disqualification}`}>
+              👎 Out: <em>{disqualification}</em>
+            </span>
+            <button
+              type="button"
+              className="popup__dq-clear"
+              onClick={() => onDisqualificationChange(null)}
+              title="Un-disqualify this listing"
+            >
+              ✕
+            </button>
+          </>
+        ) : (
+          <button
+            type="button"
+            className="popup__dq-button"
+            onClick={() => {
+              const reason = prompt("Why disqualify this listing?\n(e.g. wrong school, too small, no parking)");
+              if (reason && reason.trim()) onDisqualificationChange(reason.trim());
+            }}
+            title="Rule this listing out with a reason"
+          >
+            👎 Disqualify…
+          </button>
+        )}
+      </div>
       <hr />
       <div>School: {listing.school ?? "—"} ({fmtDist(listing.dist_school)})</div>
       <div>Daycare: {listing.daycare ?? "—"} ({fmtDist(listing.dist_daycare)})</div>
