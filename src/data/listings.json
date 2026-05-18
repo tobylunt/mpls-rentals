@@ -1,6 +1,41 @@
 {
   "listings": [
     {
+      "id": "4544-bryant-ave-s",
+      "lodging": "4544 Bryant Ave S (lower unit)",
+      "address": "4544 Bryant Ave S, Minneapolis, MN 55419",
+      "url": "https://www.zillow.com/homedetails/4544-Bryant-Ave-S-Minneapolis-MN-55419/1772114_zpid/",
+      "image_url": "/images/4544-bryant-ave-s.jpg",
+      "lat": 44.92056,
+      "lng": -93.2909342,
+      "bedrooms": 2,
+      "housing_type": "duplex",
+      "neighborhood": "East Harriet",
+      "price": 2300.0,
+      "pet_rent": null,
+      "furnished": false,
+      "parking": "Off street",
+      "size_sqft": 1500.0,
+      "price_per_sqft": 1.53,
+      "available": "2026-08-01",
+      "term": "?",
+      "school": "Barton",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 8,
+        "drive_min": 2,
+        "raw": "~8 min walk (2) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 18,
+        "drive_min": 3,
+        "raw": "~18 min walk (3) (est)"
+      },
+      "dist_work_drive_min": 14,
+      "utilities": null,
+      "notes": "LOWER unit, owner-occupied duplex. 2BR/1BA, 1500 sqft. Hardwoods, built-ins, crown molding, updated bath/appliances. Shared laundry + storage in basement. Close to Lake Harriet + Minnehaha Creek. WARNING: listing explicitly says 'No pets' \u2014 verify with manager before applying. Barton zone (F2, 0.4 mi)."
+    },
+    {
       "id": "4733-xerxes-ave-s",
       "lodging": "4733 Xerxes Ave S",
       "address": "4733 Xerxes Ave S, Minneapolis, MN 55410",
