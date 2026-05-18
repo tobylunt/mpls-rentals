@@ -16,6 +16,9 @@ export type MarketStatuses = Record<string, MarketStatus>;
 // Reason is required; presence of an entry means "ruled out".
 export type Disqualifications = Record<string, string>;
 
+// List of starred listing IDs.
+export type Shortlist = string[];
+
 // Heuristics: scan a free-text note for evidence of outreach.
 const REACHED_OUT_RE = /\b(tour\s*request|request\s*sent|tour\s*pending|reached?\s*out|in\s*convo|scheduling|inquiry|message?\s*sent|in\s*touch|asked\s*about)\b/i;
 
@@ -75,24 +78,42 @@ type Stored = {
   tours: Tours;
   marketStatuses: MarketStatuses;
   disqualifications: Disqualifications;
+  shortlist: Shortlist;
 };
 
 function emptyStored(): Stored {
-  return { notes: {}, ratings: {}, tours: {}, marketStatuses: {}, disqualifications: {} };
+  return { notes: {}, ratings: {}, tours: {}, marketStatuses: {}, disqualifications: {}, shortlist: [] };
 }
 
 function read(): Stored {
   try {
     const raw = localStorage.getItem(KEY);
-    if (!raw) return emptyStored();
+    // One-time migration: if the legacy shortlist key exists in localStorage,
+    // pull it in. Lets users coming from the old useShortlist hook keep their
+    // stars.
+    const legacyShortlist = (() => {
+      try {
+        const ls = localStorage.getItem("mpls-rentals.shortlist");
+        return ls ? (JSON.parse(ls) as string[]) : [];
+      } catch {
+        return [];
+      }
+    })();
+    if (!raw) return { ...emptyStored(), shortlist: legacyShortlist };
     const parsed = JSON.parse(raw);
-    return {
+    const stored: Stored = {
       notes: parsed?.notes ?? {},
       ratings: parsed?.ratings ?? {},
       tours: parsed?.tours ?? {},
       marketStatuses: parsed?.marketStatuses ?? {},
       disqualifications: parsed?.disqualifications ?? {},
+      shortlist: parsed?.shortlist ?? [],
     };
+    // Merge legacy in if userdata shortlist is empty
+    if (stored.shortlist.length === 0 && legacyShortlist.length > 0) {
+      stored.shortlist = legacyShortlist;
+    }
+    return stored;
   } catch {
     return emptyStored();
   }
@@ -117,27 +138,31 @@ export function useUserData() {
           wasEmpty.current = false;
           return;
         }
+        const seedShortlist = (seed?.shortlist ?? []) as Shortlist;
         if (wasEmpty.current) {
           wasEmpty.current = false;
-          setData({
+          setData((prev) => ({
             notes: seed?.notes ?? {},
             ratings: seed?.ratings ?? {},
             tours: seed?.tours ?? {},
             marketStatuses: seed?.marketStatuses ?? {},
             disqualifications: seed?.disqualifications ?? {},
-          });
+            // If localStorage had a legacy shortlist, prefer it; otherwise
+            // use the seed's.
+            shortlist: prev.shortlist.length > 0 ? prev.shortlist : seedShortlist,
+          }));
         } else {
-          // Seed wins for all fields. The user's workflow is "tell Claude to
-          // update X" -> Claude edits seed-notes.json -> next load reflects
-          // the new state. Local edits made in the popup persist for keys
-          // not present in seed; they're clobbered on conflict (export to
-          // commit them back into the seed).
+          // Seed wins for keyed fields (notes, ratings, tours, ...). Shortlist
+          // is a flat list — union with local so cross-device starring is
+          // additive (un-starring locally won't be persisted until you
+          // export -> commit the seed).
           setData((prev) => ({
             notes: { ...prev.notes, ...((seed?.notes ?? {}) as Notes) },
             ratings: { ...prev.ratings, ...((seed?.ratings ?? {}) as Ratings) },
             tours: { ...prev.tours, ...((seed?.tours ?? {}) as Tours) },
             marketStatuses: { ...prev.marketStatuses, ...((seed?.marketStatuses ?? {}) as MarketStatuses) },
             disqualifications: { ...prev.disqualifications, ...((seed?.disqualifications ?? {}) as Disqualifications) },
+            shortlist: [...new Set([...prev.shortlist, ...seedShortlist])],
           }));
         }
       })
@@ -204,6 +229,15 @@ export function useUserData() {
     });
   }, []);
 
+  const toggleShortlist = useCallback((id: string) => {
+    setData((prev) => {
+      const set = new Set(prev.shortlist);
+      if (set.has(id)) set.delete(id);
+      else set.add(id);
+      return { ...prev, shortlist: [...set] };
+    });
+  }, []);
+
   const exportData = useCallback(() => {
     const payload = { exportedAt: new Date().toISOString(), ...data };
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
@@ -224,6 +258,7 @@ export function useUserData() {
       toursCount: number;
       marketStatusCount: number;
       disqualificationCount: number;
+      shortlistCount: number;
     }> => {
       const text = await file.text();
       const parsed = JSON.parse(text);
@@ -232,11 +267,13 @@ export function useUserData() {
       const incomingTours = (parsed?.tours ?? {}) as Tours;
       const incomingMarket = (parsed?.marketStatuses ?? {}) as MarketStatuses;
       const incomingDq = (parsed?.disqualifications ?? {}) as Disqualifications;
+      const incomingShortlist = (parsed?.shortlist ?? []) as Shortlist;
       let notesCount = 0;
       let ratingsCount = 0;
       let toursCount = 0;
       let marketStatusCount = 0;
       let disqualificationCount = 0;
+      let shortlistCount = 0;
       setData((prev) => {
         const notes = { ...prev.notes };
         for (const [id, val] of Object.entries(incomingNotes)) {
@@ -273,9 +310,16 @@ export function useUserData() {
             disqualificationCount++;
           }
         }
-        return { notes, ratings, tours, marketStatuses, disqualifications };
+        const shortlistSet = new Set(prev.shortlist);
+        for (const id of incomingShortlist) {
+          if (typeof id === "string" && !shortlistSet.has(id)) {
+            shortlistSet.add(id);
+            shortlistCount++;
+          }
+        }
+        return { notes, ratings, tours, marketStatuses, disqualifications, shortlist: [...shortlistSet] };
       });
-      return { notesCount, ratingsCount, toursCount, marketStatusCount, disqualificationCount };
+      return { notesCount, ratingsCount, toursCount, marketStatusCount, disqualificationCount, shortlistCount };
     },
     []
   );
@@ -286,11 +330,13 @@ export function useUserData() {
     tours: data.tours,
     marketStatuses: data.marketStatuses,
     disqualifications: data.disqualifications,
+    shortlist: data.shortlist,
     setNote,
     setRating,
     setTour,
     setMarketStatus,
     setDisqualification,
+    toggleShortlist,
     exportData,
     importData,
   };

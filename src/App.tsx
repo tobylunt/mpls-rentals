@@ -4,23 +4,24 @@ import { FilterBar, applyFilters, defaultFilters, type Filters } from "./compone
 import { ListingList, type SortKey } from "./components/ListingList";
 import { CompareView } from "./components/CompareView";
 import { data } from "./data";
-import { useShortlist } from "./shortlist";
 import { useUserData } from "./userdata";
 
 export default function App() {
-  const { ids: shortlist, toggle: toggleShortlist } = useShortlist();
   const {
     notes,
     ratings,
     tours,
     marketStatuses,
     disqualifications,
+    shortlist: shortlistArr,
     setNote,
     setRating,
     setDisqualification,
+    toggleShortlist,
     exportData,
     importData,
   } = useUserData();
+  const shortlist = useMemo(() => new Set(shortlistArr), [shortlistArr]);
   const [filters, setFilters] = useState<Filters>(() => defaultFilters(data.listings));
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [sortKey, setSortKey] = useState<SortKey>("chain");
@@ -31,9 +32,9 @@ export default function App() {
     const file = e.target.files?.[0];
     if (!file) return;
     try {
-      const { notesCount, ratingsCount, toursCount, marketStatusCount, disqualificationCount } = await importData(file);
+      const { notesCount, ratingsCount, toursCount, marketStatusCount, disqualificationCount, shortlistCount } = await importData(file);
       alert(
-        `Imported ${notesCount} note(s), ${ratingsCount} rating(s), ${toursCount} tour(s), ${marketStatusCount} market-status flag(s), ${disqualificationCount} disqualification(s).`
+        `Imported ${notesCount} note(s), ${ratingsCount} rating(s), ${toursCount} tour(s), ${marketStatusCount} market-status flag(s), ${disqualificationCount} disqualification(s), ${shortlistCount} new shortlist starring(s).`
       );
     } catch (err) {
       alert(`Import failed: ${err instanceof Error ? err.message : String(err)}`);

@@ -47,5 +47,6 @@
   "marketStatuses": {
     "5432-25th-ave-s": "probably_rented",
     "4934-lyndale-ave-s-2": "on_hold"
-  }
+  },
+  "shortlist": []
 }
