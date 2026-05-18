@@ -1,6 +1,76 @@
 {
   "listings": [
     {
+      "id": "5320-bryant-ave-s",
+      "lodging": "5320 Bryant Ave S (4BR house)",
+      "address": "5320 Bryant Ave S, Minneapolis, MN 55419",
+      "url": "https://www.zillow.com/homedetails/5320-Bryant-Ave-S-Minneapolis-MN-55419/1838521_zpid/",
+      "image_url": "/images/5320-bryant-ave-s.jpg",
+      "lat": 44.9064939,
+      "lng": -93.2908961,
+      "bedrooms": 4,
+      "housing_type": "house",
+      "neighborhood": "Lynnhurst",
+      "price": 4250.0,
+      "pet_rent": 75.0,
+      "furnished": false,
+      "parking": "2 car attached garage",
+      "size_sqft": 2470.0,
+      "price_per_sqft": 1.72,
+      "available": "2026-08-01",
+      "term": "?",
+      "school": "Kenny",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 12,
+        "drive_min": 2,
+        "raw": "~12 min walk (2) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": null,
+        "drive_min": 5,
+        "raw": "~5 min drive (est)"
+      },
+      "dist_work_drive_min": 17,
+      "utilities": "Tenant pays all + lawn/snow",
+      "notes": "Spacious 4BR/3.5BA SFH next to Minnehaha Creek. Wood-burning fireplace, large front porch, open kitchen/dining, primary bath with heated tile, 2-car attached garage, laundry on 2nd floor. Cats+dogs OK ($75/mo pet rent, max 2). Tenant pays all utilities + lawn/snow. Listed by John Hageman (NorthPath). Kenny Elementary zone (E3, 0.5 mi)."
+    },
+    {
+      "id": "5855-blaisdell-ave",
+      "lodging": "5855 Blaisdell Ave (side-by-side duplex)",
+      "address": "5855 Blaisdell Ave, Minneapolis, MN 55419",
+      "url": "https://www.zillow.com/homedetails/5855-Blaisdell-Ave-Minneapolis-MN-55419/2059552227_zpid/",
+      "image_url": "/images/5855-blaisdell-ave.jpg",
+      "lat": 44.89663,
+      "lng": -93.2793048,
+      "bedrooms": 4,
+      "housing_type": "duplex",
+      "neighborhood": "Windom",
+      "price": 2695.0,
+      "pet_rent": 25.0,
+      "furnished": false,
+      "parking": "2 off-street spots",
+      "size_sqft": 1850.0,
+      "price_per_sqft": 1.46,
+      "available": "2026-06-01",
+      "term": "?",
+      "school": "Windom",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 2,
+        "drive_min": 1,
+        "raw": "~2 min walk (1) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": null,
+        "drive_min": 8,
+        "raw": "~8 min drive (est)"
+      },
+      "dist_work_drive_min": 17,
+      "utilities": null,
+      "notes": "One side of a side-by-side duplex. 4BR/2BA, 1850 sqft, hardwoods, quartz kitchen, remodeled baths, central AC, in-unit laundry, large back deck. Cats+dogs OK ($250 deposit + $25/mo cat or $50/mo dog). App fee $60 + background/credit/eviction check. Windom Elementary is across the street (0.1 mi)."
+    },
+    {
       "id": "4804-france-ave-s-2",
       "lodging": "4804 France Ave S #2 (Edina, Art Deco)",
       "address": "4804 France Ave S #2, Edina, MN 55410",
@@ -1513,6 +1583,18 @@
       "query": "Concord Elementary School, Edina, MN",
       "lat": 44.8961757,
       "lng": -93.3460447
+    },
+    {
+      "name": "Windom",
+      "query": "Windom Elementary School, 5821 Wentworth Ave S, Minneapolis, MN",
+      "lat": 44.897458,
+      "lng": -93.280578
+    },
+    {
+      "name": "Kenny",
+      "query": "Kenny Elementary School, 5720 Emerson Ave S, Minneapolis, MN",
+      "lat": 44.899277,
+      "lng": -93.294739
     }
   ],
   "daycares": [
