@@ -7,6 +7,7 @@ export type Filters = {
   neighborhoods: Set<string>;
   shortlistOnly: boolean;
   hideDisqualified: boolean;
+  hideOffMarket: boolean;
 };
 
 export function defaultFilters(listings: Listing[]): Filters {
@@ -17,6 +18,7 @@ export function defaultFilters(listings: Listing[]): Filters {
     neighborhoods: new Set(),
     shortlistOnly: false,
     hideDisqualified: true,
+    hideOffMarket: true,
   };
 }
 
@@ -32,6 +34,7 @@ export function applyFilters(
     if (f.neighborhoods.size > 0 && (!l.neighborhood || !f.neighborhoods.has(l.neighborhood))) return false;
     if (f.shortlistOnly && !shortlist.has(l.id)) return false;
     if (f.hideDisqualified && disqualifications[l.id]) return false;
+    if (f.hideOffMarket && l.status === "removed") return false;
     return true;
   });
 }
@@ -117,6 +120,15 @@ export function FilterBar({
           onChange={(e) => setFilters({ ...filters, hideDisqualified: e.target.checked })}
         />
         Hide disqualified
+      </label>
+
+      <label className="filter filter--check">
+        <input
+          type="checkbox"
+          checked={filters.hideOffMarket}
+          onChange={(e) => setFilters({ ...filters, hideOffMarket: e.target.checked })}
+        />
+        Hide off market
       </label>
     </div>
   );
