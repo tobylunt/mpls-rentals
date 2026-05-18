@@ -20,6 +20,7 @@
     "ff-935587-sw-mpls": "Reached out, no response yet.",
     "4733-xerxes-ave-s": "Tour request sent.",
     "4829-chicago-ave-1": "Tour request sent.",
+    "4804-france-ave-s-2": "Tour booked Sat 4:30pm. Edina school district (Concord Elementary).",
     "4544-bryant-ave-s": "Tour request sent. Listing says 'no pets' but lessor confirmed it's negotiable.",
     "5100-xerxes-ave-s": "Seems nice but a bit overpriced. Tour request sent",
     "noko-apartments": "Scheduling a virtual tour.",
@@ -53,6 +54,7 @@
     "4749-harriet-ave-2": { "at": "2026-05-23T15:00:00", "status": "confirmed" },
     "4453-york-ave-s": { "at": "2026-05-26T11:00:00", "status": "scheduled" },
     "4927-ewing-ave-s-3": { "status": "scheduled" },
+    "4804-france-ave-s-2": { "at": "2026-05-23T16:30:00", "status": "confirmed" },
     "5100-xerxes-ave-s": { "at": "2026-05-23T13:00:00", "status": "scheduled" }
   },
   "marketStatuses": {

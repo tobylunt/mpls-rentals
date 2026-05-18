@@ -1,6 +1,41 @@
 {
   "listings": [
     {
+      "id": "4804-france-ave-s-2",
+      "lodging": "4804 France Ave S #2 (Edina, Art Deco)",
+      "address": "4804 France Ave S #2, Edina, MN 55410",
+      "url": "https://www.zillow.com/homedetails/4804-France-Ave-S-2-Minneapolis-MN-55410/401753918_zpid/",
+      "image_url": "/images/4804-france-ave-s-2.jpg",
+      "lat": 44.9160036,
+      "lng": -93.3291497,
+      "bedrooms": 2,
+      "housing_type": "duplex",
+      "neighborhood": "Edina / 50th & France",
+      "price": 2000.0,
+      "pet_rent": "unknown",
+      "furnished": false,
+      "parking": "1 car garage",
+      "size_sqft": 1150.0,
+      "price_per_sqft": 1.74,
+      "available": "Now",
+      "term": "?",
+      "school": "Concord",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": null,
+        "drive_min": 5,
+        "raw": "~5 min drive (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 4,
+        "drive_min": 1,
+        "raw": "~4 min walk (1) (est)"
+      },
+      "dist_work_drive_min": 18,
+      "utilities": "Owner pays water + trash; tenant pays electric, gas, internet",
+      "notes": "Top-floor Art Deco flat in Edina (NOT Mpls \u2014 Edina school district, Concord Elementary). 2BR/1BA, 1150 sqft. <2 blocks from 50th & France. Hardwoods, fireplace, new carpet in master, shared deck, 1-car garage. Owner-occupied lower unit. Cats + small dogs OK ($300 non-refundable pet deposit). Tenant shares snow removal. Casa 50th and France is right there."
+    },
+    {
       "id": "4829-chicago-ave-1",
       "lodging": "4829 Chicago Ave #1 (Tudor duplex)",
       "address": "4829 Chicago Ave #1, Minneapolis, MN 55417",
@@ -1471,6 +1506,12 @@
       "query": "Hale Elementary School, 5330 13th Ave S, Minneapolis, MN",
       "lat": 44.906494,
       "lng": -93.256372
+    },
+    {
+      "name": "Concord",
+      "query": "Concord Elementary School, Edina, MN",
+      "lat": 44.8961757,
+      "lng": -93.3460447
     }
   ],
   "daycares": [
