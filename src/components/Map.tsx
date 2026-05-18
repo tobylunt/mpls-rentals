@@ -3,6 +3,7 @@ import {
   TileLayer,
   Marker,
   Popup,
+  Tooltip,
   LayersControl,
   LayerGroup,
   Polyline,
@@ -11,7 +12,7 @@ import {
 import L from "leaflet";
 import { useEffect, useMemo, useRef } from "react";
 import { type Listing, type Place } from "../data";
-import { type Notes, type Ratings, type Disqualifications } from "../userdata";
+import { type Notes, type Ratings, type Disqualifications, type Tours, type MarketStatuses, statusLabel } from "../userdata";
 import { ListingPopup } from "./ListingPopup";
 
 const MPLS_CENTER: [number, number] = [44.93, -93.27];
@@ -128,6 +129,8 @@ export function Map({
   notes,
   ratings,
   disqualifications,
+  tours,
+  marketStatuses,
   setNote,
   setRating,
   setDisqualification,
@@ -143,6 +146,8 @@ export function Map({
   notes: Notes;
   ratings: Ratings;
   disqualifications: Disqualifications;
+  tours: Tours;
+  marketStatuses: MarketStatuses;
   setNote: (id: string, text: string) => void;
   setRating: (id: string, rating: number | null) => void;
   setDisqualification: (id: string, reason: string | null) => void;
@@ -181,6 +186,8 @@ export function Map({
               const q = l.price ? quartileFor(l.price, breaks) : 1;
               const color = l.status === "removed" ? "#9e9e9e" : QUARTILE_COLORS[q];
               const icon = rentalIcon(color, shortlist.has(l.id));
+              const status = statusLabel(l.id, l.status, tours, marketStatuses, disqualifications, notes);
+              const priceStr = l.price ? `$${l.price.toLocaleString()}` : "—";
               return (
                 <Marker
                   key={l.id}
@@ -192,6 +199,13 @@ export function Map({
                   }}
                   eventHandlers={{ click: () => onSelect(l.id) }}
                 >
+                  <Tooltip direction="top" offset={[0, -12]}>
+                    <div className="pin-tooltip">
+                      <strong>{l.lodging}</strong>
+                      <span className="pin-tooltip__price">{priceStr}/mo · {l.bedrooms ?? "?"}BR</span>
+                      {status ? <span className="pin-tooltip__status">{status}</span> : null}
+                    </div>
+                  </Tooltip>
                   <Popup minWidth={260}>
                     <ListingPopup
                       listing={l}

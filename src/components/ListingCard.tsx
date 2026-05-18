@@ -1,5 +1,5 @@
 import { type Listing, type Place } from "../data";
-import { type MarketStatus, type Tour } from "../userdata";
+import { type MarketStatus, type Tour, statusLabel } from "../userdata";
 import { chainTimeMin } from "../score";
 
 export function chainTimeFor(l: Listing, schools: Place[], daycares: Place[]): number | null {
@@ -63,11 +63,23 @@ export function ListingCard({
   const removed = listing.status === "removed";
   const hasNote = note != null && note.trim() !== "";
   const disqualified = !!disqualification;
+  // Build the same status-line shown on map pin tooltip; expose it as a
+  // hover title on the card too. Notes-only path uses the in-card data
+  // we already have rather than re-passing whole maps.
+  const tourMap = tour ? { [listing.id]: tour } : {};
+  const msMap = marketStatus ? { [listing.id]: marketStatus } : {};
+  const dqMap = disqualification ? { [listing.id]: disqualification } : {};
+  const noteMap = note ? { [listing.id]: note } : {};
+  const status = statusLabel(listing.id, listing.status, tourMap, msMap, dqMap, noteMap);
+  const titleParts = [listing.lodging];
+  if (status) titleParts.push(status);
+  if (note) titleParts.push(`Note: ${note}`);
 
   return (
     <div
       className={`card ${selected ? "card--selected" : ""} ${removed ? "card--removed" : ""} ${disqualified ? "card--disqualified" : ""}`}
       onClick={onSelect}
+      title={titleParts.join(" — ")}
     >
       <div className="card__head">
         <span className="card__price">${listing.price?.toLocaleString() ?? "?"}</span>

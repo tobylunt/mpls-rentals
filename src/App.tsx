@@ -120,6 +120,8 @@ export default function App() {
                 notes={notes}
                 ratings={ratings}
                 disqualifications={disqualifications}
+                tours={tours}
+                marketStatuses={marketStatuses}
                 setNote={setNote}
                 setRating={setRating}
                 setDisqualification={setDisqualification}

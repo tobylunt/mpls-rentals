@@ -16,6 +16,59 @@ export type MarketStatuses = Record<string, MarketStatus>;
 // Reason is required; presence of an entry means "ruled out".
 export type Disqualifications = Record<string, string>;
 
+// Heuristics: scan a free-text note for evidence of outreach.
+const REACHED_OUT_RE = /\b(tour\s*request|request\s*sent|tour\s*pending|reached?\s*out|in\s*convo|scheduling|inquiry|message?\s*sent|in\s*touch|asked\s*about)\b/i;
+
+/**
+ * Derive a compact, human-readable status summary for a listing from its
+ * source data + the user's overlay state. Used in map-pin tooltips and
+ * card hover titles.
+ *
+ * Priority (first match wins):
+ *  1. Off market (listings.json status === removed, or user marketStatus = rented)
+ *  2. Disqualified
+ *  3. Tour confirmed / scheduled (date if known)
+ *  4. On hold (application pending)
+ *  5. Likely rented
+ *  6. Reached out (heuristic from note text)
+ *  7. null (no contact yet)
+ */
+export function statusLabel(
+  listingId: string,
+  listingStatus: string | undefined,
+  tours: Tours,
+  marketStatuses: MarketStatuses,
+  disqualifications: Disqualifications,
+  notes: Notes
+): string | null {
+  if (listingStatus === "removed" || marketStatuses[listingId] === "rented") {
+    return "Off market";
+  }
+  if (disqualifications[listingId]) {
+    return `👎 ${disqualifications[listingId]}`;
+  }
+  const tour = tours[listingId];
+  if (tour) {
+    let when = "";
+    if (tour.at) {
+      const d = new Date(tour.at);
+      const day = d.toLocaleDateString("en-US", { weekday: "short" });
+      const time = d
+        .toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })
+        .replace(/\s/g, "")
+        .toLowerCase();
+      when = ` ${day} ${time}`;
+    }
+    return tour.status === "confirmed" ? `Tour confirmed${when}` : `Tour pending${when}`;
+  }
+  const ms = marketStatuses[listingId];
+  if (ms === "on_hold") return "On hold (application pending)";
+  if (ms === "probably_rented") return "Likely rented";
+  const note = notes[listingId];
+  if (note && REACHED_OUT_RE.test(note)) return "Reached out";
+  return null;
+}
+
 type Stored = {
   notes: Notes;
   ratings: Ratings;
@@ -74,13 +127,17 @@ export function useUserData() {
             disqualifications: seed?.disqualifications ?? {},
           });
         } else {
-          // Seed wins for tours + marketStatuses (file is the source of truth
-          // until we have in-app edit UI). Notes + ratings + disqualifications
-          // are user-owned and left untouched here.
+          // Seed wins for all fields. The user's workflow is "tell Claude to
+          // update X" -> Claude edits seed-notes.json -> next load reflects
+          // the new state. Local edits made in the popup persist for keys
+          // not present in seed; they're clobbered on conflict (export to
+          // commit them back into the seed).
           setData((prev) => ({
-            ...prev,
+            notes: { ...prev.notes, ...((seed?.notes ?? {}) as Notes) },
+            ratings: { ...prev.ratings, ...((seed?.ratings ?? {}) as Ratings) },
             tours: { ...prev.tours, ...((seed?.tours ?? {}) as Tours) },
             marketStatuses: { ...prev.marketStatuses, ...((seed?.marketStatuses ?? {}) as MarketStatuses) },
+            disqualifications: { ...prev.disqualifications, ...((seed?.disqualifications ?? {}) as Disqualifications) },
           }));
         }
       })
