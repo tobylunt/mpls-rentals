@@ -74,7 +74,6 @@ function placeIcon(emoji: string, bg: string): L.DivIcon {
   });
 }
 
-const SCHOOL_ICON = placeIcon("🎓", "#1565c0");
 const DAYCARE_ICON = placeIcon("🧸", "#ef6c00");
 const WORK_ICON = placeIcon("💼", "#6a1b9a");
 
@@ -349,18 +348,6 @@ export function Map({
                 </Marker>
               );
             })}
-          </LayerGroup>
-        </LayersControl.Overlay>
-
-        <LayersControl.Overlay checked name="Schools">
-          <LayerGroup>
-            {schools.map((s) =>
-              s.lat != null && s.lng != null ? (
-                <Marker key={s.name} position={[s.lat, s.lng]} icon={SCHOOL_ICON}>
-                  <Popup><strong>{s.name}</strong> (school)</Popup>
-                </Marker>
-              ) : null
-            )}
           </LayerGroup>
         </LayersControl.Overlay>
 
