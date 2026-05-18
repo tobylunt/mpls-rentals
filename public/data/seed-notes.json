@@ -19,7 +19,7 @@
     "ff-780453-nokomis": "Reached out, no response yet.",
     "ff-935587-sw-mpls": "Reached out, no response yet.",
     "4733-xerxes-ave-s": "Tour request sent.",
-    "4829-chicago-ave-1": "Tour request sent.",
+    "4829-chicago-ave-1": "Tour scheduled Sat 11am.",
     "4804-france-ave-s-2": "Tour booked Sat 4:30pm. Edina school district (Concord Elementary).",
     "5855-blaisdell-ave": "Tour request sent.",
     "5320-bryant-ave-s": "Tour request sent.",
@@ -70,6 +70,10 @@
     },
     "5100-xerxes-ave-s": {
       "at": "2026-05-23T13:00:00",
+      "status": "scheduled"
+    },
+    "4829-chicago-ave-1": {
+      "at": "2026-05-23T11:00:00",
       "status": "scheduled"
     }
   },
