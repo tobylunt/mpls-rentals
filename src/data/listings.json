@@ -1,6 +1,41 @@
 {
   "listings": [
     {
+      "id": "4739-1st-ave-s",
+      "lodging": "4739 1st Ave S (Tangletown SFH)",
+      "address": "4739 1st Ave S, Minneapolis, MN 55419",
+      "url": "https://www.zillow.com/homedetails/4739-1st-Ave-S-Minneapolis-MN-55419/1828729_zpid/",
+      "image_url": "/images/4739-1st-ave-s.jpg",
+      "lat": 44.9171252,
+      "lng": -93.2766222,
+      "bedrooms": 4,
+      "housing_type": "house",
+      "neighborhood": "Tangletown",
+      "price": 3250.0,
+      "pet_rent": 50.0,
+      "furnished": false,
+      "parking": "?",
+      "size_sqft": 2500.0,
+      "price_per_sqft": 1.3,
+      "available": "Now",
+      "term": "?",
+      "school": "Burroughs",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 24,
+        "drive_min": 4,
+        "raw": "~24 min walk (4) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 15,
+        "drive_min": 3,
+        "raw": "~15 min walk (3) (est)"
+      },
+      "dist_work_drive_min": 13,
+      "utilities": null,
+      "notes": "Recently remodeled Tangletown SFH, 4BR/2.5BA, 2500 sqft. 3 BR upper level + 1 additional, heated floors, abundance of natural light, fireplace, central AC. Min from Minnehaha Creek, between Lake Harriet + Lake Nokomis. Cats+dogs OK ($500 non-refundable pet fee + $50/mo per pet). App fee $50. Burroughs zone (F4, 1.2 mi)."
+    },
+    {
       "id": "4937-clinton-ave",
       "lodging": "4937 Clinton Ave (Tudor SFH)",
       "address": "4937 Clinton Ave, Minneapolis, MN 55419",
