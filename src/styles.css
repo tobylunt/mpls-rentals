@@ -60,8 +60,6 @@ body {
   width: 24px;
   height: 24px;
   text-align: center;
-  opacity: 0.3;
-  transition: opacity 0.15s ease;
   /* White halo so the emoji stays readable on any basemap tile. */
   text-shadow:
     -1px -1px 0 #fff,
@@ -70,11 +68,6 @@ body {
     1px 1px 0 #fff,
     0 0 3px rgba(255,255,255,0.85);
 }
-.place-pin__emoji:hover { opacity: 0.7; }
-.place-pin__emoji--active { opacity: 1; }
-/* All place pins render at full opacity. */
-.place-pin__emoji,
-.place-pin__emoji:hover { opacity: 1; }
 
 .topbar__count { margin-left: auto; color: #666; font-size: 13px; }
 .main { display: flex; }
