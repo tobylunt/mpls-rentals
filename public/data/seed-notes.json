@@ -8,7 +8,7 @@
     "4311-abbott-ave-s-2": "Tour request sent.",
     "4453-york-ave-s": "Pricey but otherwise perfect. Tour cancelled.",
     "4009-ewing-ave-s": "Not sure on value for money. Right by school. Tour pending for sunday morning",
-    "4927-ewing-ave-s-3": "Spoke with John (lessor). Tour likely Mon or Tue, awaiting confirmation.",
+    "4927-ewing-ave-s-3": "Tour CONFIRMED Sat 10am with John (lessor).",
     "sabbatical-179679-4515-grand": "Reached out, no response yet.",
     "ff-960786-lake-harriet": "Reached out, no response yet.",
     "ff-436496-sheridan-haven": "Reached out, no response yet.",
@@ -63,7 +63,8 @@
       "status": "confirmed"
     },
     "4927-ewing-ave-s-3": {
-      "status": "scheduled"
+      "at": "2026-05-23T10:00:00",
+      "status": "confirmed"
     },
     "4804-france-ave-s-2": {
       "at": "2026-05-23T16:30:00",
