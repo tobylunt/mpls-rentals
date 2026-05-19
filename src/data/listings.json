@@ -88,7 +88,7 @@
       "size_sqft": 2560.0,
       "price_per_sqft": 1.37,
       "available": "2026-07-04",
-      "term": "?",
+      "term": "Contact for details",
       "school": "Hale",
       "daycare": "Casa Kingfield",
       "dist_school": {
@@ -102,7 +102,7 @@
         "raw": "~7 min drive (est)"
       },
       "dist_work_drive_min": 14,
-      "utilities": null,
+      "utilities": "Not specified in listing \u2014 verify at tour",
       "notes": "Tudor SFH, 4BR/2BA, 2560 sqft. Remodeled kitchen, open floor plan, large finished lower level w/ wet bar, huge back porch + patio, attached garage. Available Jul 4 2026. Pet policy NOT specified in listing \u2014 verify with manager. Hale school zone (F3)."
     },
     {
@@ -123,7 +123,7 @@
       "size_sqft": 1600.0,
       "price_per_sqft": 1.38,
       "available": "Now",
-      "term": "?",
+      "term": "Contact for details",
       "school": "Concord",
       "daycare": "Casa 50th and France",
       "dist_school": {
@@ -263,7 +263,7 @@
       "size_sqft": 1150.0,
       "price_per_sqft": 1.74,
       "available": "Now",
-      "term": "?",
+      "term": "1 year",
       "school": "Concord",
       "daycare": "Casa 50th and France",
       "dist_school": {
@@ -298,7 +298,7 @@
       "size_sqft": 1350.0,
       "price_per_sqft": 1.56,
       "available": "Now",
-      "term": "?",
+      "term": "1 year",
       "school": "Hale",
       "daycare": "Casa Kingfield",
       "dist_school": {
@@ -312,7 +312,7 @@
         "raw": "~7 min drive (est)"
       },
       "dist_work_drive_min": 14,
-      "utilities": null,
+      "utilities": "Owner pays gas + water + sewer; tenant pays electric. $100/mo rent reduction option in exchange for snow + lawn care.",
       "notes": "Charming Tudor-style duplex, first-floor unit. 2BR/1BA, 1350 sqft. Hardwoods throughout, formal DR, eat-in kitchen w/ stainless + dishwasher, newly remodeled bathroom. Free shared laundry in basement, shared flagstone patio. Cats + dogs OK ($300 non-refundable pet deposit). 1 block from Minnehaha Parkway. Hale school zone (F3, 0.7 mi)."
     },
     {
@@ -417,7 +417,7 @@
         "raw": "~5 min walk (1) (est)"
       },
       "dist_work_drive_min": 18,
-      "utilities": null,
+      "utilities": "Not specified in listing \u2014 verify at tour",
       "notes": "Triplex, top finish. Pets allowed (fee $500) but listing only says 'Small dogs OK' \u2014 VERIFY cats with manager."
     },
     {
@@ -474,7 +474,7 @@
       "size_sqft": 1500.0,
       "price_per_sqft": 1.63,
       "available": "Now",
-      "term": "?",
+      "term": "1 year",
       "school": "Burroughs",
       "daycare": "Casa Kingfield",
       "dist_school": {
@@ -488,7 +488,7 @@
         "raw": "~18 min walk (3) (est)"
       },
       "dist_work_drive_min": 13,
-      "utilities": null,
+      "utilities": "Tenant pays heat + electric",
       "notes": "Townhome/duplex unit. Pets OK with $50/mo pet rent."
     },
     {
@@ -1575,7 +1575,7 @@
       "size_sqft": 875.0,
       "price_per_sqft": 2.77,
       "available": "2026-08-01",
-      "term": "?",
+      "term": "12mo typical (verify with leasing)",
       "school": "Lake Harriet",
       "daycare": "Casa 50th and France",
       "dist_school": {
@@ -1589,7 +1589,7 @@
         "raw": "~25 min walk (5) (est)"
       },
       "dist_work_drive_min": 18,
-      "utilities": null,
+      "utilities": "Resident pays all. Wi-Fi $50/mo + parking $175/mo extra.",
       "notes": "2BR/1BA Washburn floorplan, available first week of August. Contact: LindenFlats@Level10Mgmt.com / (612) 217-8661."
     },
     {
@@ -1681,7 +1681,7 @@
       "size_sqft": 1565.0,
       "price_per_sqft": 1.63,
       "available": "Now",
-      "term": null,
+      "term": "12 month lease",
       "school": "Wenonah",
       "daycare": "Casa Kingfield",
       "dist_school": {
@@ -1695,7 +1695,7 @@
         "raw": "12 min drive"
       },
       "dist_work_drive_min": 17,
-      "utilities": null,
+      "utilities": "Tenant pays all (nothing included in rent)",
       "notes": null
     }
   ],
