@@ -152,15 +152,20 @@ export function useUserData() {
             shortlist: prev.shortlist.length > 0 ? prev.shortlist : seedShortlist,
           }));
         } else {
-          // Seed wins for keyed fields (notes, ratings, tours, ...). Shortlist
-          // is a flat list — union with local so cross-device starring is
-          // additive (un-starring locally won't be persisted until you
-          // export -> commit the seed).
+          // Merge semantics by field:
+          // - tours + marketStatuses: REPLACE entirely with seed (seed is
+          //   authoritative — no in-app UI to edit them, so a removal in
+          //   the seed should actually remove locally).
+          // - notes / ratings / disqualifications: union, seed wins on
+          //   conflict (preserves any local in-app additions for keys not
+          //   yet in seed).
+          // - shortlist: union (additive — un-starring locally won't be
+          //   undone by seed, but new seed stars do appear).
           setData((prev) => ({
             notes: { ...prev.notes, ...((seed?.notes ?? {}) as Notes) },
             ratings: { ...prev.ratings, ...((seed?.ratings ?? {}) as Ratings) },
-            tours: { ...prev.tours, ...((seed?.tours ?? {}) as Tours) },
-            marketStatuses: { ...prev.marketStatuses, ...((seed?.marketStatuses ?? {}) as MarketStatuses) },
+            tours: (seed?.tours ?? {}) as Tours,
+            marketStatuses: (seed?.marketStatuses ?? {}) as MarketStatuses,
             disqualifications: { ...prev.disqualifications, ...((seed?.disqualifications ?? {}) as Disqualifications) },
             shortlist: [...new Set([...prev.shortlist, ...seedShortlist])],
           }));
