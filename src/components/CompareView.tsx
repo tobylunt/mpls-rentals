@@ -5,31 +5,22 @@ import { chainTimeFor, formatTour, marketStatusLabel } from "./ListingCard";
 type Row = {
   label: string;
   values: (string | number | null)[];
-  bestIndex: number | null;  // index of best value, or null for no highlight
+  // Indices of cells that tie for "best". null = no highlight.
+  best: Set<number> | null;
 };
 
-function bestMin(values: (number | null)[]): number | null {
-  let best = Infinity;
-  let idx: number | null = null;
+function bestIndices(values: (number | null)[], dir: "min" | "max"): Set<number> | null {
+  let best = dir === "min" ? Infinity : -Infinity;
+  const out = new Set<number>();
+  for (const v of values) {
+    if (v == null) continue;
+    if (dir === "min" ? v < best : v > best) best = v;
+  }
+  if (!isFinite(best)) return null;
   values.forEach((v, i) => {
-    if (v != null && v < best) {
-      best = v;
-      idx = i;
-    }
+    if (v === best) out.add(i);
   });
-  return idx;
-}
-
-function bestMax(values: (number | null)[]): number | null {
-  let best = -Infinity;
-  let idx: number | null = null;
-  values.forEach((v, i) => {
-    if (v != null && v > best) {
-      best = v;
-      idx = i;
-    }
-  });
-  return idx;
+  return out.size > 0 ? out : null;
 }
 
 function asNum(v: number | null | undefined): number | null {
@@ -72,7 +63,7 @@ export function CompareView({
     {
       label: "Tour",
       values: listings.map((l) => (tours[l.id] ? formatTour(tours[l.id]) : "—")),
-      bestIndex: null,
+      best: null,
     },
     {
       label: "Market status",
@@ -82,12 +73,12 @@ export function CompareView({
         if (l.status === "removed") return "Off market";
         return "Active";
       }),
-      bestIndex: null,
+      best: null,
     },
     {
       label: "Disqualified",
       values: listings.map((l) => (disqualifications[l.id] ? `👎 ${disqualifications[l.id]}` : "—")),
-      bestIndex: null,
+      best: null,
     },
     {
       label: "Your rating",
@@ -95,97 +86,97 @@ export function CompareView({
         const r = ratings[l.id];
         return r ? "★".repeat(r) + "☆".repeat(5 - r) : "—";
       }),
-      bestIndex: bestMax(listings.map((l) => asNum(ratings[l.id]))),
+      best: bestIndices(listings.map((l) => asNum(ratings[l.id])), "max"),
     },
     {
       label: "Your notes",
       values: listings.map((l) => notes[l.id] ?? ""),
-      bestIndex: null,
+      best: null,
     },
     {
       label: "Price",
       values: listings.map((l) => l.price),
-      bestIndex: bestMin(listings.map((l) => asNum(l.price))),
+      best: bestIndices(listings.map((l) => asNum(l.price)), "min"),
     },
     {
       label: "$ / sqft",
       values: listings.map((l) => l.price_per_sqft),
-      bestIndex: bestMin(listings.map((l) => asNum(l.price_per_sqft))),
+      best: bestIndices(listings.map((l) => asNum(l.price_per_sqft)), "min"),
     },
     {
       label: "Size (sqft)",
       values: listings.map((l) => l.size_sqft),
-      bestIndex: bestMax(listings.map((l) => asNum(l.size_sqft))),
+      best: bestIndices(listings.map((l) => asNum(l.size_sqft)), "max"),
     },
     {
       label: "Bedrooms",
       values: listings.map((l) => l.bedrooms),
-      bestIndex: bestMax(listings.map((l) => asNum(l.bedrooms))),
+      best: bestIndices(listings.map((l) => asNum(l.bedrooms)), "max"),
     },
     {
       label: "Parking",
       values: listings.map((l) => l.parking),
-      bestIndex: null,
+      best: null,
     },
     {
       label: "School",
       values: listings.map((l) => l.school),
-      bestIndex: null,
+      best: null,
     },
     {
       label: "School drive (min)",
       values: listings.map((l) => l.dist_school.drive_min),
-      bestIndex: bestMin(listings.map((l) => l.dist_school.drive_min)),
+      best: bestIndices(listings.map((l) => l.dist_school.drive_min), "min"),
     },
     {
       label: "Daycare",
       values: listings.map((l) => l.daycare),
-      bestIndex: null,
+      best: null,
     },
     {
       label: "Daycare drive (min)",
       values: listings.map((l) => l.dist_daycare.drive_min),
-      bestIndex: bestMin(listings.map((l) => l.dist_daycare.drive_min)),
+      best: bestIndices(listings.map((l) => l.dist_daycare.drive_min), "min"),
     },
     {
       label: "Work drive (min)",
       values: listings.map((l) => l.dist_work_drive_min),
-      bestIndex: bestMin(listings.map((l) => l.dist_work_drive_min)),
+      best: bestIndices(listings.map((l) => l.dist_work_drive_min), "min"),
     },
     {
       label: "Chain time (~min)",
       values: chains.map((c) => (c == null ? null : Math.round(c))),
-      bestIndex: bestMin(chains.map((c) => (c == null ? null : Math.round(c)))),
+      best: bestIndices(chains.map((c) => (c == null ? null : Math.round(c))), "min"),
     },
     {
       label: "Pet rent",
       values: listings.map((l) => (l.pet_rent === "unknown" ? "?" : l.pet_rent)),
-      bestIndex: null,
+      best: null,
     },
     {
       label: "Furnished",
       values: listings.map((l) => (l.furnished == null ? "—" : l.furnished ? "Yes" : "No")),
-      bestIndex: null,
+      best: null,
     },
     {
       label: "Available",
       values: listings.map((l) => l.available),
-      bestIndex: null,
+      best: null,
     },
     {
       label: "Term",
       values: listings.map((l) => l.term),
-      bestIndex: null,
+      best: null,
     },
     {
       label: "Utilities",
       values: listings.map((l) => l.utilities),
-      bestIndex: null,
+      best: null,
     },
     {
       label: "Notes",
       values: listings.map((l) => l.notes),
-      bestIndex: null,
+      best: null,
     },
   ];
 
@@ -231,7 +222,7 @@ export function CompareView({
               <tr key={r.label}>
                 <th>{r.label}</th>
                 {r.values.map((v, i) => (
-                  <td key={i} className={r.bestIndex === i ? "compare__best" : ""}>
+                  <td key={i} className={r.best?.has(i) ? "compare__best" : ""}>
                     {v == null ? "—" : v.toString()}
                   </td>
                 ))}
