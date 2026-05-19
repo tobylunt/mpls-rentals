@@ -19,6 +19,14 @@ export type Disqualifications = Record<string, string>;
 // List of starred listing IDs.
 export type Shortlist = string[];
 
+// A self-guided itinerary (Sunday drive-by route etc.). Each stop resolves
+// to a lat/lng either from a listing or a school.
+export type ItineraryStop =
+  | { kind: "listing"; id: string; note?: string }
+  | { kind: "school"; name: string; note?: string };
+export type Itinerary = { label: string; date?: string; stops: ItineraryStop[] };
+export type Itineraries = Record<string, Itinerary>;
+
 // Heuristics: scan a free-text note for evidence of outreach.
 const REACHED_OUT_RE = /\b(tour\s*request|request\s*sent|tour\s*pending|reached?\s*out|in\s*convo|scheduling|inquiry|message?\s*sent|in\s*touch|asked\s*about)\b/i;
 
@@ -79,10 +87,11 @@ type Stored = {
   marketStatuses: MarketStatuses;
   disqualifications: Disqualifications;
   shortlist: Shortlist;
+  itineraries: Itineraries;
 };
 
 function emptyStored(): Stored {
-  return { notes: {}, ratings: {}, tours: {}, marketStatuses: {}, disqualifications: {}, shortlist: [] };
+  return { notes: {}, ratings: {}, tours: {}, marketStatuses: {}, disqualifications: {}, shortlist: [], itineraries: {} };
 }
 
 function read(): Stored {
@@ -108,6 +117,7 @@ function read(): Stored {
       marketStatuses: parsed?.marketStatuses ?? {},
       disqualifications: parsed?.disqualifications ?? {},
       shortlist: parsed?.shortlist ?? [],
+      itineraries: parsed?.itineraries ?? {},
     };
     // Merge legacy in if userdata shortlist is empty
     if (stored.shortlist.length === 0 && legacyShortlist.length > 0) {
@@ -150,6 +160,7 @@ export function useUserData() {
             // If localStorage had a legacy shortlist, prefer it; otherwise
             // use the seed's.
             shortlist: prev.shortlist.length > 0 ? prev.shortlist : seedShortlist,
+            itineraries: (seed?.itineraries ?? {}) as Itineraries,
           }));
         } else {
           // Merge semantics by field:
@@ -168,6 +179,9 @@ export function useUserData() {
             marketStatuses: (seed?.marketStatuses ?? {}) as MarketStatuses,
             disqualifications: { ...prev.disqualifications, ...((seed?.disqualifications ?? {}) as Disqualifications) },
             shortlist: [...new Set([...prev.shortlist, ...seedShortlist])],
+            // Itineraries: full replace, seed is authoritative (no in-app
+            // editing UI for them).
+            itineraries: (seed?.itineraries ?? {}) as Itineraries,
           }));
         }
       })
@@ -322,7 +336,7 @@ export function useUserData() {
             shortlistCount++;
           }
         }
-        return { notes, ratings, tours, marketStatuses, disqualifications, shortlist: [...shortlistSet] };
+        return { notes, ratings, tours, marketStatuses, disqualifications, shortlist: [...shortlistSet], itineraries: prev.itineraries };
       });
       return { notesCount, ratingsCount, toursCount, marketStatusCount, disqualificationCount, shortlistCount };
     },
@@ -336,6 +350,7 @@ export function useUserData() {
     marketStatuses: data.marketStatuses,
     disqualifications: data.disqualifications,
     shortlist: data.shortlist,
+    itineraries: data.itineraries,
     setNote,
     setRating,
     setTour,

@@ -3,6 +3,7 @@ import { Map } from "./components/Map";
 import { FilterBar, applyFilters, defaultFilters, type Filters } from "./components/FilterBar";
 import { ListingList, type SortKey } from "./components/ListingList";
 import { CompareView } from "./components/CompareView";
+import { ItineraryPanel } from "./components/Itinerary";
 import { data } from "./data";
 import { useUserData } from "./userdata";
 
@@ -14,6 +15,7 @@ export default function App() {
     marketStatuses,
     disqualifications,
     shortlist: shortlistArr,
+    itineraries,
     setNote,
     setRating,
     setDisqualification,
@@ -22,6 +24,15 @@ export default function App() {
     importData,
   } = useUserData();
   const shortlist = useMemo(() => new Set(shortlistArr), [shortlistArr]);
+  // Bumped each time the itinerary panel asks the map to fly somewhere.
+  // The `key` field forces FlyToPoint's effect to re-run even if the same
+  // coords are clicked twice.
+  const [flyToPoint, setFlyToPoint] = useState<{ lat: number; lng: number; key: number } | null>(null);
+  const flyKey = useRef(0);
+  function flyTo(lat: number, lng: number) {
+    flyKey.current += 1;
+    setFlyToPoint({ lat, lng, key: flyKey.current });
+  }
   const [filters, setFilters] = useState<Filters>(() => defaultFilters(data.listings));
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [sortKey, setSortKey] = useState<SortKey>("chain");
@@ -91,6 +102,15 @@ export default function App() {
           <>
             <aside className="rail">
               <FilterBar listings={data.listings} filters={filters} setFilters={setFilters} />
+              {Object.entries(itineraries).map(([key, itin]) => (
+                <ItineraryPanel
+                  key={key}
+                  itinerary={itin}
+                  listings={data.listings}
+                  schools={data.schools}
+                  onFlyTo={flyTo}
+                />
+              ))}
               <ListingList
                 listings={visible}
                 shortlist={shortlist}
@@ -123,6 +143,7 @@ export default function App() {
                 disqualifications={disqualifications}
                 tours={tours}
                 marketStatuses={marketStatuses}
+                flyToPoint={flyToPoint}
                 setNote={setNote}
                 setRating={setRating}
                 setDisqualification={setDisqualification}

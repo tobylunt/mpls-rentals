@@ -113,5 +113,19 @@
     "4430-w-lake-harriet-pkwy": "Dumpy looking with bad reviews",
     "sabbatical-175281-uptown": "Don't like the Kenwood school vibes",
     "4544-bryant-ave-s": "No tour availability at our times + marginal place"
+  },
+  "itineraries": {
+    "sunday-drive-by": {
+      "label": "Sunday self-guided",
+      "date": "2026-05-24",
+      "stops": [
+        { "kind": "school", "name": "Burroughs", "note": "shortlist school" },
+        { "kind": "listing", "id": "linden-flats-washburn", "note": "Wed virtual → drive-by" },
+        { "kind": "school", "name": "Lake Harriet", "note": "shortlist school" },
+        { "kind": "school", "name": "Concord", "note": "Edina shortlist school" },
+        { "kind": "school", "name": "Hale", "note": "shortlist school" },
+        { "kind": "listing", "id": "sanctuary-lofts", "note": "Wed virtual → drive-by" }
+      ]
+    }
   }
 }

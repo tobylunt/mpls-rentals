@@ -147,6 +147,19 @@ function FlyToSelected({
   return null;
 }
 
+// Fly to an arbitrary lat/lng (used by the itinerary panel for non-listing
+// stops like schools). The `key` prop forces re-mount so consecutive clicks
+// on the same point still trigger a fly.
+function FlyToPoint({ point }: { point: { lat: number; lng: number; key: number } | null }) {
+  const map = useMap();
+  useEffect(() => {
+    if (!point) return;
+    const targetZoom = Math.max(map.getZoom(), 14);
+    map.flyTo([point.lat, point.lng], targetZoom, { duration: 0.7 });
+  }, [point, map]);
+  return null;
+}
+
 export function Map({
   listings,
   shortlist,
@@ -161,6 +174,7 @@ export function Map({
   disqualifications,
   tours,
   marketStatuses,
+  flyToPoint,
   setNote,
   setRating,
   setDisqualification,
@@ -178,6 +192,7 @@ export function Map({
   disqualifications: Disqualifications;
   tours: Tours;
   marketStatuses: MarketStatuses;
+  flyToPoint: { lat: number; lng: number; key: number } | null;
   setNote: (id: string, text: string) => void;
   setRating: (id: string, rating: number | null) => void;
   setDisqualification: (id: string, reason: string | null) => void;
@@ -278,6 +293,7 @@ export function Map({
         detectRetina
       />
       <FlyToSelected listing={selected} markerRef={markerRef} />
+      <FlyToPoint point={flyToPoint} />
       {selected && selected.lat != null && selected.lng != null ? (
         <ChainLines selected={selected} schools={schools} daycares={daycares} />
       ) : null}

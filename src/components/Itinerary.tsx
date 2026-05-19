@@ -1,0 +1,94 @@
+import { type Listing, type Place } from "../data";
+import { type Itinerary as ItineraryT } from "../userdata";
+
+type ResolvedStop = {
+  label: string;
+  sub?: string;
+  lat: number;
+  lng: number;
+  note?: string;
+};
+
+function resolveStops(
+  itin: ItineraryT,
+  listings: Listing[],
+  schools: Place[]
+): ResolvedStop[] {
+  const out: ResolvedStop[] = [];
+  for (const s of itin.stops) {
+    if (s.kind === "listing") {
+      const l = listings.find((x) => x.id === s.id);
+      if (l && l.lat != null && l.lng != null) {
+        out.push({
+          label: l.lodging,
+          sub: l.neighborhood ?? undefined,
+          lat: l.lat,
+          lng: l.lng,
+          note: s.note,
+        });
+      }
+    } else if (s.kind === "school") {
+      const sch = schools.find((x) => x.name === s.name);
+      if (sch && sch.lat != null && sch.lng != null) {
+        out.push({
+          label: `${sch.name} School`,
+          sub: undefined,
+          lat: sch.lat,
+          lng: sch.lng,
+          note: s.note,
+        });
+      }
+    }
+  }
+  return out;
+}
+
+function googleMapsDirURL(stops: ResolvedStop[]): string {
+  // https://www.google.com/maps/dir/lat1,lng1/lat2,lng2/... opens a multi-stop
+  // route in Google Maps. User can hit "Optimize order" on phone for actual TSP.
+  const path = stops.map((s) => `${s.lat},${s.lng}`).join("/");
+  return `https://www.google.com/maps/dir/${path}`;
+}
+
+export function ItineraryPanel({
+  itinerary,
+  listings,
+  schools,
+  onFlyTo,
+}: {
+  itinerary: ItineraryT;
+  listings: Listing[];
+  schools: Place[];
+  onFlyTo: (lat: number, lng: number) => void;
+}) {
+  const stops = resolveStops(itinerary, listings, schools);
+  if (stops.length === 0) return null;
+
+  return (
+    <details className="itinerary">
+      <summary className="itinerary__summary">
+        🚗 {itinerary.label} ({stops.length})
+      </summary>
+      <ol className="itinerary__list">
+        {stops.map((s, i) => (
+          <li key={i} className="itinerary__item" onClick={() => onFlyTo(s.lat, s.lng)}>
+            <span className="itinerary__num">{i + 1}</span>
+            <span className="itinerary__body">
+              <span className="itinerary__label">{s.label}</span>
+              {s.sub ? <span className="itinerary__sub">{s.sub}</span> : null}
+              {s.note ? <span className="itinerary__note">{s.note}</span> : null}
+            </span>
+          </li>
+        ))}
+      </ol>
+      <a
+        className="itinerary__gmaps"
+        href={googleMapsDirURL(stops)}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Open route in Google Maps →
+      </a>
+    </details>
+  );
+}
