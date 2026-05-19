@@ -672,12 +672,12 @@
     },
     {
       "id": "ff-982084-lynnhurst",
-      "lodging": "Sunny 2BR (FF, Lynnhurst)",
-      "address": "Lynnhurst, Minneapolis, MN (exact addr TBD)",
+      "lodging": "5004 Logan Ave S #1 (FF)",
+      "address": "5004 Logan Ave S #1, Minneapolis, MN 55419",
       "url": "https://www.furnishedfinder.com/property/982084_1",
       "image_url": "/images/ff-982084.jpg",
-      "lat": 44.9146071,
-      "lng": -93.3014518,
+      "lat": 44.9122247,
+      "lng": -93.3036627,
       "bedrooms": 2,
       "housing_type": "apt",
       "neighborhood": "Lynnhurst",
@@ -689,22 +689,21 @@
       "price_per_sqft": 2.48,
       "available": "2026-08-21",
       "term": "1mo min",
-      "school": null,
-      "daycare": null,
+      "school": "Burroughs",
+      "daycare": "Casa 50th and France",
       "dist_school": {
-        "walk_min": null,
-        "drive_min": null,
-        "raw": ""
+        "walk_min": 5,
+        "drive_min": 1,
+        "raw": "~5 min walk (1) (est)"
       },
       "dist_daycare": {
-        "walk_min": null,
-        "drive_min": null,
-        "raw": ""
+        "walk_min": 12,
+        "drive_min": 2,
+        "raw": "~12 min walk (2) (est)"
       },
-      "dist_work_drive_min": null,
+      "dist_work_drive_min": 17,
       "utilities": "Included",
-      "notes": "Furnished 1st-floor apt in triplex. Between Lake Harriet & Minnehaha Creek. Owner-occupied, dog lives upstairs. Pet deposit $250 refundable. Pets allowed. Coords approximate (FF map pin).",
-      "coords_approximate": true
+      "notes": "Furnished 1st-floor apt in triplex (FF #982084). Between Lake Harriet & Minnehaha Creek. Owner-occupied, dog lives upstairs. Pet deposit $250 refundable. Pets allowed. Burroughs Elementary 0.2 mi away."
     },
     {
       "id": "ff-627700-craftsman",
