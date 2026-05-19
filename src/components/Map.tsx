@@ -65,10 +65,11 @@ function rentalIcon(color: string, starred: boolean, approximate: boolean): L.Di
   });
 }
 
-function placeIcon(emoji: string, active = false): L.DivIcon {
+function placeIcon(emoji: string, type: "school" | "daycare" | "work", active = false): L.DivIcon {
   // Bare emoji, no container. A white text-shadow halo keeps it legible
   // against any basemap color (dark roads, parks, water, etc.).
-  const cls = active ? "place-pin__emoji place-pin__emoji--active" : "place-pin__emoji";
+  const base = `place-pin__emoji place-pin__emoji--${type}`;
+  const cls = active ? `${base} place-pin__emoji--active` : base;
   return L.divIcon({
     className: "place-pin",
     html: `<span class="${cls}">${emoji}</span>`,
@@ -77,12 +78,12 @@ function placeIcon(emoji: string, active = false): L.DivIcon {
   });
 }
 
-const SCHOOL_ICON = placeIcon("🎓");
-const SCHOOL_ICON_ACTIVE = placeIcon("🎓", true);
-const DAYCARE_ICON = placeIcon("🧸");
-const DAYCARE_ICON_ACTIVE = placeIcon("🧸", true);
-const WORK_ICON = placeIcon("💼");
-const WORK_ICON_ACTIVE = placeIcon("💼", true);
+const SCHOOL_ICON = placeIcon("🎓", "school");
+const SCHOOL_ICON_ACTIVE = placeIcon("🎓", "school", true);
+const DAYCARE_ICON = placeIcon("🧸", "daycare");
+const DAYCARE_ICON_ACTIVE = placeIcon("🧸", "daycare", true);
+const WORK_ICON = placeIcon("💼", "work");
+const WORK_ICON_ACTIVE = placeIcon("💼", "work", true);
 
 function ChainLines({
   selected,
