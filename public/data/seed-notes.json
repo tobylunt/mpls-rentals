@@ -6,7 +6,7 @@
     "4749-harriet-ave-2": "Tour tentatively scheduled for saturday",
     "4641-lyndale-ave-s": "Seems a little run down. Tour request sent on Zillow.",
     "4311-abbott-ave-s-2": "Tour request sent.",
-    "4453-york-ave-s": "Pricey but otherwise perfect. Tour request sent",
+    "4453-york-ave-s": "Pricey but otherwise perfect. Tour cancelled.",
     "4009-ewing-ave-s": "Not sure on value for money. Right by school. Tour pending for sunday morning",
     "4927-ewing-ave-s-3": "Spoke with John (lessor). Tour likely Mon or Tue, awaiting confirmation.",
     "sabbatical-179679-4515-grand": "Reached out, no response yet.",
@@ -61,10 +61,6 @@
     "4749-harriet-ave-2": {
       "at": "2026-05-23T15:00:00",
       "status": "confirmed"
-    },
-    "4453-york-ave-s": {
-      "at": "2026-05-26T11:00:00",
-      "status": "scheduled"
     },
     "4927-ewing-ave-s-3": {
       "status": "scheduled"
