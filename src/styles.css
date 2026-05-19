@@ -72,9 +72,11 @@ body {
 }
 .place-pin__emoji:hover { opacity: 0.7; }
 .place-pin__emoji--active { opacity: 1; }
-/* Schools always render at full opacity (rolled back from the fade). */
+/* Schools + daycares always render at full opacity (rolled back from the fade). */
 .place-pin__emoji--school,
-.place-pin__emoji--school:hover { opacity: 1; }
+.place-pin__emoji--school:hover,
+.place-pin__emoji--daycare,
+.place-pin__emoji--daycare:hover { opacity: 1; }
 
 .topbar__count { margin-left: auto; color: #666; font-size: 13px; }
 .main { display: flex; }
