@@ -419,7 +419,8 @@
       },
       "dist_work_drive_min": 15,
       "utilities": null,
-      "notes": "Cats and dogs under 15 lbs OK. $250 pet deposit + $25/mo pet rent. Burroughs is 0.6 mi away."
+      "notes": "Cats and dogs under 15 lbs OK. $250 pet deposit + $25/mo pet rent. Burroughs is 0.6 mi away.",
+      "status": "removed"
     },
     {
       "id": "4009-ewing-ave-s",

@@ -87,9 +87,7 @@
       "status": "confirmed"
     }
   },
-  "marketStatuses": {
-    "4934-lyndale-ave-s-2": "on_hold"
-  },
+  "marketStatuses": {},
   "shortlist": [
     "3613-w-54th-st-edina",
     "4453-york-ave-s",
