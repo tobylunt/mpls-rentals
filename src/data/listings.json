@@ -1,6 +1,41 @@
 {
   "listings": [
     {
+      "id": "4937-clinton-ave",
+      "lodging": "4937 Clinton Ave (Tudor SFH)",
+      "address": "4937 Clinton Ave, Minneapolis, MN 55419",
+      "url": "https://www.zillow.com/homedetails/4937-Clinton-Ave-Minneapolis-MN-55419/1829012_zpid/",
+      "image_url": "/images/4937-clinton-ave.jpg",
+      "lat": 44.9135811,
+      "lng": -93.2715323,
+      "bedrooms": 4,
+      "housing_type": "house",
+      "neighborhood": "Hale",
+      "price": 3500.0,
+      "pet_rent": "unknown",
+      "furnished": false,
+      "parking": "1 attached garage space",
+      "size_sqft": 2560.0,
+      "price_per_sqft": 1.37,
+      "available": "2026-07-04",
+      "term": "?",
+      "school": "Hale",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 12,
+        "drive_min": 3,
+        "raw": "~12 min walk (3) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": null,
+        "drive_min": 7,
+        "raw": "~7 min drive (est)"
+      },
+      "dist_work_drive_min": 14,
+      "utilities": null,
+      "notes": "Tudor SFH, 4BR/2BA, 2560 sqft. Remodeled kitchen, open floor plan, large finished lower level w/ wet bar, huge back porch + patio, attached garage. Available Jul 4 2026. Pet policy NOT specified in listing \u2014 verify with manager. Hale school zone (F3)."
+    },
+    {
       "id": "3613-w-54th-st-edina",
       "lodging": "3613 W 54th St (Edina duplex)",
       "address": "3613 W 54th St, Edina, MN 55410",
