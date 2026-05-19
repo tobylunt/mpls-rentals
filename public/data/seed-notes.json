@@ -32,13 +32,13 @@
     "5100-xerxes-ave-s": "Seems nice but a bit overpriced. Tour request sent",
     "noko-apartments": "Scheduling a virtual tour.",
     "4457-18th-ave-s": "Seems quite nice tbh. Tour request sent but seems like they don't have any tour slots between the 23rd and 26th.",
-    "sanctuary-lofts": "Request sent.",
+    "sanctuary-lofts": "Virtual tour confirmed Wed 2pm. Maybe Sunday drive-by depending on how it goes.",
     "5432-25th-ave-s": "Seems like a good value! Emily's hood. Tour request sent.",
     "the-collection-c5": "Meh. Tour request sent. Walter (virtual leasing agent, 651-427-1546) confirmed: C5 $3,765/mo on 12-mo lease starting Aug 1, OR $3,370/mo on 10-mo lease starting Jul 24. No tour avail Memorial Day weekend.",
     "1838-jefferson": "Cheap. Katsumi was nice. Mid house on a mid block with a mid school (seemingly).",
     "2079-st-clair": "Hard to know. Tour request sent",
     "4852-drew-ave-s": "Tour request sent.",
-    "linden-flats-washburn": "Virtual tour - in convo with agent. SMALL. Great location. Virtual tour pending."
+    "linden-flats-washburn": "Virtual tour confirmed Wed 1pm. SMALL but great location. Maybe Sunday drive-by depending on how it goes."
   },
   "ratings": {
     "5207-belmont-ave-s": 5,
@@ -91,6 +91,14 @@
     },
     "4937-clinton-ave": {
       "at": "2026-05-23T12:00:00",
+      "status": "confirmed"
+    },
+    "sanctuary-lofts": {
+      "at": "2026-05-20T14:00:00",
+      "status": "confirmed"
+    },
+    "linden-flats-washburn": {
+      "at": "2026-05-20T13:00:00",
       "status": "confirmed"
     }
   },
