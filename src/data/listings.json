@@ -1,6 +1,41 @@
 {
   "listings": [
     {
+      "id": "3613-w-54th-st-edina",
+      "lodging": "3613 W 54th St (Edina duplex)",
+      "address": "3613 W 54th St, Edina, MN 55410",
+      "url": "https://www.zillow.com/homedetails/3613-W-54th-St-Edina-MN-55410/2099073427_zpid/",
+      "image_url": "/images/3613-w-54th-st.jpg",
+      "lat": 44.9052322,
+      "lng": -93.3258082,
+      "bedrooms": 3,
+      "housing_type": "duplex",
+      "neighborhood": "Edina / Creek Knoll",
+      "price": 2200.0,
+      "pet_rent": 50.0,
+      "furnished": false,
+      "parking": "1 garage stall",
+      "size_sqft": 1600.0,
+      "price_per_sqft": 1.38,
+      "available": "Now",
+      "term": "?",
+      "school": "Concord",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": null,
+        "drive_min": 4,
+        "raw": "~4 min drive (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 10,
+        "drive_min": 2,
+        "raw": "~10 min walk (2) (est)"
+      },
+      "dist_work_drive_min": 18,
+      "utilities": "Tenant pays gas + electric + lawn + snow",
+      "notes": "Edina duplex, 3BR/1.5BA, 1600 sqft. Cats+dogs OK (up to 2 pets, 25lb max; $100 refundable pet deposit + $50/mo pet rent per pet, with owner approval). Central AC, in-unit appliances (washer/dryer/dishwasher), 1 garage stall. Concord Elementary (Edina ISD)."
+    },
+    {
       "id": "3100-w-55th-st-edina",
       "lodging": "3100 W 55th St (Edina, mid-century reno)",
       "address": "3100 W 55th St, Edina, MN 55410",
