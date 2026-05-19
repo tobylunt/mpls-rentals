@@ -25,7 +25,7 @@
     "5320-bryant-ave-s": "Tour request sent.",
     "3100-w-55th-st-edina": "Tour request sent.",
     "3613-w-54th-st-edina": "Tour confirmed Sat 2:00-2:30pm.",
-    "4937-clinton-ave": "Tour request sent. Pet policy not in listing — verify with manager.",
+    "4937-clinton-ave": "Tour confirmed Sat 12pm. Pet policy not in listing — verify with manager at tour.",
     "4739-1st-ave-s": "Tour request sent.",
     "5908-oaklawn-ave-edina": "Tour request sent.",
     "4544-bryant-ave-s": "Tour request sent. Listing says 'no pets' but lessor confirmed it's negotiable.",
@@ -87,6 +87,10 @@
     },
     "ff-982084-lynnhurst": {
       "at": "2026-05-24T10:00:00",
+      "status": "confirmed"
+    },
+    "4937-clinton-ave": {
+      "at": "2026-05-23T12:00:00",
       "status": "confirmed"
     }
   },
