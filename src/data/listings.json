@@ -1,6 +1,41 @@
 {
   "listings": [
     {
+      "id": "5908-oaklawn-ave-edina",
+      "lodging": "5908 Oaklawn Ave (Edina, Pamela Park)",
+      "address": "5908 Oaklawn Ave, Edina, MN 55424",
+      "url": "https://www.zillow.com/homedetails/5908-Oaklawn-Ave-Edina-MN-55424/1875823_zpid/",
+      "image_url": "/images/5908-oaklawn-ave.jpg",
+      "lat": 44.8960794,
+      "lng": -93.3366732,
+      "bedrooms": 4,
+      "housing_type": "house",
+      "neighborhood": "Edina / Pamela Park",
+      "price": 3475.0,
+      "pet_rent": "unknown",
+      "furnished": false,
+      "parking": "Detached",
+      "size_sqft": 2000.0,
+      "price_per_sqft": 1.74,
+      "available": "2026-08-01",
+      "term": "?",
+      "school": "Concord",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": null,
+        "drive_min": 5,
+        "raw": "~5 min drive (est)"
+      },
+      "dist_daycare": {
+        "walk_min": null,
+        "drive_min": 4,
+        "raw": "~4 min drive (est)"
+      },
+      "dist_work_drive_min": 20,
+      "utilities": "Tenant pays all",
+      "notes": "Updated 4BR/2BA SFH overlooking Pamela Park, 2000 sqft. New siding/doors, modern kitchen w/ quartz, stainless, fresh paint. Central AC, in-unit laundry. Available Aug 1 2026. Cats+dogs OK. Edina ISD \u2014 Concord Elementary."
+    },
+    {
       "id": "4739-1st-ave-s",
       "lodging": "4739 1st Ave S (Tangletown SFH)",
       "address": "4739 1st Ave S, Minneapolis, MN 55419",
