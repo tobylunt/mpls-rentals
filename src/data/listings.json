@@ -1,6 +1,41 @@
 {
   "listings": [
     {
+      "id": "3100-w-55th-st-edina",
+      "lodging": "3100 W 55th St (Edina, mid-century reno)",
+      "address": "3100 W 55th St, Edina, MN 55410",
+      "url": "https://www.zillow.com/homedetails/3100-W-55th-St-Edina-MN-55410/1885501_zpid/",
+      "image_url": "/images/3100-w-55th-st.jpg",
+      "lat": 44.9034889,
+      "lng": -93.3189033,
+      "bedrooms": 4,
+      "housing_type": "house",
+      "neighborhood": "Edina / Chowen Park",
+      "price": null,
+      "pet_rent": "unknown",
+      "furnished": false,
+      "parking": "1 space",
+      "size_sqft": 1886.0,
+      "price_per_sqft": null,
+      "available": "2026-06-01",
+      "term": "?",
+      "school": "Concord",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": null,
+        "drive_min": 4,
+        "raw": "~4 min drive (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 12,
+        "drive_min": 2,
+        "raw": "~12 min walk (2) (est)"
+      },
+      "dist_work_drive_min": 18,
+      "utilities": null,
+      "notes": "Mid-century SFH, completely renovated (new roof, siding, windows). 4BR/2BA, 1886 sqft. Open floor plan, granite kitchen, gas fireplace, large basement family room, in-basement laundry. Price on request (not listed). Listed by Edina Realty. Edina school district -> Concord Elementary. Pet policy not specified -- verify with manager."
+    },
+    {
       "id": "5320-bryant-ave-s",
       "lodging": "5320 Bryant Ave S (4BR house)",
       "address": "5320 Bryant Ave S, Minneapolis, MN 55419",
