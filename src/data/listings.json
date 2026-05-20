@@ -1,6 +1,41 @@
 {
   "listings": [
     {
+      "id": "abbott-412",
+      "lodging": "The Abbott Unit 412 (Linden Hills apt)",
+      "address": "3405 W 44th St #412, Minneapolis, MN 55410",
+      "url": "https://www.zillow.com/apartments/minneapolis-mn/the-abbott/Cmp9FH/",
+      "image_url": "/images/abbott-412.jpg",
+      "lat": 44.9232727,
+      "lng": -93.3228510,
+      "bedrooms": 2,
+      "housing_type": "apartment",
+      "neighborhood": "Linden Hills",
+      "price": 3683.0,
+      "pet_rent": 50.0,
+      "furnished": false,
+      "parking": "Other parking (verify)",
+      "size_sqft": 1074.0,
+      "price_per_sqft": 3.43,
+      "available": "2026-08-01",
+      "term": "Contact for details",
+      "school": "Lake Harriet",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": 11,
+        "drive_min": 2,
+        "raw": "~11 min walk (2) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 16,
+        "drive_min": 3,
+        "raw": "~16 min walk (3) (est)"
+      },
+      "dist_work_drive_min": 20,
+      "utilities": "Not specified in listing — verify at tour",
+      "notes": "2BR/2BA apartment, 1074 sqft @ $3,683/mo. Built 2023. 9ft ceilings, private balcony, Fisher & Paykel appliances, in-unit LG W/D, central A/C, fitness center, pet washing station. Cats + dogs OK ($50/mo + $250 one-time per pet). Blocks from Lake Harriet. Available Aug 1. Tour requested."
+    },
+    {
       "id": "5536-penn-ave-s",
       "lodging": "5536 Penn Ave S (Armatage duplex)",
       "address": "5536 Penn Ave S, Minneapolis, MN 55419",
