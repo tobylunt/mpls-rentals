@@ -548,6 +548,30 @@ body {
 .compare__best { background: #e8f5e9; font-weight: 600; }
 .compare__row--pros td { background: #f1f8f1; }
 .compare__row--cons td { background: #fef4f3; }
+
+/* Inline-editable cells in compare view. Transparent background so the
+ * row tint (green/red for pros/cons) shows through; light border on focus
+ * to signal interactivity without cluttering the dense grid. */
+.compare__edit {
+  width: 100%;
+  min-width: 140px;
+  font: inherit;
+  font-size: 12px;
+  padding: 4px 6px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  resize: vertical;
+  background: rgba(255,255,255,0.4);
+  box-sizing: border-box;
+}
+.compare__edit:hover { border-color: #ddd; }
+.compare__edit:focus {
+  outline: none;
+  border-color: #1565c0;
+  background: #fff;
+}
+.compare__edit--pros { background: rgba(241,248,241,0.6); }
+.compare__edit--cons { background: rgba(254,244,243,0.6); }
 .compare__sub { font-size: 11px; color: #888; font-weight: normal; }
 .compare__thumb {
   display: block;

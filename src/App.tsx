@@ -193,6 +193,9 @@ export default function App() {
             tours={tours}
             marketStatuses={marketStatuses}
             disqualifications={disqualifications}
+            setNote={setNote}
+            setPros={setPros}
+            setCons={setCons}
             onClose={() => setView("map")}
           />
         )}

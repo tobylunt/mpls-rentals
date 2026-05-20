@@ -7,6 +7,9 @@ type Row = {
   values: (string | number | null)[];
   // Indices of cells that tie for "best". null = no highlight.
   best: Set<number> | null;
+  // If set, this row's cells render as editable textareas wired to the
+  // matching per-listing setter.
+  editable?: "notes" | "pros" | "cons";
 };
 
 function bestIndices(values: (number | null)[], dir: "min" | "max"): Set<number> | null {
@@ -38,6 +41,9 @@ export function CompareView({
   tours,
   marketStatuses,
   disqualifications,
+  setNote,
+  setPros,
+  setCons,
   onClose,
 }: {
   listings: Listing[];
@@ -50,6 +56,9 @@ export function CompareView({
   tours: Tours;
   marketStatuses: MarketStatuses;
   disqualifications: Disqualifications;
+  setNote: (id: string, text: string) => void;
+  setPros: (id: string, text: string) => void;
+  setCons: (id: string, text: string) => void;
   onClose: () => void;
 }) {
   if (listings.length === 0) {
@@ -96,16 +105,19 @@ export function CompareView({
       label: "Your notes",
       values: listings.map((l) => notes[l.id] ?? ""),
       best: null,
+      editable: "notes",
     },
     {
       label: "Pros",
       values: listings.map((l) => pros[l.id] ?? ""),
       best: null,
+      editable: "pros",
     },
     {
       label: "Cons",
       values: listings.map((l) => cons[l.id] ?? ""),
       best: null,
+      editable: "cons",
     },
     {
       label: "Price",
@@ -236,12 +248,24 @@ export function CompareView({
               const tint =
                 r.label === "Pros" ? "compare__row--pros" :
                 r.label === "Cons" ? "compare__row--cons" : "";
+              const setter =
+                r.editable === "notes" ? setNote :
+                r.editable === "pros" ? setPros :
+                r.editable === "cons" ? setCons : null;
               return (
                 <tr key={r.label} className={tint}>
                   <th>{r.label}</th>
                   {r.values.map((v, i) => (
                     <td key={i} className={r.best?.has(i) ? "compare__best" : ""}>
-                      {v == null ? "—" : v.toString()}
+                      {setter ? (
+                        <textarea
+                          className={`compare__edit compare__edit--${r.editable}`}
+                          value={(v ?? "").toString()}
+                          placeholder={r.editable === "notes" ? "Notes…" : r.editable === "pros" ? "Pros…" : "Cons…"}
+                          onChange={(e) => setter(listings[i].id, e.target.value)}
+                          rows={4}
+                        />
+                      ) : v == null ? "—" : v.toString()}
                     </td>
                   ))}
                 </tr>
