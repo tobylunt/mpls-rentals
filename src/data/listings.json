@@ -1,6 +1,41 @@
 {
   "listings": [
     {
+      "id": "5525-vincent-ave-s",
+      "lodging": "5525 Vincent Ave S (Armatage SFH)",
+      "address": "5525 Vincent Ave S, Minneapolis, MN 55410",
+      "url": "https://www.apartments.com/5525-vincent-ave-s-minneapolis-mn/k33fe99/",
+      "image_url": "/images/5525-vincent-ave-s.jpg",
+      "lat": 44.9029337,
+      "lng": -93.3161854,
+      "bedrooms": 4,
+      "housing_type": "house",
+      "neighborhood": "Armatage",
+      "price": 2400.0,
+      "pet_rent": "no pets allowed (verify w/ owner)",
+      "furnished": false,
+      "parking": "2 off-street + on-street",
+      "size_sqft": 2100.0,
+      "price_per_sqft": 1.14,
+      "available": "2026-07-18",
+      "term": "12 month lease",
+      "school": "Armatage",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": 6,
+        "drive_min": 1,
+        "raw": "~6 min walk (1) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 17,
+        "drive_min": 4,
+        "raw": "~17 min walk (4) (est)"
+      },
+      "dist_work_drive_min": 20,
+      "utilities": "Not specified — verify at tour",
+      "notes": "4BR/2BA 1.5-story house, 2100 sqft. Fresh paint, new LVP in basement, hardwood on main, basement, A/C, dishwasher, washer/dryer included. 2 off-street parking spots + on-street. $2,400 deposit. Listing says NO PETS — verify negotiability at tour. Armatage attendance area (E2), Anthony Middle, Southwest HS. Burroughs ~1 mi away if school flexibility matters."
+    },
+    {
       "id": "5908-oaklawn-ave-edina",
       "lodging": "5908 Oaklawn Ave (Edina, Pamela Park)",
       "address": "5908 Oaklawn Ave, Edina, MN 55424",
@@ -489,7 +524,8 @@
       },
       "dist_work_drive_min": 13,
       "utilities": "Tenant pays heat + electric",
-      "notes": "Townhome/duplex unit. Pets OK with $50/mo pet rent."
+      "notes": "Townhome/duplex unit. Pets OK with $50/mo pet rent.",
+      "status": "removed"
     },
     {
       "id": "4934-lyndale-ave-s-2",

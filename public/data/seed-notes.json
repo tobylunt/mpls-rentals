@@ -3,7 +3,8 @@
   "notes": {
     "5207-belmont-ave-s": "Large, right by the greenway, affordable, burroughs school. TL reached out on Zillow on 5/16.",
     "4934-lyndale-ave-s-2": "Looks like a busier street. Tour request sent.",
-    "4749-harriet-ave-2": "Tour tentatively scheduled for saturday",
+    "4749-harriet-ave-2": "Off market as of 5/19. Drat.",
+    "5525-vincent-ave-s": "Tour CONFIRMED Sun 11am. Listing says no pets — verify negotiable. Armatage school zone (not Burroughs).",
     "4641-lyndale-ave-s": "Seems a little run down. Tour request sent on Zillow.",
     "4311-abbott-ave-s-2": "Tour request sent.",
     "4453-york-ave-s": "Pricey but otherwise perfect. Tour cancelled.",
@@ -58,10 +59,6 @@
     "2079-st-clair": 3
   },
   "tours": {
-    "4749-harriet-ave-2": {
-      "at": "2026-05-23T15:00:00",
-      "status": "confirmed"
-    },
     "4927-ewing-ave-s-3": {
       "at": "2026-05-23T10:00:00",
       "status": "confirmed"
@@ -84,6 +81,10 @@
     },
     "ff-982084-lynnhurst": {
       "at": "2026-05-24T10:00:00",
+      "status": "confirmed"
+    },
+    "5525-vincent-ave-s": {
+      "at": "2026-05-24T11:00:00",
       "status": "confirmed"
     },
     "4937-clinton-ave": {
@@ -120,6 +121,7 @@
       "date": "2026-05-24",
       "stops": [
         { "kind": "school", "name": "Burroughs", "note": "shortlist school" },
+        { "kind": "listing", "id": "5525-vincent-ave-s", "note": "11am tour" },
         { "kind": "listing", "id": "linden-flats-washburn", "note": "Wed virtual → drive-by" },
         { "kind": "school", "name": "Lake Harriet", "note": "shortlist school" },
         { "kind": "school", "name": "Concord", "note": "Edina shortlist school" },
