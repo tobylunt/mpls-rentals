@@ -1,6 +1,41 @@
 {
   "listings": [
     {
+      "id": "5536-penn-ave-s",
+      "lodging": "5536 Penn Ave S (Armatage duplex)",
+      "address": "5536 Penn Ave S, Minneapolis, MN 55419",
+      "url": "https://www.zillow.com/homedetails/5536-Penn-Ave-S-Minneapolis-MN-55419/1885038_zpid/",
+      "image_url": "/images/5536-penn-ave-s.jpg",
+      "lat": 44.9026616,
+      "lng": -93.3087257,
+      "bedrooms": 3,
+      "housing_type": "duplex",
+      "neighborhood": "Armatage",
+      "price": 2465.0,
+      "pet_rent": 45.0,
+      "furnished": false,
+      "parking": "1-car detached garage (auto opener)",
+      "size_sqft": 1200.0,
+      "price_per_sqft": 2.05,
+      "available": "2026-08-01",
+      "term": "1 year",
+      "school": "Armatage",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": 4,
+        "drive_min": 1,
+        "raw": "~4 min walk (1) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 13,
+        "drive_min": 3,
+        "raw": "~13 min walk (3) (est)"
+      },
+      "dist_work_drive_min": 18,
+      "utilities": "Tenant pays electricity + gas. Owner pays water, garbage, lawn care.",
+      "notes": "Refurbished duplex townhouse, 3BR/1BA, 1200 sqft. New kitchen (quartz, SS, gas range), in-unit W/D, central air. Cats + dogs OK ($45/mo). Available Aug 1. Steps from Armatage Park; 8 blocks to Lake Harriet. Tour requested."
+    },
+    {
       "id": "5525-vincent-ave-s",
       "lodging": "5525 Vincent Ave S (Armatage SFH)",
       "address": "5525 Vincent Ave S, Minneapolis, MN 55410",
