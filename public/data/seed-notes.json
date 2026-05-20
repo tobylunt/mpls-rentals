@@ -8,7 +8,7 @@
     "5536-penn-ave-s": "Tour request sent. Armatage neighborhood, refurbished duplex, cats+dogs OK. Zillow Apps: request only.",
     "abbott-412": "Tour requested. The Abbott unit 412 (2BR Linden Hills luxury apt, built 2023). Pricey but pet-friendly + Lake Harriet school. Zillow Apps: building has own portal (multi-unit).",
     "4641-lyndale-ave-s": "Seems a little run down. Tour request sent on Zillow.",
-    "4311-abbott-ave-s-2": "Tour request sent.",
+    "4311-abbott-ave-s-2": "Tour pencilled in Sat 3pm — not confirmed yet.",
     "4453-york-ave-s": "Pricey but otherwise perfect. Tour cancelled.",
     "4009-ewing-ave-s": "Not sure on value for money. Right by school. Tour pending for sunday morning",
     "4927-ewing-ave-s-3": "Tour CONFIRMED Sat 10am with John (lessor).",
@@ -64,6 +64,10 @@
     "4927-ewing-ave-s-3": {
       "at": "2026-05-23T10:00:00",
       "status": "confirmed"
+    },
+    "4311-abbott-ave-s-2": {
+      "at": "2026-05-23T15:00:00",
+      "status": "scheduled"
     },
     "4804-france-ave-s-2": {
       "at": "2026-05-23T16:30:00",
