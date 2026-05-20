@@ -3,7 +3,7 @@ import { Map } from "./components/Map";
 import { FilterBar, applyFilters, defaultFilters, type Filters } from "./components/FilterBar";
 import { ListingList, type SortKey } from "./components/ListingList";
 import { CompareView } from "./components/CompareView";
-import { ItineraryPanel } from "./components/Itinerary";
+import { ItineraryPanel, resolveStops } from "./components/Itinerary";
 import { data } from "./data";
 import { useUserData } from "./userdata";
 
@@ -33,6 +33,20 @@ export default function App() {
     flyKey.current += 1;
     setFlyToPoint({ lat, lng, key: flyKey.current });
   }
+  // Track which itinerary panels are expanded so the map can draw numbered
+  // markers for their stops while the panel is open.
+  const [expandedItins, setExpandedItins] = useState<Set<string>>(new Set());
+  const itineraryStops = useMemo(() => {
+    const all: { key: string; num: number; lat: number; lng: number; label: string }[] = [];
+    for (const [key, itin] of Object.entries(itineraries)) {
+      if (!expandedItins.has(key)) continue;
+      const stops = resolveStops(itin, data.listings, data.schools);
+      stops.forEach((s, i) => {
+        all.push({ key: `${key}-${i}`, num: i + 1, lat: s.lat, lng: s.lng, label: s.label });
+      });
+    }
+    return all;
+  }, [itineraries, expandedItins]);
   const [filters, setFilters] = useState<Filters>(() => defaultFilters(data.listings));
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [sortKey, setSortKey] = useState<SortKey>("chain");
@@ -109,6 +123,14 @@ export default function App() {
                   listings={data.listings}
                   schools={data.schools}
                   onFlyTo={flyTo}
+                  onToggle={(open) =>
+                    setExpandedItins((prev) => {
+                      const next = new Set(prev);
+                      if (open) next.add(key);
+                      else next.delete(key);
+                      return next;
+                    })
+                  }
                 />
               ))}
               <ListingList
@@ -144,6 +166,7 @@ export default function App() {
                 tours={tours}
                 marketStatuses={marketStatuses}
                 flyToPoint={flyToPoint}
+                itineraryStops={itineraryStops}
                 setNote={setNote}
                 setRating={setRating}
                 setDisqualification={setDisqualification}

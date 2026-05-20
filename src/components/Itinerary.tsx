@@ -1,7 +1,7 @@
 import { type Listing, type Place } from "../data";
 import { type Itinerary as ItineraryT } from "../userdata";
 
-type ResolvedStop = {
+export type ResolvedStop = {
   label: string;
   sub?: string;
   lat: number;
@@ -9,7 +9,7 @@ type ResolvedStop = {
   note?: string;
 };
 
-function resolveStops(
+export function resolveStops(
   itin: ItineraryT,
   listings: Listing[],
   schools: Place[]
@@ -55,17 +55,22 @@ export function ItineraryPanel({
   listings,
   schools,
   onFlyTo,
+  onToggle,
 }: {
   itinerary: ItineraryT;
   listings: Listing[];
   schools: Place[];
   onFlyTo: (lat: number, lng: number) => void;
+  onToggle?: (open: boolean) => void;
 }) {
   const stops = resolveStops(itinerary, listings, schools);
   if (stops.length === 0) return null;
 
   return (
-    <details className="itinerary">
+    <details
+      className="itinerary"
+      onToggle={(e) => onToggle?.(e.currentTarget.open)}
+    >
       <summary className="itinerary__summary">
         🚗 {itinerary.label} ({stops.length})
       </summary>

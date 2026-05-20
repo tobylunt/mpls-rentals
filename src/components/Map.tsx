@@ -80,6 +80,17 @@ const SCHOOL_ICON = placeIcon("🎓", "school");
 const DAYCARE_ICON = placeIcon("🧸", "daycare");
 const WORK_ICON = placeIcon("💼", "work");
 
+// Amber numbered circle that matches the .itinerary__num style in the side
+// panel — drawn on the map when an itinerary panel is expanded.
+function itineraryNumIcon(num: number): L.DivIcon {
+  return L.divIcon({
+    className: "itinerary-pin",
+    html: `<span class="itinerary-pin__num">${num}</span>`,
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
+  });
+}
+
 function ChainLines({
   selected,
   schools,
@@ -175,6 +186,7 @@ export function Map({
   tours,
   marketStatuses,
   flyToPoint,
+  itineraryStops,
   setNote,
   setRating,
   setDisqualification,
@@ -193,6 +205,7 @@ export function Map({
   tours: Tours;
   marketStatuses: MarketStatuses;
   flyToPoint: { lat: number; lng: number; key: number } | null;
+  itineraryStops: { key: string; num: number; lat: number; lng: number; label: string }[];
   setNote: (id: string, text: string) => void;
   setRating: (id: string, rating: number | null) => void;
   setDisqualification: (id: string, reason: string | null) => void;
@@ -297,6 +310,15 @@ export function Map({
       {selected && selected.lat != null && selected.lng != null ? (
         <ChainLines selected={selected} schools={schools} daycares={daycares} />
       ) : null}
+      {itineraryStops.map((s) => (
+        <Marker
+          key={s.key}
+          position={[s.lat, s.lng]}
+          icon={itineraryNumIcon(s.num)}
+          zIndexOffset={1000}
+          interactive={false}
+        />
+      ))}
       <LayersControl position="topright">
         <LayersControl.Overlay name="Elem zones">
           <LayerGroup>

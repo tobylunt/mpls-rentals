@@ -404,6 +404,29 @@ body {
 }
 .itinerary__gmaps:hover { text-decoration: underline; }
 
+/* On-map version of the amber numbered circle. Same color/shape as the
+ * .itinerary__num chips in the side panel, just bigger so it's legible
+ * against the basemap and outlined in white to pop over other pins. */
+.itinerary-pin {
+  background: none;
+  border: none;
+}
+.itinerary-pin__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #b35400;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  box-shadow: 0 0 0 2px #fff, 0 2px 4px rgba(0,0,0,0.3);
+  line-height: 1;
+}
+
 .popup { font-size: 12px; line-height: 1.4; }
 .popup__head { display: flex; align-items: center; gap: 8px; }
 .popup__star {
