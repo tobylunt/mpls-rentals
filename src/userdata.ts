@@ -149,6 +149,12 @@ export function useUserData() {
           return;
         }
         const seedShortlist = (seed?.shortlist ?? []) as Shortlist;
+        // Explicit removals: IDs listed here are dropped from the merged
+        // shortlist so I can authoritatively unstar items via the seed file
+        // (the regular shortlist merge is union-only, so just removing from
+        // the seed array wouldn't propagate to existing localStorage state).
+        const seedRemove = new Set<string>(((seed?.shortlistRemove ?? []) as string[]));
+        const dropRemoved = (ids: string[]) => ids.filter((id) => !seedRemove.has(id));
         if (wasEmpty.current) {
           wasEmpty.current = false;
           setData((prev) => ({
@@ -158,8 +164,8 @@ export function useUserData() {
             marketStatuses: seed?.marketStatuses ?? {},
             disqualifications: seed?.disqualifications ?? {},
             // If localStorage had a legacy shortlist, prefer it; otherwise
-            // use the seed's.
-            shortlist: prev.shortlist.length > 0 ? prev.shortlist : seedShortlist,
+            // use the seed's. Apply removals either way.
+            shortlist: dropRemoved(prev.shortlist.length > 0 ? prev.shortlist : seedShortlist),
             itineraries: (seed?.itineraries ?? {}) as Itineraries,
           }));
         } else {
@@ -178,7 +184,7 @@ export function useUserData() {
             tours: (seed?.tours ?? {}) as Tours,
             marketStatuses: (seed?.marketStatuses ?? {}) as MarketStatuses,
             disqualifications: { ...prev.disqualifications, ...((seed?.disqualifications ?? {}) as Disqualifications) },
-            shortlist: [...new Set([...prev.shortlist, ...seedShortlist])],
+            shortlist: dropRemoved([...new Set([...prev.shortlist, ...seedShortlist])]),
             // Itineraries: full replace, seed is authoritative (no in-app
             // editing UI for them).
             itineraries: (seed?.itineraries ?? {}) as Itineraries,
