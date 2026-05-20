@@ -6,6 +6,9 @@ const SEED_URL = `${import.meta.env.BASE_URL}data/seed-notes.json`;
 export type Notes = Record<string, string>;
 export type Pros = Record<string, string>;
 export type Cons = Record<string, string>;
+// Per-listing application URL captured from the agent (apartments.com,
+// AppFolio, Zillow Apps, etc.). Empty/absent means "haven't applied yet".
+export type Applications = Record<string, string>;
 export type Ratings = Record<string, number>; // 1-5
 
 export type TourStatus = "scheduled" | "confirmed";
@@ -86,6 +89,7 @@ type Stored = {
   notes: Notes;
   pros: Pros;
   cons: Cons;
+  applications: Applications;
   ratings: Ratings;
   tours: Tours;
   marketStatuses: MarketStatuses;
@@ -95,7 +99,7 @@ type Stored = {
 };
 
 function emptyStored(): Stored {
-  return { notes: {}, pros: {}, cons: {}, ratings: {}, tours: {}, marketStatuses: {}, disqualifications: {}, shortlist: [], itineraries: {} };
+  return { notes: {}, pros: {}, cons: {}, applications: {}, ratings: {}, tours: {}, marketStatuses: {}, disqualifications: {}, shortlist: [], itineraries: {} };
 }
 
 function read(): Stored {
@@ -118,6 +122,7 @@ function read(): Stored {
       notes: parsed?.notes ?? {},
       pros: parsed?.pros ?? {},
       cons: parsed?.cons ?? {},
+      applications: parsed?.applications ?? {},
       ratings: parsed?.ratings ?? {},
       tours: parsed?.tours ?? {},
       marketStatuses: parsed?.marketStatuses ?? {},
@@ -167,6 +172,7 @@ export function useUserData() {
             notes: seed?.notes ?? {},
             pros: seed?.pros ?? {},
             cons: seed?.cons ?? {},
+            applications: seed?.applications ?? {},
             ratings: seed?.ratings ?? {},
             tours: seed?.tours ?? {},
             marketStatuses: seed?.marketStatuses ?? {},
@@ -190,6 +196,7 @@ export function useUserData() {
             notes: { ...prev.notes, ...((seed?.notes ?? {}) as Notes) },
             pros: { ...prev.pros, ...((seed?.pros ?? {}) as Pros) },
             cons: { ...prev.cons, ...((seed?.cons ?? {}) as Cons) },
+            applications: { ...prev.applications, ...((seed?.applications ?? {}) as Applications) },
             ratings: { ...prev.ratings, ...((seed?.ratings ?? {}) as Ratings) },
             tours: (seed?.tours ?? {}) as Tours,
             marketStatuses: (seed?.marketStatuses ?? {}) as MarketStatuses,
@@ -243,6 +250,15 @@ export function useUserData() {
       if (text.trim() === "") delete cons[id];
       else cons[id] = text;
       return { ...prev, cons };
+    });
+  }, []);
+
+  const setApplication = useCallback((id: string, url: string) => {
+    setData((prev) => {
+      const applications = { ...prev.applications };
+      if (url.trim() === "") delete applications[id];
+      else applications[id] = url.trim();
+      return { ...prev, applications };
     });
   }, []);
 
@@ -318,6 +334,7 @@ export function useUserData() {
       const incomingNotes = (parsed?.notes ?? {}) as Notes;
       const incomingPros = (parsed?.pros ?? {}) as Pros;
       const incomingCons = (parsed?.cons ?? {}) as Cons;
+      const incomingApps = (parsed?.applications ?? {}) as Applications;
       const incomingRatings = (parsed?.ratings ?? {}) as Ratings;
       const incomingTours = (parsed?.tours ?? {}) as Tours;
       const incomingMarket = (parsed?.marketStatuses ?? {}) as MarketStatuses;
@@ -344,6 +361,10 @@ export function useUserData() {
         const cons = { ...prev.cons };
         for (const [id, val] of Object.entries(incomingCons)) {
           if (typeof val === "string" && val.trim() !== "") cons[id] = val;
+        }
+        const applications = { ...prev.applications };
+        for (const [id, val] of Object.entries(incomingApps)) {
+          if (typeof val === "string" && val.trim() !== "") applications[id] = val.trim();
         }
         const ratings = { ...prev.ratings };
         for (const [id, val] of Object.entries(incomingRatings)) {
@@ -380,7 +401,7 @@ export function useUserData() {
             shortlistCount++;
           }
         }
-        return { notes, pros, cons, ratings, tours, marketStatuses, disqualifications, shortlist: [...shortlistSet], itineraries: prev.itineraries };
+        return { notes, pros, cons, applications, ratings, tours, marketStatuses, disqualifications, shortlist: [...shortlistSet], itineraries: prev.itineraries };
       });
       return { notesCount, ratingsCount, toursCount, marketStatusCount, disqualificationCount, shortlistCount };
     },
@@ -391,6 +412,7 @@ export function useUserData() {
     notes: data.notes,
     pros: data.pros,
     cons: data.cons,
+    applications: data.applications,
     ratings: data.ratings,
     tours: data.tours,
     marketStatuses: data.marketStatuses,
@@ -400,6 +422,7 @@ export function useUserData() {
     setNote,
     setPros,
     setCons,
+    setApplication,
     setRating,
     setTour,
     setMarketStatus,

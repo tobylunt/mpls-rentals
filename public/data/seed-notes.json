@@ -134,6 +134,9 @@
     "4544-bryant-ave-s": "No tour availability at our times + marginal place",
     "3100-w-55th-st-edina": "landlord said street is too busy - not great for kids."
   },
+  "applications": {
+    "sanctuary-lofts": "https://appfol.io/v0OrPJbm"
+  },
   "itineraries": {
     "sunday-drive-by": {
       "label": "Sunday self-guided",

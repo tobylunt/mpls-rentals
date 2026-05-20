@@ -47,11 +47,13 @@ export function ListingPopup({
   note,
   pros,
   cons,
+  application,
   rating,
   disqualification,
   onNoteChange,
   onProsChange,
   onConsChange,
+  onApplicationChange,
   onRatingChange,
   onDisqualificationChange,
 }: {
@@ -63,11 +65,13 @@ export function ListingPopup({
   note: string;
   pros: string;
   cons: string;
+  application: string;
   rating: number;
   disqualification: string;
   onNoteChange: (text: string) => void;
   onProsChange: (text: string) => void;
   onConsChange: (text: string) => void;
+  onApplicationChange: (url: string) => void;
   onRatingChange: (rating: number | null) => void;
   onDisqualificationChange: (reason: string | null) => void;
 }) {
@@ -177,6 +181,29 @@ export function ListingPopup({
           </button>
         )}
       </div>
+      <div className="popup__app">
+        <label className="popup__app-label">Application URL</label>
+        <div className="popup__app-row">
+          <input
+            type="url"
+            className="popup__app-input"
+            placeholder="Paste from agent…"
+            value={application}
+            onChange={(e) => onApplicationChange(e.target.value)}
+          />
+          {application ? (
+            <a
+              href={application}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="popup__app-go"
+              title="Open application"
+            >
+              Apply →
+            </a>
+          ) : null}
+        </div>
+      </div>
       <hr />
       <div>School: {listing.school ?? "—"} ({fmtDist(listing.dist_school)})</div>
       <div>Daycare: {listing.daycare ?? "—"} ({fmtDist(listing.dist_daycare)})</div>
@@ -186,7 +213,7 @@ export function ListingPopup({
       <div>Parking: {listing.parking ?? "—"}</div>
       <div>Pet rent: {listing.pet_rent === "unknown" ? "?" : listing.pet_rent ?? "—"}</div>
       <div>Furnished: {listing.furnished == null ? "—" : listing.furnished ? "Yes" : "No"}</div>
-      <div>Available: {listing.available || "—"}</div>
+      <div>Move-in date: {listing.available || "—"}</div>
       <div>Term: {listing.term ?? "—"}</div>
       <div>Utilities: {listing.utilities ?? "—"}</div>
       {listing.notes ? <div className="popup__notes">{listing.notes}</div> : null}

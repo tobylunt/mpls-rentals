@@ -593,6 +593,68 @@ body {
   border-color: #efcbc7;
 }
 .compare__edit--cons:hover { border-color: #d99e98; }
+
+/* Single-line application URL input + adjacent Apply badge. The badge
+ * only renders when the URL is set, so the layout collapses cleanly when
+ * the field is empty. */
+.compare__app {
+  display: flex;
+  gap: 6px;
+  align-items: stretch;
+}
+.compare__edit--application {
+  flex: 1;
+  min-height: 30px;
+  field-sizing: auto;
+}
+.compare__app-go {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  background: #1565c0;
+  border-radius: 4px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.compare__app-go:hover { background: #0d4a99; }
+
+/* Popup version: same structure, scoped class. */
+.popup__app { margin-top: 8px; }
+.popup__app-label {
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #777;
+  margin-bottom: 3px;
+}
+.popup__app-row { display: flex; gap: 6px; }
+.popup__app-input {
+  flex: 1;
+  font: inherit;
+  font-size: 12px;
+  padding: 4px 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.popup__app-input:focus { outline: none; border-color: #1565c0; }
+.popup__app-go {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  background: #1565c0;
+  border-radius: 4px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.popup__app-go:hover { background: #0d4a99; }
 .compare__sub { font-size: 11px; color: #888; font-weight: normal; }
 .compare__thumb {
   display: block;

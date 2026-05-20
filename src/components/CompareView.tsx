@@ -1,5 +1,5 @@
 import { type Listing, type Place } from "../data";
-import { type Notes, type Pros, type Cons, type Ratings, type Tours, type MarketStatuses, type Disqualifications } from "../userdata";
+import { type Notes, type Pros, type Cons, type Applications, type Ratings, type Tours, type MarketStatuses, type Disqualifications } from "../userdata";
 import { chainTimeFor, formatTour, marketStatusLabel } from "./ListingCard";
 
 type Row = {
@@ -7,9 +7,11 @@ type Row = {
   values: (string | number | null)[];
   // Indices of cells that tie for "best". null = no highlight.
   best: Set<number> | null;
-  // If set, this row's cells render as editable textareas wired to the
-  // matching per-listing setter.
-  editable?: "notes" | "pros" | "cons";
+  // If set, this row's cells render as editable inputs wired to the
+  // matching per-listing setter. `application` cells are a single-line url
+  // input with a clickable "Apply →" badge when populated; the others are
+  // multi-line textareas.
+  editable?: "notes" | "pros" | "cons" | "application";
 };
 
 function bestIndices(values: (number | null)[], dir: "min" | "max"): Set<number> | null {
@@ -37,6 +39,7 @@ export function CompareView({
   notes,
   pros,
   cons,
+  applications,
   ratings,
   tours,
   marketStatuses,
@@ -44,6 +47,7 @@ export function CompareView({
   setNote,
   setPros,
   setCons,
+  setApplication,
   onClose,
 }: {
   listings: Listing[];
@@ -52,6 +56,7 @@ export function CompareView({
   notes: Notes;
   pros: Pros;
   cons: Cons;
+  applications: Applications;
   ratings: Ratings;
   tours: Tours;
   marketStatuses: MarketStatuses;
@@ -59,6 +64,7 @@ export function CompareView({
   setNote: (id: string, text: string) => void;
   setPros: (id: string, text: string) => void;
   setCons: (id: string, text: string) => void;
+  setApplication: (id: string, url: string) => void;
   onClose: () => void;
 }) {
   if (listings.length === 0) {
@@ -89,9 +95,10 @@ export function CompareView({
       best: null,
     },
     {
-      label: "Disqualified",
-      values: listings.map((l) => (disqualifications[l.id] ? `👎 ${disqualifications[l.id]}` : "—")),
+      label: "Application",
+      values: listings.map((l) => applications[l.id] ?? ""),
       best: null,
+      editable: "application",
     },
     {
       label: "Your rating",
@@ -185,7 +192,7 @@ export function CompareView({
       best: null,
     },
     {
-      label: "Available",
+      label: "Move-in date",
       values: listings.map((l) => l.available),
       best: null,
     },
@@ -202,6 +209,11 @@ export function CompareView({
     {
       label: "Notes",
       values: listings.map((l) => l.notes),
+      best: null,
+    },
+    {
+      label: "Disqualified",
+      values: listings.map((l) => (disqualifications[l.id] ? `👎 ${disqualifications[l.id]}` : "—")),
       best: null,
     },
   ];
@@ -251,13 +263,35 @@ export function CompareView({
               const setter =
                 r.editable === "notes" ? setNote :
                 r.editable === "pros" ? setPros :
-                r.editable === "cons" ? setCons : null;
+                r.editable === "cons" ? setCons :
+                r.editable === "application" ? setApplication : null;
               return (
                 <tr key={r.label} className={tint}>
                   <th>{r.label}</th>
                   {r.values.map((v, i) => (
                     <td key={i} className={r.best?.has(i) ? "compare__best" : ""}>
-                      {setter ? (
+                      {setter && r.editable === "application" ? (
+                        <div className="compare__app">
+                          <input
+                            type="url"
+                            className="compare__edit compare__edit--application"
+                            value={(v ?? "").toString()}
+                            placeholder="Paste application URL…"
+                            onChange={(e) => setter(listings[i].id, e.target.value)}
+                          />
+                          {v ? (
+                            <a
+                              className="compare__app-go"
+                              href={v.toString()}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title="Open application"
+                            >
+                              Apply →
+                            </a>
+                          ) : null}
+                        </div>
+                      ) : setter ? (
                         <textarea
                           className={`compare__edit compare__edit--${r.editable}`}
                           value={(v ?? "").toString()}

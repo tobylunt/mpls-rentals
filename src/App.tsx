@@ -12,6 +12,7 @@ export default function App() {
     notes,
     pros,
     cons,
+    applications,
     ratings,
     tours,
     marketStatuses,
@@ -21,6 +22,7 @@ export default function App() {
     setNote,
     setPros,
     setCons,
+    setApplication,
     setRating,
     setDisqualification,
     toggleShortlist,
@@ -167,6 +169,7 @@ export default function App() {
                 notes={notes}
                 pros={pros}
                 cons={cons}
+                applications={applications}
                 ratings={ratings}
                 disqualifications={disqualifications}
                 tours={tours}
@@ -176,6 +179,7 @@ export default function App() {
                 setNote={setNote}
                 setPros={setPros}
                 setCons={setCons}
+                setApplication={setApplication}
                 setRating={setRating}
                 setDisqualification={setDisqualification}
               />
@@ -189,6 +193,7 @@ export default function App() {
             notes={notes}
             pros={pros}
             cons={cons}
+            applications={applications}
             ratings={ratings}
             tours={tours}
             marketStatuses={marketStatuses}
@@ -196,6 +201,7 @@ export default function App() {
             setNote={setNote}
             setPros={setPros}
             setCons={setCons}
+            setApplication={setApplication}
             onClose={() => setView("map")}
           />
         )}

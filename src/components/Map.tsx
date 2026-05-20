@@ -14,7 +14,7 @@ import L from "leaflet";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { FeatureCollection, Feature } from "geojson";
 import { type Listing, type Place } from "../data";
-import { type Notes, type Pros, type Cons, type Ratings, type Disqualifications, type Tours, type MarketStatuses, statusLabel } from "../userdata";
+import { type Notes, type Pros, type Cons, type Applications, type Ratings, type Disqualifications, type Tours, type MarketStatuses, statusLabel } from "../userdata";
 import { ListingPopup } from "./ListingPopup";
 
 const MPLS_CENTER: [number, number] = [44.93, -93.27];
@@ -183,6 +183,7 @@ export function Map({
   notes,
   pros,
   cons,
+  applications,
   ratings,
   disqualifications,
   tours,
@@ -192,6 +193,7 @@ export function Map({
   setNote,
   setPros,
   setCons,
+  setApplication,
   setRating,
   setDisqualification,
 }: {
@@ -206,6 +208,7 @@ export function Map({
   notes: Notes;
   pros: Pros;
   cons: Cons;
+  applications: Applications;
   ratings: Ratings;
   disqualifications: Disqualifications;
   tours: Tours;
@@ -215,6 +218,7 @@ export function Map({
   setNote: (id: string, text: string) => void;
   setPros: (id: string, text: string) => void;
   setCons: (id: string, text: string) => void;
+  setApplication: (id: string, url: string) => void;
   setRating: (id: string, rating: number | null) => void;
   setDisqualification: (id: string, reason: string | null) => void;
 }) {
@@ -389,11 +393,13 @@ export function Map({
                       note={notes[l.id] ?? ""}
                       pros={pros[l.id] ?? ""}
                       cons={cons[l.id] ?? ""}
+                      application={applications[l.id] ?? ""}
                       rating={ratings[l.id] ?? 0}
                       disqualification={disqualifications[l.id] ?? ""}
                       onNoteChange={(text) => setNote(l.id, text)}
                       onProsChange={(text) => setPros(l.id, text)}
                       onConsChange={(text) => setCons(l.id, text)}
+                      onApplicationChange={(url) => setApplication(l.id, url)}
                       onRatingChange={(r) => setRating(l.id, r)}
                       onDisqualificationChange={(reason) => setDisqualification(l.id, reason)}
                     />
