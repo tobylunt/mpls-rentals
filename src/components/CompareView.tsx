@@ -261,9 +261,9 @@ export function CompareView({
                         <textarea
                           className={`compare__edit compare__edit--${r.editable}`}
                           value={(v ?? "").toString()}
-                          placeholder={r.editable === "notes" ? "Notes…" : r.editable === "pros" ? "Pros…" : "Cons…"}
+                          placeholder={r.editable === "notes" ? "Add a note…" : r.editable === "pros" ? "+ Pros" : "− Cons"}
                           onChange={(e) => setter(listings[i].id, e.target.value)}
-                          rows={4}
+                          rows={2}
                         />
                       ) : v == null ? "—" : v.toString()}
                     </td>

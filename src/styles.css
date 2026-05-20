@@ -546,32 +546,53 @@ body {
   white-space: nowrap;
 }
 .compare__best { background: #e8f5e9; font-weight: 600; }
-.compare__row--pros td { background: #f1f8f1; }
-.compare__row--cons td { background: #fef4f3; }
+.compare__row--pros td { background: #f4faf4; }
+.compare__row--cons td { background: #fdf6f5; }
 
-/* Inline-editable cells in compare view. Transparent background so the
- * row tint (green/red for pros/cons) shows through; light border on focus
- * to signal interactivity without cluttering the dense grid. */
+/* Inline-editable cells in compare view.
+ *
+ * field-sizing: content makes the textarea auto-grow with content
+ * (Chrome 123+ / Edge), so empty cells stay compact (~min-height) and
+ * filled cells expand to fit instead of clipping to scrollbars. Browsers
+ * without support fall back to rows=2 + max-height for scroll. */
 .compare__edit {
   width: 100%;
-  min-width: 140px;
+  min-width: 160px;
+  min-height: 36px;
+  max-height: 240px;
+  field-sizing: content;
   font: inherit;
   font-size: 12px;
-  padding: 4px 6px;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  resize: vertical;
-  background: rgba(255,255,255,0.4);
+  line-height: 1.4;
+  padding: 6px 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  resize: none;
+  background: #fff;
+  color: #222;
   box-sizing: border-box;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
 }
-.compare__edit:hover { border-color: #ddd; }
+.compare__edit::placeholder {
+  color: #b0b0b0;
+  font-style: italic;
+}
+.compare__edit:hover { border-color: #b0b0b0; }
 .compare__edit:focus {
   outline: none;
   border-color: #1565c0;
-  background: #fff;
+  box-shadow: 0 0 0 2px rgba(21,101,192,0.15);
 }
-.compare__edit--pros { background: rgba(241,248,241,0.6); }
-.compare__edit--cons { background: rgba(254,244,243,0.6); }
+.compare__edit--pros {
+  background: #f4faf4;
+  border-color: #cfe5cf;
+}
+.compare__edit--pros:hover { border-color: #94c994; }
+.compare__edit--cons {
+  background: #fdf6f5;
+  border-color: #efcbc7;
+}
+.compare__edit--cons:hover { border-color: #d99e98; }
 .compare__sub { font-size: 11px; color: #888; font-weight: normal; }
 .compare__thumb {
   display: block;
