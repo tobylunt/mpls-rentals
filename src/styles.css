@@ -246,6 +246,34 @@ body {
 }
 .popup__note-input:focus { outline: none; border-color: #1565c0; }
 
+/* Pros/cons: side-by-side pair tinted green/red so it's instantly clear
+ * which column you're writing in. */
+.popup__proscons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-top: 4px;
+}
+.popup__proscons-input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 12px;
+  padding: 6px;
+  border-radius: 4px;
+  resize: vertical;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+}
+.popup__proscons-input--pros {
+  background: #f1f8f1;
+  border-color: #c8e6c9;
+}
+.popup__proscons-input--cons {
+  background: #fef4f3;
+  border-color: #ffcdd2;
+}
+.popup__proscons-input:focus { outline: none; border-color: #1565c0; }
+
 .card__rating {
   font-size: 11px;
   color: #f9a825;
@@ -497,6 +525,8 @@ body {
   border-bottom: 1px solid #eee;
   text-align: left;
   vertical-align: top;
+  /* Preserve user-entered newlines (notes/pros/cons can be bulleted lists). */
+  white-space: pre-wrap;
 }
 .compare__table thead th {
   position: sticky;
@@ -516,6 +546,8 @@ body {
   white-space: nowrap;
 }
 .compare__best { background: #e8f5e9; font-weight: 600; }
+.compare__row--pros td { background: #f1f8f1; }
+.compare__row--cons td { background: #fef4f3; }
 .compare__sub { font-size: 11px; color: #888; font-weight: normal; }
 .compare__thumb {
   display: block;

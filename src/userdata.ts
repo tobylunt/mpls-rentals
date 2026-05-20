@@ -4,6 +4,8 @@ const KEY = "mpls-rentals.userdata";
 const SEED_URL = `${import.meta.env.BASE_URL}data/seed-notes.json`;
 
 export type Notes = Record<string, string>;
+export type Pros = Record<string, string>;
+export type Cons = Record<string, string>;
 export type Ratings = Record<string, number>; // 1-5
 
 export type TourStatus = "scheduled" | "confirmed";
@@ -82,6 +84,8 @@ export function statusLabel(
 
 type Stored = {
   notes: Notes;
+  pros: Pros;
+  cons: Cons;
   ratings: Ratings;
   tours: Tours;
   marketStatuses: MarketStatuses;
@@ -91,7 +95,7 @@ type Stored = {
 };
 
 function emptyStored(): Stored {
-  return { notes: {}, ratings: {}, tours: {}, marketStatuses: {}, disqualifications: {}, shortlist: [], itineraries: {} };
+  return { notes: {}, pros: {}, cons: {}, ratings: {}, tours: {}, marketStatuses: {}, disqualifications: {}, shortlist: [], itineraries: {} };
 }
 
 function read(): Stored {
@@ -112,6 +116,8 @@ function read(): Stored {
     const parsed = JSON.parse(raw);
     const stored: Stored = {
       notes: parsed?.notes ?? {},
+      pros: parsed?.pros ?? {},
+      cons: parsed?.cons ?? {},
       ratings: parsed?.ratings ?? {},
       tours: parsed?.tours ?? {},
       marketStatuses: parsed?.marketStatuses ?? {},
@@ -159,6 +165,8 @@ export function useUserData() {
           wasEmpty.current = false;
           setData((prev) => ({
             notes: seed?.notes ?? {},
+            pros: seed?.pros ?? {},
+            cons: seed?.cons ?? {},
             ratings: seed?.ratings ?? {},
             tours: seed?.tours ?? {},
             marketStatuses: seed?.marketStatuses ?? {},
@@ -180,6 +188,8 @@ export function useUserData() {
           //   undone by seed, but new seed stars do appear).
           setData((prev) => ({
             notes: { ...prev.notes, ...((seed?.notes ?? {}) as Notes) },
+            pros: { ...prev.pros, ...((seed?.pros ?? {}) as Pros) },
+            cons: { ...prev.cons, ...((seed?.cons ?? {}) as Cons) },
             ratings: { ...prev.ratings, ...((seed?.ratings ?? {}) as Ratings) },
             tours: (seed?.tours ?? {}) as Tours,
             marketStatuses: (seed?.marketStatuses ?? {}) as MarketStatuses,
@@ -215,6 +225,24 @@ export function useUserData() {
       if (text.trim() === "") delete notes[id];
       else notes[id] = text;
       return { ...prev, notes };
+    });
+  }, []);
+
+  const setPros = useCallback((id: string, text: string) => {
+    setData((prev) => {
+      const pros = { ...prev.pros };
+      if (text.trim() === "") delete pros[id];
+      else pros[id] = text;
+      return { ...prev, pros };
+    });
+  }, []);
+
+  const setCons = useCallback((id: string, text: string) => {
+    setData((prev) => {
+      const cons = { ...prev.cons };
+      if (text.trim() === "") delete cons[id];
+      else cons[id] = text;
+      return { ...prev, cons };
     });
   }, []);
 
@@ -288,6 +316,8 @@ export function useUserData() {
       const text = await file.text();
       const parsed = JSON.parse(text);
       const incomingNotes = (parsed?.notes ?? {}) as Notes;
+      const incomingPros = (parsed?.pros ?? {}) as Pros;
+      const incomingCons = (parsed?.cons ?? {}) as Cons;
       const incomingRatings = (parsed?.ratings ?? {}) as Ratings;
       const incomingTours = (parsed?.tours ?? {}) as Tours;
       const incomingMarket = (parsed?.marketStatuses ?? {}) as MarketStatuses;
@@ -306,6 +336,14 @@ export function useUserData() {
             notes[id] = val;
             notesCount++;
           }
+        }
+        const pros = { ...prev.pros };
+        for (const [id, val] of Object.entries(incomingPros)) {
+          if (typeof val === "string" && val.trim() !== "") pros[id] = val;
+        }
+        const cons = { ...prev.cons };
+        for (const [id, val] of Object.entries(incomingCons)) {
+          if (typeof val === "string" && val.trim() !== "") cons[id] = val;
         }
         const ratings = { ...prev.ratings };
         for (const [id, val] of Object.entries(incomingRatings)) {
@@ -342,7 +380,7 @@ export function useUserData() {
             shortlistCount++;
           }
         }
-        return { notes, ratings, tours, marketStatuses, disqualifications, shortlist: [...shortlistSet], itineraries: prev.itineraries };
+        return { notes, pros, cons, ratings, tours, marketStatuses, disqualifications, shortlist: [...shortlistSet], itineraries: prev.itineraries };
       });
       return { notesCount, ratingsCount, toursCount, marketStatusCount, disqualificationCount, shortlistCount };
     },
@@ -351,6 +389,8 @@ export function useUserData() {
 
   return {
     notes: data.notes,
+    pros: data.pros,
+    cons: data.cons,
     ratings: data.ratings,
     tours: data.tours,
     marketStatuses: data.marketStatuses,
@@ -358,6 +398,8 @@ export function useUserData() {
     shortlist: data.shortlist,
     itineraries: data.itineraries,
     setNote,
+    setPros,
+    setCons,
     setRating,
     setTour,
     setMarketStatus,

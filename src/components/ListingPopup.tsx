@@ -45,9 +45,13 @@ export function ListingPopup({
   schools,
   daycares,
   note,
+  pros,
+  cons,
   rating,
   disqualification,
   onNoteChange,
+  onProsChange,
+  onConsChange,
   onRatingChange,
   onDisqualificationChange,
 }: {
@@ -57,9 +61,13 @@ export function ListingPopup({
   schools: Place[];
   daycares: Place[];
   note: string;
+  pros: string;
+  cons: string;
   rating: number;
   disqualification: string;
   onNoteChange: (text: string) => void;
+  onProsChange: (text: string) => void;
+  onConsChange: (text: string) => void;
   onRatingChange: (rating: number | null) => void;
   onDisqualificationChange: (reason: string | null) => void;
 }) {
@@ -124,6 +132,22 @@ export function ListingPopup({
         onChange={(e) => onNoteChange(e.target.value)}
         rows={3}
       />
+      <div className="popup__proscons">
+        <textarea
+          className="popup__proscons-input popup__proscons-input--pros"
+          placeholder="Pros…"
+          value={pros}
+          onChange={(e) => onProsChange(e.target.value)}
+          rows={3}
+        />
+        <textarea
+          className="popup__proscons-input popup__proscons-input--cons"
+          placeholder="Cons…"
+          value={cons}
+          onChange={(e) => onConsChange(e.target.value)}
+          rows={3}
+        />
+      </div>
       <div className="popup__dq">
         {disqualified ? (
           <>

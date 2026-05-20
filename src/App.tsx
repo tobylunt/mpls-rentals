@@ -10,6 +10,8 @@ import { useUserData } from "./userdata";
 export default function App() {
   const {
     notes,
+    pros,
+    cons,
     ratings,
     tours,
     marketStatuses,
@@ -17,6 +19,8 @@ export default function App() {
     shortlist: shortlistArr,
     itineraries,
     setNote,
+    setPros,
+    setCons,
     setRating,
     setDisqualification,
     toggleShortlist,
@@ -161,6 +165,8 @@ export default function App() {
                 onSelect={setSelectedId}
                 onToggleStar={toggleShortlist}
                 notes={notes}
+                pros={pros}
+                cons={cons}
                 ratings={ratings}
                 disqualifications={disqualifications}
                 tours={tours}
@@ -168,6 +174,8 @@ export default function App() {
                 flyToPoint={flyToPoint}
                 itineraryStops={itineraryStops}
                 setNote={setNote}
+                setPros={setPros}
+                setCons={setCons}
                 setRating={setRating}
                 setDisqualification={setDisqualification}
               />
@@ -179,6 +187,8 @@ export default function App() {
             schools={data.schools}
             daycares={data.daycares}
             notes={notes}
+            pros={pros}
+            cons={cons}
             ratings={ratings}
             tours={tours}
             marketStatuses={marketStatuses}

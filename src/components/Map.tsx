@@ -14,7 +14,7 @@ import L from "leaflet";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { FeatureCollection, Feature } from "geojson";
 import { type Listing, type Place } from "../data";
-import { type Notes, type Ratings, type Disqualifications, type Tours, type MarketStatuses, statusLabel } from "../userdata";
+import { type Notes, type Pros, type Cons, type Ratings, type Disqualifications, type Tours, type MarketStatuses, statusLabel } from "../userdata";
 import { ListingPopup } from "./ListingPopup";
 
 const MPLS_CENTER: [number, number] = [44.93, -93.27];
@@ -181,6 +181,8 @@ export function Map({
   onSelect,
   onToggleStar,
   notes,
+  pros,
+  cons,
   ratings,
   disqualifications,
   tours,
@@ -188,6 +190,8 @@ export function Map({
   flyToPoint,
   itineraryStops,
   setNote,
+  setPros,
+  setCons,
   setRating,
   setDisqualification,
 }: {
@@ -200,6 +204,8 @@ export function Map({
   onSelect: (id: string) => void;
   onToggleStar: (id: string) => void;
   notes: Notes;
+  pros: Pros;
+  cons: Cons;
   ratings: Ratings;
   disqualifications: Disqualifications;
   tours: Tours;
@@ -207,6 +213,8 @@ export function Map({
   flyToPoint: { lat: number; lng: number; key: number } | null;
   itineraryStops: { key: string; num: number; lat: number; lng: number; label: string }[];
   setNote: (id: string, text: string) => void;
+  setPros: (id: string, text: string) => void;
+  setCons: (id: string, text: string) => void;
   setRating: (id: string, rating: number | null) => void;
   setDisqualification: (id: string, reason: string | null) => void;
 }) {
@@ -371,7 +379,7 @@ export function Map({
                       {status ? <span className="pin-tooltip__status">{status}</span> : null}
                     </div>
                   </Tooltip>
-                  <Popup minWidth={260}>
+                  <Popup minWidth={320}>
                     <ListingPopup
                       listing={l}
                       shortlisted={shortlist.has(l.id)}
@@ -379,9 +387,13 @@ export function Map({
                       schools={schools}
                       daycares={daycares}
                       note={notes[l.id] ?? ""}
+                      pros={pros[l.id] ?? ""}
+                      cons={cons[l.id] ?? ""}
                       rating={ratings[l.id] ?? 0}
                       disqualification={disqualifications[l.id] ?? ""}
                       onNoteChange={(text) => setNote(l.id, text)}
+                      onProsChange={(text) => setPros(l.id, text)}
+                      onConsChange={(text) => setCons(l.id, text)}
                       onRatingChange={(r) => setRating(l.id, r)}
                       onDisqualificationChange={(reason) => setDisqualification(l.id, reason)}
                     />

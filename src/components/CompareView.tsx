@@ -1,5 +1,5 @@
 import { type Listing, type Place } from "../data";
-import { type Notes, type Ratings, type Tours, type MarketStatuses, type Disqualifications } from "../userdata";
+import { type Notes, type Pros, type Cons, type Ratings, type Tours, type MarketStatuses, type Disqualifications } from "../userdata";
 import { chainTimeFor, formatTour, marketStatusLabel } from "./ListingCard";
 
 type Row = {
@@ -32,6 +32,8 @@ export function CompareView({
   schools,
   daycares,
   notes,
+  pros,
+  cons,
   ratings,
   tours,
   marketStatuses,
@@ -42,6 +44,8 @@ export function CompareView({
   schools: Place[];
   daycares: Place[];
   notes: Notes;
+  pros: Pros;
+  cons: Cons;
   ratings: Ratings;
   tours: Tours;
   marketStatuses: MarketStatuses;
@@ -91,6 +95,16 @@ export function CompareView({
     {
       label: "Your notes",
       values: listings.map((l) => notes[l.id] ?? ""),
+      best: null,
+    },
+    {
+      label: "Pros",
+      values: listings.map((l) => pros[l.id] ?? ""),
+      best: null,
+    },
+    {
+      label: "Cons",
+      values: listings.map((l) => cons[l.id] ?? ""),
       best: null,
     },
     {
@@ -218,16 +232,21 @@ export function CompareView({
             </tr>
           </thead>
           <tbody>
-            {rows.map((r) => (
-              <tr key={r.label}>
-                <th>{r.label}</th>
-                {r.values.map((v, i) => (
-                  <td key={i} className={r.best?.has(i) ? "compare__best" : ""}>
-                    {v == null ? "—" : v.toString()}
-                  </td>
-                ))}
-              </tr>
-            ))}
+            {rows.map((r) => {
+              const tint =
+                r.label === "Pros" ? "compare__row--pros" :
+                r.label === "Cons" ? "compare__row--cons" : "";
+              return (
+                <tr key={r.label} className={tint}>
+                  <th>{r.label}</th>
+                  {r.values.map((v, i) => (
+                    <td key={i} className={r.best?.has(i) ? "compare__best" : ""}>
+                      {v == null ? "—" : v.toString()}
+                    </td>
+                  ))}
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
