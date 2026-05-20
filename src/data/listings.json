@@ -1783,12 +1783,12 @@
       "housing_type": "apt",
       "neighborhood": "Nokomis",
       "price": 2550.0,
-      "pet_rent": null,
+      "pet_rent": 50.0,
       "furnished": false,
       "parking": null,
       "size_sqft": 1565.0,
       "price_per_sqft": 1.63,
-      "available": "Now",
+      "available": "2026-07-01",
       "term": "12 month lease",
       "school": "Wenonah",
       "daycare": "Casa Kingfield",
@@ -1804,7 +1804,7 @@
       },
       "dist_work_drive_min": 17,
       "utilities": "Tenant pays all (nothing included in rent)",
-      "notes": null
+      "notes": "Pets: $300 deposit + $50/mo."
     }
   ],
   "schools": [
