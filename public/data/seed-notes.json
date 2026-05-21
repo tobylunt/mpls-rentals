@@ -4,11 +4,11 @@
     "5207-belmont-ave-s": "Large, right by the greenway, affordable, burroughs school. TL reached out on Zillow on 5/16.",
     "4934-lyndale-ave-s-2": "Looks like a busier street. Tour request sent.",
     "4749-harriet-ave-2": "Off market as of 5/19. Drat.",
-    "5525-vincent-ave-s": "Tour CONFIRMED Sun 11am. Listing says no pets — verify negotiable. Armatage school zone (not Burroughs).",
+    "5525-vincent-ave-s": "Tour CONFIRMED Sun 11am. Listing says no pets \u2014 verify negotiable. Armatage school zone (not Burroughs).",
     "5536-penn-ave-s": "Off market as of 5/21.",
     "abbott-412": "Virtual tour CANCELLED (was Fri 10am). The Abbott unit 412 (2BR Linden Hills luxury apt, built 2023). Pricey but pet-friendly + Lake Harriet school. Zillow Apps: building has own portal (multi-unit).",
     "5417-25th-ave-s": "Tour requested. Nokomis SFH, 3BR/2BA. Cats+dogs OK, Jul 1 avail. Zillow Apps: direct accept. 3 blocks to Lake Nokomis.",
-    "5048-thomas-ave-s-2": "Tour CONFIRMED Sun 9am. Newly remodeled 3BR/1BA top-floor apt in Fulton. Listing says no pets — verify negotiability. Jun 1 avail (or sooner). Zillow Apps: direct accept.",
+    "5048-thomas-ave-s-2": "Tour CONFIRMED Sun 9am. Newly remodeled 3BR/1BA top-floor apt in Fulton. Listing says no pets \u2014 verify negotiability. Jun 1 avail (or sooner). Zillow Apps: direct accept.",
     "5025-york-ave-s": "Tour CONFIRMED Sun 1pm. Furnished Fulton SFH, 3BR/1.5BA, fenced yard w/ firepit. Cats allowed (no dog mention). Lake Harriet school zone.",
     "4641-lyndale-ave-s": "Seems a little run down. Tour request sent on Zillow.",
     "4311-abbott-ave-s-2": "Tour CONFIRMED Sat 3pm.",
@@ -21,7 +21,7 @@
     "ff-982084-lynnhurst": "Tour booked Sun 10am. Address: 5004 Logan Ave S #1.",
     "ff-627700-craftsman": "No longer available as of 5/20.",
     "ff-908986-standish": "Reached out, no response yet.",
-    "ff-835517-cozy": "Tour pencilled in Sun 12pm — not confirmed yet.",
+    "ff-835517-cozy": "Tour pencilled in Sun 12pm \u2014 not confirmed yet.",
     "ff-780453-nokomis": "Reached out, no response yet.",
     "ff-935587-sw-mpls": "Reached out, no response yet.",
     "4733-xerxes-ave-s": "Off market as of 5/19.",
@@ -47,10 +47,12 @@
     "linden-flats-washburn": "Virtual tour confirmed Wed 1pm. SMALL but great location. Maybe Sunday drive-by depending on how it goes."
   },
   "pros": {
-    "sanctuary-lofts": "Spacious for a 2BR. Right by the greenway! Reasonable price."
+    "sanctuary-lofts": "Spacious for a 2BR. Right by the greenway! Reasonable price.",
+    "linden-flats-washburn": "Great location, nice new building."
   },
   "cons": {
-    "sanctuary-lofts": "A little weird to be in the church? No in-unit laundry. Layout a little odd."
+    "sanctuary-lofts": "A little weird to be in the church? No in-unit laundry. Layout a little odd.",
+    "linden-flats-washburn": "Really small. And expensive."
   },
   "ratings": {
     "5207-belmont-ave-s": 5,
@@ -161,17 +163,61 @@
       "label": "Sunday self-guided",
       "date": "2026-05-24",
       "stops": [
-        { "kind": "listing", "id": "5048-thomas-ave-s-2", "note": "9am tour" },
-        { "kind": "school", "name": "Burroughs", "note": "shortlist school" },
-        { "kind": "listing", "id": "5525-vincent-ave-s", "note": "11am tour" },
-        { "kind": "school", "name": "Armatage", "note": "5525 Vincent community school" },
-        { "kind": "listing", "id": "5025-york-ave-s", "note": "1pm tour" },
-        { "kind": "listing", "id": "linden-flats-washburn", "note": "Wed virtual → drive-by" },
-        { "kind": "school", "name": "Lake Harriet", "note": "shortlist school" },
-        { "kind": "school", "name": "Concord", "note": "Edina shortlist school" },
-        { "kind": "school", "name": "ISLA", "note": "Edina Spanish immersion" },
-        { "kind": "school", "name": "Hale", "note": "shortlist school" },
-        { "kind": "listing", "id": "sanctuary-lofts", "note": "Wed virtual → drive-by" }
+        {
+          "kind": "listing",
+          "id": "5048-thomas-ave-s-2",
+          "note": "9am tour"
+        },
+        {
+          "kind": "school",
+          "name": "Burroughs",
+          "note": "shortlist school"
+        },
+        {
+          "kind": "listing",
+          "id": "5525-vincent-ave-s",
+          "note": "11am tour"
+        },
+        {
+          "kind": "school",
+          "name": "Armatage",
+          "note": "5525 Vincent community school"
+        },
+        {
+          "kind": "listing",
+          "id": "5025-york-ave-s",
+          "note": "1pm tour"
+        },
+        {
+          "kind": "listing",
+          "id": "linden-flats-washburn",
+          "note": "Wed virtual \u2192 drive-by"
+        },
+        {
+          "kind": "school",
+          "name": "Lake Harriet",
+          "note": "shortlist school"
+        },
+        {
+          "kind": "school",
+          "name": "Concord",
+          "note": "Edina shortlist school"
+        },
+        {
+          "kind": "school",
+          "name": "ISLA",
+          "note": "Edina Spanish immersion"
+        },
+        {
+          "kind": "school",
+          "name": "Hale",
+          "note": "shortlist school"
+        },
+        {
+          "kind": "listing",
+          "id": "sanctuary-lofts",
+          "note": "Wed virtual \u2192 drive-by"
+        }
       ]
     }
   }

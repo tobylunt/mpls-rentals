@@ -32,7 +32,7 @@
         "raw": "~11 min walk (2) (est)"
       },
       "dist_work_drive_min": 17,
-      "utilities": "Not specified — verify at tour",
+      "utilities": "Not specified \u2014 verify at tour",
       "notes": "Furnished SFH, 3BR/1.5BA, 1750 sqft. Hardwood, original millwork, updated kitchen, mudroom/sunroom, fenced backyard w/ firepit + patio. Bonus room over front porch (office/studio). 1-car detached garage. $1,750 deposit. Cats allowed (rate unspecified, no mention of dogs). Available now. A few blocks to Lake Harriet, 50th & France. Lake Harriet attendance (E1)."
     },
     {
@@ -49,7 +49,7 @@
       "price": 3000.0,
       "pet_rent": "no pets (verify w/ owner)",
       "furnished": false,
-      "parking": "Not specified — verify",
+      "parking": "Not specified \u2014 verify",
       "size_sqft": 1600.0,
       "price_per_sqft": 1.88,
       "available": "2026-06-01",
@@ -67,8 +67,8 @@
         "raw": "~14 min walk (3) (est)"
       },
       "dist_work_drive_min": 17,
-      "utilities": "Tenant pays electricity. Not specified otherwise — verify.",
-      "notes": "Top-floor 3BR/1BA apartment, 1600 sqft. Newly remodeled (granite, induction stove, French door fridge, dishwasher). In-unit W/D, fireplace, ceiling fans, blackout blinds, tons of windows. Wall A/C unit (not central). Walking distance to Lake Harriet, Minnehaha Creek, 50th & Penn shops. Listing says NO PETS — verify negotiability. Available Jun 1 or sooner. Accepts Zillow Apps directly."
+      "utilities": "Tenant pays electricity. Not specified otherwise \u2014 verify.",
+      "notes": "Top-floor 3BR/1BA apartment, 1600 sqft. Newly remodeled (granite, induction stove, French door fridge, dishwasher). In-unit W/D, fireplace, ceiling fans, blackout blinds, tons of windows. Wall A/C unit (not central). Walking distance to Lake Harriet, Minnehaha Creek, 50th & Penn shops. Listing says NO PETS \u2014 verify negotiability. Available Jun 1 or sooner. Accepts Zillow Apps directly."
     },
     {
       "id": "5417-25th-ave-s",
@@ -82,7 +82,7 @@
       "housing_type": "house",
       "neighborhood": "Lake Nokomis",
       "price": 2650.0,
-      "pet_rent": "unknown (cats+dogs OK — verify rate)",
+      "pet_rent": "unknown (cats+dogs OK \u2014 verify rate)",
       "furnished": false,
       "parking": "1-car detached garage + driveway (fits 2)",
       "size_sqft": 1400.0,
@@ -112,7 +112,7 @@
       "url": "https://www.zillow.com/apartments/minneapolis-mn/the-abbott/Cmp9FH/",
       "image_url": "/images/abbott-412.jpg",
       "lat": 44.9232727,
-      "lng": -93.3228510,
+      "lng": -93.322851,
       "bedrooms": 2,
       "housing_type": "apartment",
       "neighborhood": "Linden Hills",
@@ -137,7 +137,7 @@
         "raw": "~16 min walk (3) (est)"
       },
       "dist_work_drive_min": 20,
-      "utilities": "Not specified in listing — verify at tour",
+      "utilities": "Not specified in listing \u2014 verify at tour",
       "notes": "2BR/2BA apartment, 1074 sqft @ $3,683/mo. Built 2023. 9ft ceilings, private balcony, Fisher & Paykel appliances, in-unit LG W/D, central A/C, fitness center, pet washing station. Cats + dogs OK ($50/mo + $250 one-time per pet). Blocks from Lake Harriet. Available Aug 1. Tour requested."
     },
     {
@@ -208,8 +208,8 @@
         "raw": "~17 min walk (4) (est)"
       },
       "dist_work_drive_min": 20,
-      "utilities": "Not specified — verify at tour",
-      "notes": "4BR/2BA 1.5-story house, 2100 sqft. Fresh paint, new LVP in basement, hardwood on main, basement, A/C, dishwasher, washer/dryer included. 2 off-street parking spots + on-street. $2,400 deposit. Listing says NO PETS — verify negotiability at tour. Armatage attendance area (E2), Anthony Middle, Southwest HS. Burroughs ~1 mi away if school flexibility matters."
+      "utilities": "Not specified \u2014 verify at tour",
+      "notes": "4BR/2BA 1.5-story house, 2100 sqft. Fresh paint, new LVP in basement, hardwood on main, basement, A/C, dishwasher, washer/dryer included. 2 off-street parking spots + on-street. $2,400 deposit. Listing says NO PETS \u2014 verify negotiability at tour. Armatage attendance area (E2), Anthony Middle, Southwest HS. Burroughs ~1 mi away if school flexibility matters."
     },
     {
       "id": "5908-oaklawn-ave-edina",
@@ -308,9 +308,9 @@
         "raw": "~12 min walk (3) (est)"
       },
       "dist_daycare": {
-        "walk_min": null,
+        "walk_min": 25,
         "drive_min": 7,
-        "raw": "~7 min drive (est)"
+        "raw": "25 min walk, 7 min drive (filled)"
       },
       "dist_work_drive_min": 14,
       "utilities": "Not specified in listing \u2014 verify at tour",
@@ -338,9 +338,9 @@
       "school": "Concord",
       "daycare": "Casa 50th and France",
       "dist_school": {
-        "walk_min": null,
+        "walk_min": 23,
         "drive_min": 4,
-        "raw": "~4 min drive (est)"
+        "raw": "23 min walk, 4 min drive (filled)"
       },
       "dist_daycare": {
         "walk_min": 10,
@@ -478,9 +478,9 @@
       "school": "Concord",
       "daycare": "Casa 50th and France",
       "dist_school": {
-        "walk_min": null,
+        "walk_min": 32,
         "drive_min": 5,
-        "raw": "~5 min drive (est)"
+        "raw": "32 min walk, 5 min drive (filled)"
       },
       "dist_daycare": {
         "walk_min": 4,
@@ -518,9 +518,9 @@
         "raw": "~15 min walk (3) (est)"
       },
       "dist_daycare": {
-        "walk_min": null,
+        "walk_min": 27,
         "drive_min": 7,
-        "raw": "~7 min drive (est)"
+        "raw": "27 min walk, 7 min drive (filled)"
       },
       "dist_work_drive_min": 14,
       "utilities": "Owner pays gas + water + sewer; tenant pays electric. $100/mo rent reduction option in exchange for snow + lawn care.",
@@ -1617,8 +1617,8 @@
       "daycare": "Casa 50th and France",
       "dist_school": {
         "walk_min": 10,
-        "drive_min": null,
-        "raw": "10 min walk"
+        "drive_min": 1,
+        "raw": "10 min walk, 1 min drive (filled)"
       },
       "dist_daycare": {
         "walk_min": 27,
@@ -1786,7 +1786,7 @@
       "price": 2420.0,
       "pet_rent": "unknown",
       "furnished": false,
-      "parking": "?",
+      "parking": "1 stall guaranteed (parking is $175/mo extra per unit)",
       "size_sqft": 875.0,
       "price_per_sqft": 2.77,
       "available": "2026-08-01",
@@ -1795,8 +1795,8 @@
       "daycare": "Casa 50th and France",
       "dist_school": {
         "walk_min": 12,
-        "drive_min": null,
-        "raw": "~12 min walk (est)"
+        "drive_min": 1,
+        "raw": "12 min walk, 1 min drive (filled)"
       },
       "dist_daycare": {
         "walk_min": 25,
@@ -1892,7 +1892,7 @@
       "price": 2550.0,
       "pet_rent": 50.0,
       "furnished": false,
-      "parking": null,
+      "parking": "Street parking",
       "size_sqft": 1565.0,
       "price_per_sqft": 1.63,
       "available": "2026-07-01",
@@ -1901,13 +1901,13 @@
       "daycare": "Casa Kingfield",
       "dist_school": {
         "walk_min": 17,
-        "drive_min": null,
-        "raw": "17 min walk"
+        "drive_min": 4,
+        "raw": "17 min walk, 4 min drive (filled)"
       },
       "dist_daycare": {
-        "walk_min": null,
+        "walk_min": 57,
         "drive_min": 12,
-        "raw": "12 min drive"
+        "raw": "57 min walk, 12 min drive (filled)"
       },
       "dist_work_drive_min": 17,
       "utilities": "Tenant pays all (nothing included in rent)",
