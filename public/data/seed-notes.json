@@ -5,12 +5,13 @@
     "4934-lyndale-ave-s-2": "Looks like a busier street. Tour request sent.",
     "4749-harriet-ave-2": "Off market as of 5/19. Drat.",
     "5525-vincent-ave-s": "Tour CONFIRMED Sun 11am. Listing says no pets — verify negotiable. Armatage school zone (not Burroughs).",
-    "5536-penn-ave-s": "Tour request sent. Armatage neighborhood, refurbished duplex, cats+dogs OK. Zillow Apps: request only.",
+    "5536-penn-ave-s": "Off market as of 5/21.",
     "abbott-412": "Virtual tour rescheduled to Fri 10am (was Tue 12:30, cancelled). The Abbott unit 412 (2BR Linden Hills luxury apt, built 2023). Pricey but pet-friendly + Lake Harriet school. Zillow Apps: building has own portal (multi-unit).",
     "5417-25th-ave-s": "Tour requested. Nokomis SFH, 3BR/2BA. Cats+dogs OK, Jul 1 avail. Zillow Apps: direct accept. 3 blocks to Lake Nokomis.",
     "5048-thomas-ave-s-2": "Tour CONFIRMED Sun 9am. Newly remodeled 3BR/1BA top-floor apt in Fulton. Listing says no pets — verify negotiability. Jun 1 avail (or sooner). Zillow Apps: direct accept.",
+    "5025-york-ave-s": "Tour CONFIRMED Sun 1pm. Furnished Fulton SFH, 3BR/1.5BA, fenced yard w/ firepit. Cats allowed (no dog mention). Lake Harriet school zone.",
     "4641-lyndale-ave-s": "Seems a little run down. Tour request sent on Zillow.",
-    "4311-abbott-ave-s-2": "Tour pencilled in Sat 3pm — not confirmed yet.",
+    "4311-abbott-ave-s-2": "Tour CONFIRMED Sat 3pm.",
     "4453-york-ave-s": "Pricey but otherwise perfect. Tour cancelled.",
     "4009-ewing-ave-s": "Not sure on value for money. Right by school. Tour pending for sunday morning",
     "4927-ewing-ave-s-3": "Tour CONFIRMED Sat 10am with John (lessor).",
@@ -75,7 +76,7 @@
     },
     "4311-abbott-ave-s-2": {
       "at": "2026-05-23T15:00:00",
-      "status": "scheduled"
+      "status": "confirmed"
     },
     "4804-france-ave-s-2": {
       "at": "2026-05-23T16:30:00",
@@ -124,6 +125,10 @@
     "5048-thomas-ave-s-2": {
       "at": "2026-05-24T09:00:00",
       "status": "confirmed"
+    },
+    "5025-york-ave-s": {
+      "at": "2026-05-24T13:00:00",
+      "status": "confirmed"
     }
   },
   "marketStatuses": {},
@@ -134,6 +139,7 @@
     "4829-chicago-ave-1",
     "4927-ewing-ave-s-3",
     "4937-clinton-ave",
+    "5025-york-ave-s",
     "5048-thomas-ave-s-2",
     "5100-xerxes-ave-s",
     "5525-vincent-ave-s",
@@ -163,6 +169,7 @@
         { "kind": "school", "name": "Burroughs", "note": "shortlist school" },
         { "kind": "listing", "id": "5525-vincent-ave-s", "note": "11am tour" },
         { "kind": "school", "name": "Armatage", "note": "5525 Vincent community school" },
+        { "kind": "listing", "id": "5025-york-ave-s", "note": "1pm tour" },
         { "kind": "listing", "id": "linden-flats-washburn", "note": "Wed virtual → drive-by" },
         { "kind": "school", "name": "Lake Harriet", "note": "shortlist school" },
         { "kind": "school", "name": "Concord", "note": "Edina shortlist school" },

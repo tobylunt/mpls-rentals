@@ -1,6 +1,41 @@
 {
   "listings": [
     {
+      "id": "5025-york-ave-s",
+      "lodging": "5025 York Ave S (Fulton SFH, furnished)",
+      "address": "5025 York Ave S, Minneapolis, MN 55410",
+      "url": "https://www.apartments.com/5025-york-ave-s-minneapolis-mn/l3bmjvf/",
+      "image_url": "/images/5025-york-ave-s.jpg",
+      "lat": 44.9119861,
+      "lng": -93.3200393,
+      "bedrooms": 3,
+      "housing_type": "house",
+      "neighborhood": "Fulton",
+      "price": 3500.0,
+      "pet_rent": "cats allowed (rate unspecified)",
+      "furnished": true,
+      "parking": "1-car detached garage",
+      "size_sqft": 1750.0,
+      "price_per_sqft": 2.0,
+      "available": "Now",
+      "term": "12 month lease",
+      "school": "Lake Harriet",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": 27,
+        "drive_min": 4,
+        "raw": "~27 min walk (4) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 11,
+        "drive_min": 2,
+        "raw": "~11 min walk (2) (est)"
+      },
+      "dist_work_drive_min": 17,
+      "utilities": "Not specified — verify at tour",
+      "notes": "Furnished SFH, 3BR/1.5BA, 1750 sqft. Hardwood, original millwork, updated kitchen, mudroom/sunroom, fenced backyard w/ firepit + patio. Bonus room over front porch (office/studio). 1-car detached garage. $1,750 deposit. Cats allowed (rate unspecified, no mention of dogs). Available now. A few blocks to Lake Harriet, 50th & France. Lake Harriet attendance (E1)."
+    },
+    {
       "id": "5048-thomas-ave-s-2",
       "lodging": "5048 Thomas Ave S #2 (Fulton apt)",
       "address": "5048 Thomas Ave S #2, Minneapolis, MN 55410",
@@ -138,7 +173,8 @@
       },
       "dist_work_drive_min": 18,
       "utilities": "Tenant pays electricity + gas. Owner pays water, garbage, lawn care.",
-      "notes": "Refurbished duplex townhouse, 3BR/1BA, 1200 sqft. New kitchen (quartz, SS, gas range), in-unit W/D, central air. Cats + dogs OK ($45/mo). Available Aug 1. Steps from Armatage Park; 8 blocks to Lake Harriet. Tour requested."
+      "notes": "Refurbished duplex townhouse, 3BR/1BA, 1200 sqft. New kitchen (quartz, SS, gas range), in-unit W/D, central air. Cats + dogs OK ($45/mo). Available Aug 1. Steps from Armatage Park; 8 blocks to Lake Harriet. Tour requested.",
+      "status": "removed"
     },
     {
       "id": "5525-vincent-ave-s",
