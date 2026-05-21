@@ -1,6 +1,41 @@
 {
   "listings": [
     {
+      "id": "5417-25th-ave-s",
+      "lodging": "5417 25th Ave S (Nokomis SFH)",
+      "address": "5417 25th Ave S, Minneapolis, MN 55417",
+      "url": "https://www.zillow.com/homedetails/5417-25th-Ave-S-Minneapolis-MN-55417/1920048_zpid/",
+      "image_url": "/images/5417-25th-ave-s.jpg",
+      "lat": 44.9049747,
+      "lng": -93.2360537,
+      "bedrooms": 3,
+      "housing_type": "house",
+      "neighborhood": "Lake Nokomis",
+      "price": 2650.0,
+      "pet_rent": "unknown (cats+dogs OK — verify rate)",
+      "furnished": false,
+      "parking": "1-car detached garage + driveway (fits 2)",
+      "size_sqft": 1400.0,
+      "price_per_sqft": 1.89,
+      "available": "2026-07-01",
+      "term": "1 year",
+      "school": "Wenonah",
+      "daycare": "Casa Kingfield",
+      "dist_school": {
+        "walk_min": 7,
+        "drive_min": 1,
+        "raw": "~7 min walk (1) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": null,
+        "drive_min": 10,
+        "raw": "~10 min drive (est)"
+      },
+      "dist_work_drive_min": 17,
+      "utilities": "Tenant pays electric + gas + landscaping + snow. Owner pays water/sewer + trash.",
+      "notes": "Recently updated SFH, 3BR/2BA, 1400 sqft. Fresh paint, updated kitchen + basement, gas range, SS appliances, fireplace, fully fenced backyard, central A/C, in-unit W/D, dishwasher. Cats + dogs OK. 3 blocks to Lake Nokomis. Available Jul 1. Accepts Zillow Apps directly. Tour requested."
+    },
+    {
       "id": "abbott-412",
       "lodging": "The Abbott Unit 412 (Linden Hills apt)",
       "address": "3405 W 44th St #412, Minneapolis, MN 55410",
