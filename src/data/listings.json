@@ -1,6 +1,41 @@
 {
   "listings": [
     {
+      "id": "5048-thomas-ave-s-2",
+      "lodging": "5048 Thomas Ave S #2 (Fulton apt)",
+      "address": "5048 Thomas Ave S #2, Minneapolis, MN 55410",
+      "url": "https://www.zillow.com/homedetails/5048-Thomas-Ave-S-2-Minneapolis-MN-55410/462566514_zpid/",
+      "image_url": "/images/5048-thomas-ave-s-2.jpg",
+      "lat": 44.9115208,
+      "lng": -93.3138463,
+      "bedrooms": 3,
+      "housing_type": "apt",
+      "neighborhood": "Fulton",
+      "price": 3000.0,
+      "pet_rent": "no pets (verify w/ owner)",
+      "furnished": false,
+      "parking": "Not specified — verify",
+      "size_sqft": 1600.0,
+      "price_per_sqft": 1.88,
+      "available": "2026-06-01",
+      "term": "1 year",
+      "school": "Lake Harriet",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": 28,
+        "drive_min": 4,
+        "raw": "~28 min walk (4) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 14,
+        "drive_min": 3,
+        "raw": "~14 min walk (3) (est)"
+      },
+      "dist_work_drive_min": 17,
+      "utilities": "Tenant pays electricity. Not specified otherwise — verify.",
+      "notes": "Top-floor 3BR/1BA apartment, 1600 sqft. Newly remodeled (granite, induction stove, French door fridge, dishwasher). In-unit W/D, fireplace, ceiling fans, blackout blinds, tons of windows. Wall A/C unit (not central). Walking distance to Lake Harriet, Minnehaha Creek, 50th & Penn shops. Listing says NO PETS — verify negotiability. Available Jun 1 or sooner. Accepts Zillow Apps directly."
+    },
+    {
       "id": "5417-25th-ave-s",
       "lodging": "5417 25th Ave S (Nokomis SFH)",
       "address": "5417 25th Ave S, Minneapolis, MN 55417",

@@ -8,6 +8,7 @@
     "5536-penn-ave-s": "Tour request sent. Armatage neighborhood, refurbished duplex, cats+dogs OK. Zillow Apps: request only.",
     "abbott-412": "Virtual tour rescheduled to Fri 10am (was Tue 12:30, cancelled). The Abbott unit 412 (2BR Linden Hills luxury apt, built 2023). Pricey but pet-friendly + Lake Harriet school. Zillow Apps: building has own portal (multi-unit).",
     "5417-25th-ave-s": "Tour requested. Nokomis SFH, 3BR/2BA. Cats+dogs OK, Jul 1 avail. Zillow Apps: direct accept. 3 blocks to Lake Nokomis.",
+    "5048-thomas-ave-s-2": "Tour CONFIRMED Sun 9am. Newly remodeled 3BR/1BA top-floor apt in Fulton. Listing says no pets — verify negotiability. Jun 1 avail (or sooner). Zillow Apps: direct accept.",
     "4641-lyndale-ave-s": "Seems a little run down. Tour request sent on Zillow.",
     "4311-abbott-ave-s-2": "Tour pencilled in Sat 3pm — not confirmed yet.",
     "4453-york-ave-s": "Pricey but otherwise perfect. Tour cancelled.",
@@ -119,6 +120,10 @@
     "ff-835517-cozy": {
       "at": "2026-05-24T12:00:00",
       "status": "scheduled"
+    },
+    "5048-thomas-ave-s-2": {
+      "at": "2026-05-24T09:00:00",
+      "status": "confirmed"
     }
   },
   "marketStatuses": {},
@@ -129,6 +134,7 @@
     "4829-chicago-ave-1",
     "4927-ewing-ave-s-3",
     "4937-clinton-ave",
+    "5048-thomas-ave-s-2",
     "5100-xerxes-ave-s",
     "5525-vincent-ave-s",
     "abbott-412",
@@ -153,6 +159,7 @@
       "label": "Sunday self-guided",
       "date": "2026-05-24",
       "stops": [
+        { "kind": "listing", "id": "5048-thomas-ave-s-2", "note": "9am tour" },
         { "kind": "school", "name": "Burroughs", "note": "shortlist school" },
         { "kind": "listing", "id": "5525-vincent-ave-s", "note": "11am tour" },
         { "kind": "school", "name": "Armatage", "note": "5525 Vincent community school" },
