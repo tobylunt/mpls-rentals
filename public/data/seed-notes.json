@@ -18,7 +18,7 @@
     "ff-982084-lynnhurst": "Tour booked Sun 10am. Address: 5004 Logan Ave S #1.",
     "ff-627700-craftsman": "No longer available as of 5/20.",
     "ff-908986-standish": "Reached out, no response yet.",
-    "ff-835517-cozy": "Reached out, no response yet.",
+    "ff-835517-cozy": "Tour pencilled in Sun 12pm — not confirmed yet.",
     "ff-780453-nokomis": "Reached out, no response yet.",
     "ff-935587-sw-mpls": "Reached out, no response yet.",
     "4733-xerxes-ave-s": "Off market as of 5/19.",
@@ -114,6 +114,10 @@
     "abbott-412": {
       "at": "2026-05-22T10:00:00",
       "status": "confirmed"
+    },
+    "ff-835517-cozy": {
+      "at": "2026-05-24T12:00:00",
+      "status": "scheduled"
     }
   },
   "marketStatuses": {},
