@@ -6,7 +6,7 @@
     "4749-harriet-ave-2": "Off market as of 5/19. Drat.",
     "5525-vincent-ave-s": "Tour CONFIRMED Sun 11am. Listing says no pets — verify negotiable. Armatage school zone (not Burroughs).",
     "5536-penn-ave-s": "Off market as of 5/21.",
-    "abbott-412": "Virtual tour rescheduled to Fri 10am (was Tue 12:30, cancelled). The Abbott unit 412 (2BR Linden Hills luxury apt, built 2023). Pricey but pet-friendly + Lake Harriet school. Zillow Apps: building has own portal (multi-unit).",
+    "abbott-412": "Virtual tour CANCELLED (was Fri 10am). The Abbott unit 412 (2BR Linden Hills luxury apt, built 2023). Pricey but pet-friendly + Lake Harriet school. Zillow Apps: building has own portal (multi-unit).",
     "5417-25th-ave-s": "Tour requested. Nokomis SFH, 3BR/2BA. Cats+dogs OK, Jul 1 avail. Zillow Apps: direct accept. 3 blocks to Lake Nokomis.",
     "5048-thomas-ave-s-2": "Tour CONFIRMED Sun 9am. Newly remodeled 3BR/1BA top-floor apt in Fulton. Listing says no pets — verify negotiability. Jun 1 avail (or sooner). Zillow Apps: direct accept.",
     "5025-york-ave-s": "Tour CONFIRMED Sun 1pm. Furnished Fulton SFH, 3BR/1.5BA, fenced yard w/ firepit. Cats allowed (no dog mention). Lake Harriet school zone.",
@@ -43,7 +43,7 @@
     "the-collection-c5": "Meh. Tour request sent. Walter (virtual leasing agent, 651-427-1546) confirmed: C5 $3,765/mo on 12-mo lease starting Aug 1, OR $3,370/mo on 10-mo lease starting Jul 24. No tour avail Memorial Day weekend.",
     "1838-jefferson": "Cheap. Katsumi was nice. Mid house on a mid block with a mid school (seemingly).",
     "2079-st-clair": "Hard to know. Tour request sent",
-    "4852-drew-ave-s": "Tour request sent.",
+    "4852-drew-ave-s": "Off market as of 5/21.",
     "linden-flats-washburn": "Virtual tour confirmed Wed 1pm. SMALL but great location. Maybe Sunday drive-by depending on how it goes."
   },
   "pros": {
@@ -112,10 +112,6 @@
     },
     "linden-flats-washburn": {
       "at": "2026-05-20T13:00:00",
-      "status": "confirmed"
-    },
-    "abbott-412": {
-      "at": "2026-05-22T10:00:00",
       "status": "confirmed"
     },
     "ff-835517-cozy": {

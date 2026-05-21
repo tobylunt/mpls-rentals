@@ -1698,7 +1698,8 @@
       },
       "dist_work_drive_min": 19,
       "utilities": "Tenant pays all",
-      "notes": null
+      "notes": null,
+      "status": "removed"
     },
     {
       "id": "5100-xerxes-ave-s",
