@@ -1992,6 +1992,12 @@
       "query": "Armatage Montessori School, 2501 W 56th St, Minneapolis, MN",
       "lat": 44.9014883,
       "lng": -93.3105766
+    },
+    {
+      "name": "ISLA",
+      "query": "ISLA - Spanish Immersion Charter School, 5350 W 78th St, Edina, MN 55439",
+      "lat": 44.8618356,
+      "lng": -93.3596549
     }
   ],
   "daycares": [

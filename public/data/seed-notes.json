@@ -169,6 +169,7 @@
         { "kind": "listing", "id": "linden-flats-washburn", "note": "Wed virtual → drive-by" },
         { "kind": "school", "name": "Lake Harriet", "note": "shortlist school" },
         { "kind": "school", "name": "Concord", "note": "Edina shortlist school" },
+        { "kind": "school", "name": "ISLA", "note": "Edina Spanish immersion" },
         { "kind": "school", "name": "Hale", "note": "shortlist school" },
         { "kind": "listing", "id": "sanctuary-lofts", "note": "Wed virtual → drive-by" }
       ]
