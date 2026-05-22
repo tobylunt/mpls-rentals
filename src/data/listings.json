@@ -1,6 +1,41 @@
 {
   "listings": [
     {
+      "id": "4416-grimes-ave-s",
+      "lodging": "4416 Grimes Ave S (Morningside SFH)",
+      "address": "4416 Grimes Ave S, Minneapolis, MN 55424",
+      "url": "https://www.zillow.com/homedetails/4416-Grimes-Ave-S-Minneapolis-MN-55424/445838161_zpid/",
+      "image_url": "/images/4416-grimes-ave-s.jpg",
+      "lat": 44.9212183,
+      "lng": -93.3342734,
+      "bedrooms": 3,
+      "housing_type": "house",
+      "neighborhood": "Morningside",
+      "price": 3350.0,
+      "pet_rent": "dogs only (cats NOT allowed — verify negotiability)",
+      "furnished": false,
+      "parking": "Attached garage",
+      "size_sqft": 1749.0,
+      "price_per_sqft": 1.92,
+      "available": "2026-06-23",
+      "term": "1 year",
+      "school": "Concord",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": 36,
+        "drive_min": 5,
+        "raw": "~36 min walk (5) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 16,
+        "drive_min": 2,
+        "raw": "~16 min walk (2) (est)"
+      },
+      "dist_work_drive_min": 18,
+      "utilities": "Flat monthly utilities fee (verify amount). Tenant pays lawn; owner pays snow.",
+      "notes": "3BR/2BA SFH + office, 1749 sqft. Central A/C, in-unit W/D, attached garage, fire pit + grill. Morningside neighborhood — fully sidewalked, walk to 44th & France + 50th & France. ⚠️ DOGS ONLY per listing (cats not allowed) — verify negotiability. Available Jun 23. Accepts Zillow Apps directly. Tour requested."
+    },
+    {
       "id": "5025-york-ave-s",
       "lodging": "5025 York Ave S (Fulton SFH, furnished)",
       "address": "5025 York Ave S, Minneapolis, MN 55410",
