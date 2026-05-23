@@ -9,7 +9,7 @@
     "abbott-412": "Virtual tour CANCELLED (was Fri 10am). The Abbott unit 412 (2BR Linden Hills luxury apt, built 2023). Pricey but pet-friendly + Lake Harriet school. Zillow Apps: building has own portal (multi-unit).",
     "5417-25th-ave-s": "Tour requested. Nokomis SFH, 3BR/2BA. Cats+dogs OK, Jul 1 avail. Zillow Apps: direct accept. 3 blocks to Lake Nokomis.",
     "5048-thomas-ave-s-2": "Tour CONFIRMED Sun 9am. Newly remodeled 3BR/1BA top-floor apt in Fulton. Listing says no pets \u2014 verify negotiability. Jun 1 avail (or sooner). Zillow Apps: direct accept.",
-    "5025-york-ave-s": "Tour CONFIRMED Sun 1pm. Furnished Fulton SFH, 3BR/1.5BA, fenced yard w/ firepit. Cats allowed (no dog mention). Lake Harriet school zone.",
+    "5025-york-ave-s": "Off market as of 5/22 — Sun 1pm tour cancelled.",
     "4416-grimes-ave-s": "Tour requested. Morningside (Edina) SFH, 3BR/2BA + office, attached garage. ⚠️ Listing says DOGS ONLY — verify cat allowed before getting attached. Concord school zone. Zillow Apps: direct accept.",
     "4641-lyndale-ave-s": "Seems a little run down. Tour request sent on Zillow.",
     "4311-abbott-ave-s-2": "Tour CONFIRMED Sat 3pm.",
@@ -124,10 +124,6 @@
     "5048-thomas-ave-s-2": {
       "at": "2026-05-24T09:00:00",
       "status": "confirmed"
-    },
-    "5025-york-ave-s": {
-      "at": "2026-05-24T13:00:00",
-      "status": "confirmed"
     }
   },
   "marketStatuses": {},
@@ -183,11 +179,6 @@
           "kind": "school",
           "name": "Armatage",
           "note": "5525 Vincent community school"
-        },
-        {
-          "kind": "listing",
-          "id": "5025-york-ave-s",
-          "note": "1pm tour"
         },
         {
           "kind": "listing",
