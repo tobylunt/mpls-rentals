@@ -73,7 +73,9 @@
   },
   "schoolNotes": {
     "ISLA": "Feels far. Really need to take the highway to get here. Grounds seem...fine? A bit run down. But I know they recently moved to this location.",
-    "Hale": "Very cute. Doesn't seem too big, in a great quiet neighborhood, new play structures...obviously pretty minimal signal but it really is inviting."
+    "Hale": "Very cute. Doesn't seem too big, in a great quiet neighborhood, new play structures...obviously pretty minimal signal but it really is inviting.",
+    "Concord": "Quite lovely! Pretty big but well taken care of, new looking playground, nice neighborhood around. Not too bougie looking.",
+    "Lake Harriet": "Really just lovely."
   },
   "ratings": {
     "5207-belmont-ave-s": 5,
@@ -196,6 +198,15 @@
   "applications": {
     "sanctuary-lofts": "https://appfol.io/v0OrPJbm",
     "4804-france-ave-s-2": "https://www.zillow.com/homedetails/4804-France-Ave-S-2-Minneapolis-MN-55410/401753918_zpid/"
+  },
+  "itineraryVisited": {
+    "sunday-drive-by": [
+      "school:Burroughs",
+      "listing:linden-flats-washburn",
+      "school:Lake Harriet",
+      "school:Concord",
+      "school:ISLA"
+    ]
   },
   "itineraries": {
     "sunday-drive-by": {
