@@ -184,8 +184,7 @@ export function useUserData() {
             cons: seed?.cons ?? {},
             applications: seed?.applications ?? {},
             schoolNotes: seed?.schoolNotes ?? {},
-            // Visited state is purely runtime/local — never seeded.
-            itineraryVisited: prev.itineraryVisited,
+            itineraryVisited: seed?.itineraryVisited ?? {},
             ratings: seed?.ratings ?? {},
             tours: seed?.tours ?? {},
             marketStatuses: seed?.marketStatuses ?? {},
@@ -211,8 +210,19 @@ export function useUserData() {
             cons: { ...prev.cons, ...((seed?.cons ?? {}) as Cons) },
             applications: { ...prev.applications, ...((seed?.applications ?? {}) as Applications) },
             schoolNotes: { ...prev.schoolNotes, ...((seed?.schoolNotes ?? {}) as SchoolNotes) },
-            // Visited state is purely runtime/local — never seeded.
-            itineraryVisited: prev.itineraryVisited,
+            // Visited: per-itinerary union of local + seed stop ids, so
+            // the seed can record "what I've toured so far" without
+            // clobbering anything you've checked off locally since the
+            // last export.
+            itineraryVisited: (() => {
+              const merged: ItineraryVisited = { ...prev.itineraryVisited };
+              const seedVisited = (seed?.itineraryVisited ?? {}) as ItineraryVisited;
+              for (const [k, ids] of Object.entries(seedVisited)) {
+                const all = new Set<string>([...(merged[k] ?? []), ...ids]);
+                merged[k] = [...all];
+              }
+              return merged;
+            })(),
             ratings: { ...prev.ratings, ...((seed?.ratings ?? {}) as Ratings) },
             tours: (seed?.tours ?? {}) as Tours,
             marketStatuses: (seed?.marketStatuses ?? {}) as MarketStatuses,
