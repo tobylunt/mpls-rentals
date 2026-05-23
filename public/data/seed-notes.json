@@ -26,7 +26,7 @@
     "ff-780453-nokomis": "Reached out, no response yet.",
     "ff-935587-sw-mpls": "Reached out, no response yet.",
     "4733-xerxes-ave-s": "Off market as of 5/19.",
-    "4829-chicago-ave-1": "Tour CONFIRMED Sat 11am with Diane. Park on the street (NOT in back \u2014 blocks tenants). Meet at side door.",
+    "4829-chicago-ave-1": "Ground floor unit, a couple upstairs. Current tenant has a cat. Detached garage in alley out back.",
     "4804-france-ave-s-2": "Tour booked Sat 4:30pm. Edina school district (Concord Elementary).",
     "5855-blaisdell-ave": "Tour request sent.",
     "5320-bryant-ave-s": "Tour request sent.",
@@ -50,12 +50,18 @@
   "pros": {
     "sanctuary-lofts": "Spacious for a 2BR. Right by the greenway! Reasonable price.",
     "linden-flats-washburn": "Great location, nice new building.",
-    "4927-ewing-ave-s-3": "Nice new building. Good location, albeit a bit bougie. No pet rent. Parking stall in a detached garage."
+    "4927-ewing-ave-s-3": "Nice new building. Good location, albeit a bit bougie. No pet rent. Parking stall in a detached garage.",
+    "4829-chicago-ave-1": "Cheap! Great little community neighborhood - parkway theater, tutrle bread, very cute coffee shop, and more. Close to the parkway. On an express bus line. Cheap utilities. Large for a two bedroom. Working gas fireplace."
   },
   "cons": {
     "sanctuary-lofts": "A little weird to be in the church? No in-unit laundry. Layout a little odd.",
     "linden-flats-washburn": "Really small. And expensive.",
-    "4927-ewing-ave-s-3": "BASEMENT APARTMENT. Expensive."
+    "4927-ewing-ave-s-3": "BASEMENT APARTMENT. Expensive.",
+    "4829-chicago-ave-1": "A bit of a dump, tbh. But def a little better than s orchard st. Shared laundry in the basement. Kind of a busy street. $300 nonrefundable pet deposit. Only two bedrooms. Would need to set up an office in LR. Not much sunlight."
+  },
+  "schoolNotes": {
+    "ISLA": "Feels far. Really need to take the highway to get here. Grounds seem...fine? A bit run down. But I know they recently moved to this location.",
+    "Hale": "Very cute. Doesn't seem too big, in a great quiet neighborhood, new play structures...obviously pretty minimal signal but it really is inviting."
   },
   "ratings": {
     "5207-belmont-ave-s": 5,
