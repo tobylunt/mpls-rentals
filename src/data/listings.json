@@ -12,7 +12,7 @@
       "housing_type": "house",
       "neighborhood": "Morningside",
       "price": 3350.0,
-      "pet_rent": "dogs only (cats NOT allowed — verify negotiability)",
+      "pet_rent": "cats OK with pet deposit (negotiated despite 'dogs only' listing)",
       "furnished": false,
       "parking": "Attached garage",
       "size_sqft": 1749.0,
