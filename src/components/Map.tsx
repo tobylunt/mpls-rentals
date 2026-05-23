@@ -14,7 +14,7 @@ import L from "leaflet";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { FeatureCollection, Feature } from "geojson";
 import { type Listing, type Place } from "../data";
-import { type Notes, type Pros, type Cons, type Applications, type Ratings, type Disqualifications, type Tours, type MarketStatuses, statusLabel } from "../userdata";
+import { type Notes, type Pros, type Cons, type Applications, type SchoolNotes, type Ratings, type Disqualifications, type Tours, type MarketStatuses, statusLabel } from "../userdata";
 import { ListingPopup } from "./ListingPopup";
 
 const MPLS_CENTER: [number, number] = [44.93, -93.27];
@@ -184,6 +184,7 @@ export function Map({
   pros,
   cons,
   applications,
+  schoolNotes,
   ratings,
   disqualifications,
   tours,
@@ -194,6 +195,7 @@ export function Map({
   setPros,
   setCons,
   setApplication,
+  setSchoolNote,
   setRating,
   setDisqualification,
 }: {
@@ -209,6 +211,7 @@ export function Map({
   pros: Pros;
   cons: Cons;
   applications: Applications;
+  schoolNotes: SchoolNotes;
   ratings: Ratings;
   disqualifications: Disqualifications;
   tours: Tours;
@@ -219,6 +222,7 @@ export function Map({
   setPros: (id: string, text: string) => void;
   setCons: (id: string, text: string) => void;
   setApplication: (id: string, url: string) => void;
+  setSchoolNote: (name: string, text: string) => void;
   setRating: (id: string, rating: number | null) => void;
   setDisqualification: (id: string, reason: string | null) => void;
 }) {
@@ -412,13 +416,44 @@ export function Map({
 
         <LayersControl.Overlay checked name="Schools">
           <LayerGroup>
-            {schools.map((s) =>
-              s.lat != null && s.lng != null ? (
+            {schools.map((s) => {
+              if (s.lat == null || s.lng == null) return null;
+              // Listings (excluding off-market) where this is the
+              // assigned school — useful at-a-glance context.
+              const matches = listings.filter(
+                (l) => l.school === s.name && l.status !== "removed"
+              );
+              return (
                 <Marker key={s.name} position={[s.lat, s.lng]} icon={SCHOOL_ICON}>
-                  <Popup><strong>{s.name}</strong> (school)</Popup>
+                  <Popup minWidth={260}>
+                    <div className="school-popup">
+                      <div className="school-popup__head">
+                        <strong>{s.name}</strong> <span className="school-popup__tag">school</span>
+                      </div>
+                      {matches.length > 0 ? (
+                        <div className="school-popup__matches">
+                          <span className="school-popup__matches-label">
+                            {matches.length} listing{matches.length === 1 ? "" : "s"} use this school:
+                          </span>
+                          <ul>
+                            {matches.map((l) => (
+                              <li key={l.id}>{l.lodging}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : null}
+                      <textarea
+                        className="school-popup__note-input"
+                        placeholder="Your notes on this school…"
+                        value={schoolNotes[s.name] ?? ""}
+                        onChange={(e) => setSchoolNote(s.name, e.target.value)}
+                        rows={3}
+                      />
+                    </div>
+                  </Popup>
                 </Marker>
-              ) : null
-            )}
+              );
+            })}
           </LayerGroup>
         </LayersControl.Overlay>
 

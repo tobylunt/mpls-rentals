@@ -13,6 +13,7 @@ export default function App() {
     pros,
     cons,
     applications,
+    schoolNotes,
     ratings,
     tours,
     marketStatuses,
@@ -23,6 +24,7 @@ export default function App() {
     setPros,
     setCons,
     setApplication,
+    setSchoolNote,
     setRating,
     setDisqualification,
     toggleShortlist,
@@ -170,6 +172,7 @@ export default function App() {
                 pros={pros}
                 cons={cons}
                 applications={applications}
+                schoolNotes={schoolNotes}
                 ratings={ratings}
                 disqualifications={disqualifications}
                 tours={tours}
@@ -180,6 +183,7 @@ export default function App() {
                 setPros={setPros}
                 setCons={setCons}
                 setApplication={setApplication}
+                setSchoolNote={setSchoolNote}
                 setRating={setRating}
                 setDisqualification={setDisqualification}
               />

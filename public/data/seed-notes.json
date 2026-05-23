@@ -15,7 +15,7 @@
     "4311-abbott-ave-s-2": "Tour CONFIRMED Sat 3pm.",
     "4453-york-ave-s": "Pricey but otherwise perfect. Tour cancelled.",
     "4009-ewing-ave-s": "Not sure on value for money. Right by school. Tour pending for sunday morning",
-    "4927-ewing-ave-s-3": "Tour CONFIRMED Sat 10am with John (lessor).",
+    "4927-ewing-ave-s-3": "Yeah...that's a no. Standard utilities. Tour was Sat 10am with John (lessor) — turned out to be a basement apartment.",
     "sabbatical-179679-4515-grand": "Reached out, no response yet.",
     "ff-960786-lake-harriet": "Reached out, no response yet.",
     "ff-436496-sheridan-haven": "Reached out, no response yet.",
@@ -49,11 +49,13 @@
   },
   "pros": {
     "sanctuary-lofts": "Spacious for a 2BR. Right by the greenway! Reasonable price.",
-    "linden-flats-washburn": "Great location, nice new building."
+    "linden-flats-washburn": "Great location, nice new building.",
+    "4927-ewing-ave-s-3": "Nice new building. Good location, albeit a bit bougie. No pet rent. Parking stall in a detached garage."
   },
   "cons": {
     "sanctuary-lofts": "A little weird to be in the church? No in-unit laundry. Layout a little odd.",
-    "linden-flats-washburn": "Really small. And expensive."
+    "linden-flats-washburn": "Really small. And expensive.",
+    "4927-ewing-ave-s-3": "BASEMENT APARTMENT. Expensive."
   },
   "ratings": {
     "5207-belmont-ave-s": 5,
@@ -70,7 +72,8 @@
     "5432-25th-ave-s": 4,
     "the-collection-c5": 2,
     "1838-jefferson": 2,
-    "2079-st-clair": 3
+    "2079-st-clair": 3,
+    "4927-ewing-ave-s-3": 2
   },
   "tours": {
     "4927-ewing-ave-s-3": {
@@ -132,7 +135,6 @@
     "4311-abbott-ave-s-2",
     "4804-france-ave-s-2",
     "4829-chicago-ave-1",
-    "4927-ewing-ave-s-3",
     "4937-clinton-ave",
     "5025-york-ave-s",
     "5048-thomas-ave-s-2",
@@ -144,7 +146,8 @@
     "sanctuary-lofts"
   ],
   "shortlistRemove": [
-    "4749-harriet-ave-2"
+    "4749-harriet-ave-2",
+    "4927-ewing-ave-s-3"
   ],
   "disqualifications": {
     "4430-w-lake-harriet-pkwy": "Dumpy looking with bad reviews",

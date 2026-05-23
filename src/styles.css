@@ -246,6 +246,56 @@ body {
 }
 .popup__note-input:focus { outline: none; border-color: #1565c0; }
 
+/* School popup: name + (optional) list of matching listings + notes
+ * textarea. Same vibe as the listing popup but lighter weight since
+ * schools have less structured data. */
+.school-popup { font-size: 12px; line-height: 1.4; min-width: 220px; }
+.school-popup__head { font-size: 14px; }
+.school-popup__tag {
+  display: inline-block;
+  background: #e3f2fd;
+  color: #1565c0;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+.school-popup__matches {
+  margin: 6px 0;
+  padding-top: 6px;
+  border-top: 1px solid #eee;
+}
+.school-popup__matches-label {
+  font-size: 11px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.school-popup__matches ul {
+  margin: 4px 0 0;
+  padding-left: 16px;
+  color: #444;
+}
+.school-popup__matches li { line-height: 1.5; }
+.school-popup__note-input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 12px;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 8px;
+  resize: vertical;
+  box-sizing: border-box;
+  field-sizing: content;
+  min-height: 40px;
+  max-height: 200px;
+}
+.school-popup__note-input:focus { outline: none; border-color: #1565c0; }
+
 /* Pros/cons: side-by-side pair tinted green/red so it's instantly clear
  * which column you're writing in. */
 .popup__proscons {
