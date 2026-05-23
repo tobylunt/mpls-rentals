@@ -466,6 +466,19 @@ body {
   font-size: 11px;
   font-weight: 600;
   flex-shrink: 0;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+.itinerary__num:hover { filter: brightness(1.1); box-shadow: 0 0 0 2px rgba(179,84,0,0.2); }
+.itinerary__num--done { background: #2e7d32; }
+.itinerary__num--done:hover { box-shadow: 0 0 0 2px rgba(46,125,50,0.2); }
+.itinerary__item--done .itinerary__label,
+.itinerary__item--done .itinerary__sub,
+.itinerary__item--done .itinerary__note {
+  text-decoration: line-through;
+  opacity: 0.55;
 }
 .itinerary__body { display: flex; flex-direction: column; gap: 1px; flex: 1; }
 .itinerary__label { color: #333; font-weight: 500; }
@@ -503,6 +516,10 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   box-shadow: 0 0 0 2px #fff, 0 2px 4px rgba(0,0,0,0.3);
   line-height: 1;
+}
+.itinerary-pin__num--done {
+  background: #2e7d32;
+  font-size: 15px;
 }
 
 .popup { font-size: 12px; line-height: 1.4; }

@@ -81,11 +81,14 @@ const DAYCARE_ICON = placeIcon("🧸", "daycare");
 const WORK_ICON = placeIcon("💼", "work");
 
 // Amber numbered circle that matches the .itinerary__num style in the side
-// panel — drawn on the map when an itinerary panel is expanded.
-function itineraryNumIcon(num: number): L.DivIcon {
+// panel — drawn on the map when an itinerary panel is expanded. When the
+// stop is marked visited, the pin swaps to a green ✓.
+function itineraryNumIcon(num: number, visited: boolean): L.DivIcon {
+  const inner = visited ? "✓" : String(num);
+  const cls = visited ? "itinerary-pin__num itinerary-pin__num--done" : "itinerary-pin__num";
   return L.divIcon({
     className: "itinerary-pin",
-    html: `<span class="itinerary-pin__num">${num}</span>`,
+    html: `<span class="${cls}">${inner}</span>`,
     iconSize: [24, 24],
     iconAnchor: [12, 12],
   });
@@ -217,7 +220,7 @@ export function Map({
   tours: Tours;
   marketStatuses: MarketStatuses;
   flyToPoint: { lat: number; lng: number; key: number } | null;
-  itineraryStops: { key: string; num: number; lat: number; lng: number; label: string }[];
+  itineraryStops: { key: string; num: number; lat: number; lng: number; label: string; visited: boolean }[];
   setNote: (id: string, text: string) => void;
   setPros: (id: string, text: string) => void;
   setCons: (id: string, text: string) => void;
@@ -330,7 +333,7 @@ export function Map({
         <Marker
           key={s.key}
           position={[s.lat, s.lng]}
-          icon={itineraryNumIcon(s.num)}
+          icon={itineraryNumIcon(s.num, s.visited)}
           zIndexOffset={1000}
           interactive={false}
         />

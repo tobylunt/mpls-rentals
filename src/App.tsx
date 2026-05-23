@@ -14,6 +14,7 @@ export default function App() {
     cons,
     applications,
     schoolNotes,
+    itineraryVisited,
     ratings,
     tours,
     marketStatuses,
@@ -25,6 +26,7 @@ export default function App() {
     setCons,
     setApplication,
     setSchoolNote,
+    toggleItineraryVisited,
     setRating,
     setDisqualification,
     toggleShortlist,
@@ -45,16 +47,24 @@ export default function App() {
   // markers for their stops while the panel is open.
   const [expandedItins, setExpandedItins] = useState<Set<string>>(new Set());
   const itineraryStops = useMemo(() => {
-    const all: { key: string; num: number; lat: number; lng: number; label: string }[] = [];
+    const all: { key: string; num: number; lat: number; lng: number; label: string; visited: boolean }[] = [];
     for (const [key, itin] of Object.entries(itineraries)) {
       if (!expandedItins.has(key)) continue;
       const stops = resolveStops(itin, data.listings, data.schools);
+      const visitedSet = new Set(itineraryVisited[key] ?? []);
       stops.forEach((s, i) => {
-        all.push({ key: `${key}-${i}`, num: i + 1, lat: s.lat, lng: s.lng, label: s.label });
+        all.push({
+          key: `${key}-${s.id}`,
+          num: i + 1,
+          lat: s.lat,
+          lng: s.lng,
+          label: s.label,
+          visited: visitedSet.has(s.id),
+        });
       });
     }
     return all;
-  }, [itineraries, expandedItins]);
+  }, [itineraries, expandedItins, itineraryVisited]);
   const [filters, setFilters] = useState<Filters>(() => defaultFilters(data.listings));
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [sortKey, setSortKey] = useState<SortKey>("chain");
@@ -130,7 +140,9 @@ export default function App() {
                   itinerary={itin}
                   listings={data.listings}
                   schools={data.schools}
+                  visited={new Set(itineraryVisited[key] ?? [])}
                   onFlyTo={flyTo}
+                  onToggleVisited={(stopId) => toggleItineraryVisited(key, stopId)}
                   onToggle={(open) =>
                     setExpandedItins((prev) => {
                       const next = new Set(prev);

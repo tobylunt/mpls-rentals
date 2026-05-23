@@ -8,6 +8,10 @@ export type Pros = Record<string, string>;
 export type Cons = Record<string, string>;
 // Per-school notes, keyed by school name (schools have no IDs).
 export type SchoolNotes = Record<string, string>;
+// Which itinerary stops the user has marked as visited. Outer key is the
+// itinerary key (e.g., "sunday-drive-by"); inner ids are stable per-stop
+// identifiers like "listing:5048-thomas-ave-s-2" or "school:Burroughs".
+export type ItineraryVisited = Record<string, string[]>;
 // Per-listing application URL captured from the agent (apartments.com,
 // AppFolio, Zillow Apps, etc.). Empty/absent means "haven't applied yet".
 export type Applications = Record<string, string>;
@@ -93,6 +97,7 @@ type Stored = {
   cons: Cons;
   applications: Applications;
   schoolNotes: SchoolNotes;
+  itineraryVisited: ItineraryVisited;
   ratings: Ratings;
   tours: Tours;
   marketStatuses: MarketStatuses;
@@ -102,7 +107,7 @@ type Stored = {
 };
 
 function emptyStored(): Stored {
-  return { notes: {}, pros: {}, cons: {}, applications: {}, schoolNotes: {}, ratings: {}, tours: {}, marketStatuses: {}, disqualifications: {}, shortlist: [], itineraries: {} };
+  return { notes: {}, pros: {}, cons: {}, applications: {}, schoolNotes: {}, itineraryVisited: {}, ratings: {}, tours: {}, marketStatuses: {}, disqualifications: {}, shortlist: [], itineraries: {} };
 }
 
 function read(): Stored {
@@ -127,6 +132,7 @@ function read(): Stored {
       cons: parsed?.cons ?? {},
       applications: parsed?.applications ?? {},
       schoolNotes: parsed?.schoolNotes ?? {},
+      itineraryVisited: parsed?.itineraryVisited ?? {},
       ratings: parsed?.ratings ?? {},
       tours: parsed?.tours ?? {},
       marketStatuses: parsed?.marketStatuses ?? {},
@@ -178,6 +184,8 @@ export function useUserData() {
             cons: seed?.cons ?? {},
             applications: seed?.applications ?? {},
             schoolNotes: seed?.schoolNotes ?? {},
+            // Visited state is purely runtime/local — never seeded.
+            itineraryVisited: prev.itineraryVisited,
             ratings: seed?.ratings ?? {},
             tours: seed?.tours ?? {},
             marketStatuses: seed?.marketStatuses ?? {},
@@ -203,6 +211,8 @@ export function useUserData() {
             cons: { ...prev.cons, ...((seed?.cons ?? {}) as Cons) },
             applications: { ...prev.applications, ...((seed?.applications ?? {}) as Applications) },
             schoolNotes: { ...prev.schoolNotes, ...((seed?.schoolNotes ?? {}) as SchoolNotes) },
+            // Visited state is purely runtime/local — never seeded.
+            itineraryVisited: prev.itineraryVisited,
             ratings: { ...prev.ratings, ...((seed?.ratings ?? {}) as Ratings) },
             tours: (seed?.tours ?? {}) as Tours,
             marketStatuses: (seed?.marketStatuses ?? {}) as MarketStatuses,
@@ -274,6 +284,18 @@ export function useUserData() {
       if (text.trim() === "") delete schoolNotes[name];
       else schoolNotes[name] = text;
       return { ...prev, schoolNotes };
+    });
+  }, []);
+
+  const toggleItineraryVisited = useCallback((itinKey: string, stopId: string) => {
+    setData((prev) => {
+      const cur = new Set(prev.itineraryVisited[itinKey] ?? []);
+      if (cur.has(stopId)) cur.delete(stopId);
+      else cur.add(stopId);
+      const itineraryVisited = { ...prev.itineraryVisited, [itinKey]: [...cur] };
+      // Drop empty arrays to keep state tidy.
+      if (itineraryVisited[itinKey].length === 0) delete itineraryVisited[itinKey];
+      return { ...prev, itineraryVisited };
     });
   }, []);
 
@@ -421,7 +443,7 @@ export function useUserData() {
             shortlistCount++;
           }
         }
-        return { notes, pros, cons, applications, schoolNotes, ratings, tours, marketStatuses, disqualifications, shortlist: [...shortlistSet], itineraries: prev.itineraries };
+        return { notes, pros, cons, applications, schoolNotes, itineraryVisited: prev.itineraryVisited, ratings, tours, marketStatuses, disqualifications, shortlist: [...shortlistSet], itineraries: prev.itineraries };
       });
       return { notesCount, ratingsCount, toursCount, marketStatusCount, disqualificationCount, shortlistCount };
     },
@@ -434,6 +456,7 @@ export function useUserData() {
     cons: data.cons,
     applications: data.applications,
     schoolNotes: data.schoolNotes,
+    itineraryVisited: data.itineraryVisited,
     ratings: data.ratings,
     tours: data.tours,
     marketStatuses: data.marketStatuses,
@@ -445,6 +468,7 @@ export function useUserData() {
     setCons,
     setApplication,
     setSchoolNote,
+    toggleItineraryVisited,
     setRating,
     setTour,
     setMarketStatus,
