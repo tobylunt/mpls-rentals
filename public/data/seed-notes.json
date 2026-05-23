@@ -32,7 +32,7 @@
     "5320-bryant-ave-s": "Tour request sent.",
     "3100-w-55th-st-edina": "Tour request sent.",
     "3613-w-54th-st-edina": "Tour confirmed Sat 2:00-2:30pm.",
-    "4937-clinton-ave": "Tour confirmed Sat 12pm. Pet policy not in listing \u2014 verify with manager at tour.",
+    "4937-clinton-ave": "Cats are fine. This one honestly was a disappointment. Tour was Sat 12pm.",
     "4739-1st-ave-s": "Tour request sent.",
     "5908-oaklawn-ave-edina": "Off market as of 5/21.",
     "4544-bryant-ave-s": "Tour request sent. Listing says 'no pets' but lessor confirmed it's negotiable.",
@@ -51,13 +51,15 @@
     "sanctuary-lofts": "Spacious for a 2BR. Right by the greenway! Reasonable price.",
     "linden-flats-washburn": "Great location, nice new building.",
     "4927-ewing-ave-s-3": "Nice new building. Good location, albeit a bit bougie. No pet rent. Parking stall in a detached garage.",
-    "4829-chicago-ave-1": "Cheap! Great little community neighborhood - parkway theater, tutrle bread, very cute coffee shop, and more. Close to the parkway. On an express bus line. Cheap utilities. Large for a two bedroom. Working gas fireplace."
+    "4829-chicago-ave-1": "Cheap! Great little community neighborhood - parkway theater, tutrle bread, very cute coffee shop, and more. Close to the parkway. On an express bus line. Cheap utilities. Large for a two bedroom. Working gas fireplace.",
+    "4937-clinton-ave": "GREAT location albeit not super walkable to shops - but very walkable to parks and to the parkway."
   },
   "cons": {
     "sanctuary-lofts": "A little weird to be in the church? No in-unit laundry. Layout a little odd.",
     "linden-flats-washburn": "Really small. And expensive.",
     "4927-ewing-ave-s-3": "BASEMENT APARTMENT. Expensive.",
-    "4829-chicago-ave-1": "A bit of a dump, tbh. But def a little better than s orchard st. Shared laundry in the basement. Kind of a busy street. $300 nonrefundable pet deposit. Only two bedrooms. Would need to set up an office in LR. Not much sunlight."
+    "4829-chicago-ave-1": "A bit of a dump, tbh. But def a little better than s orchard st. Shared laundry in the basement. Kind of a busy street. $300 nonrefundable pet deposit. Only two bedrooms. Would need to set up an office in LR. Not much sunlight.",
+    "4937-clinton-ave": "Run down. Bizarre layout. Very little sunlight. Overpriced for what it is."
   },
   "schoolNotes": {
     "ISLA": "Feels far. Really need to take the highway to get here. Grounds seem...fine? A bit run down. But I know they recently moved to this location.",
@@ -79,7 +81,8 @@
     "the-collection-c5": 2,
     "1838-jefferson": 2,
     "2079-st-clair": 3,
-    "4927-ewing-ave-s-3": 2
+    "4927-ewing-ave-s-3": 2,
+    "4937-clinton-ave": 1
   },
   "tours": {
     "4927-ewing-ave-s-3": {
@@ -141,7 +144,6 @@
     "4311-abbott-ave-s-2",
     "4804-france-ave-s-2",
     "4829-chicago-ave-1",
-    "4937-clinton-ave",
     "5025-york-ave-s",
     "5048-thomas-ave-s-2",
     "5100-xerxes-ave-s",
@@ -153,7 +155,8 @@
   ],
   "shortlistRemove": [
     "4749-harriet-ave-2",
-    "4927-ewing-ave-s-3"
+    "4927-ewing-ave-s-3",
+    "4937-clinton-ave"
   ],
   "disqualifications": {
     "4430-w-lake-harriet-pkwy": "Dumpy looking with bad reviews",
@@ -213,6 +216,11 @@
           "kind": "school",
           "name": "Hale",
           "note": "shortlist school"
+        },
+        {
+          "kind": "listing",
+          "id": "5417-25th-ave-s",
+          "note": "Nokomis SFH drive-by"
         },
         {
           "kind": "listing",
