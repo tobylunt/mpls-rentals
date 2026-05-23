@@ -52,14 +52,16 @@
     "linden-flats-washburn": "Great location, nice new building.",
     "4927-ewing-ave-s-3": "Nice new building. Good location, albeit a bit bougie. No pet rent. Parking stall in a detached garage.",
     "4829-chicago-ave-1": "Cheap! Great little community neighborhood - parkway theater, tutrle bread, very cute coffee shop, and more. Close to the parkway. On an express bus line. Cheap utilities. Large for a two bedroom. Working gas fireplace.",
-    "4937-clinton-ave": "GREAT location albeit not super walkable to shops - but very walkable to parks and to the parkway."
+    "4937-clinton-ave": "GREAT location albeit not super walkable to shops - but very walkable to parks and to the parkway.",
+    "5100-xerxes-ave-s": "Nice size for a 2BR. Built ins are cool. Not terrible I guess?"
   },
   "cons": {
     "sanctuary-lofts": "A little weird to be in the church? No in-unit laundry. Layout a little odd.",
     "linden-flats-washburn": "Really small. And expensive.",
     "4927-ewing-ave-s-3": "BASEMENT APARTMENT. Expensive.",
     "4829-chicago-ave-1": "A bit of a dump, tbh. But def a little better than s orchard st. Shared laundry in the basement. Kind of a busy street. $300 nonrefundable pet deposit. Only two bedrooms. Would need to set up an office in LR. Not much sunlight.",
-    "4937-clinton-ave": "Run down. Bizarre layout. Very little sunlight. Overpriced for what it is."
+    "4937-clinton-ave": "Run down. Bizarre layout. Very little sunlight. Overpriced for what it is.",
+    "5100-xerxes-ave-s": "Second bath is in the basement. Play room down there but it's gross. Would need to have an office setup in the LR and/or main bedroom. Kinda a busy location."
   },
   "schoolNotes": {
     "ISLA": "Feels far. Really need to take the highway to get here. Grounds seem...fine? A bit run down. But I know they recently moved to this location.",
@@ -146,8 +148,9 @@
     "4829-chicago-ave-1",
     "5025-york-ave-s",
     "5048-thomas-ave-s-2",
-    "5100-xerxes-ave-s",
+    "5417-25th-ave-s",
     "5525-vincent-ave-s",
+    "ff-835517-cozy",
     "abbott-412",
     "ff-982084-lynnhurst",
     "linden-flats-washburn",
@@ -156,13 +159,16 @@
   "shortlistRemove": [
     "4749-harriet-ave-2",
     "4927-ewing-ave-s-3",
-    "4937-clinton-ave"
+    "4937-clinton-ave",
+    "5100-xerxes-ave-s"
   ],
   "disqualifications": {
     "4430-w-lake-harriet-pkwy": "Dumpy looking with bad reviews",
     "sabbatical-175281-uptown": "Don't like the Kenwood school vibes",
     "4544-bryant-ave-s": "No tour availability at our times + marginal place",
-    "3100-w-55th-st-edina": "landlord said street is too busy - not great for kids."
+    "3100-w-55th-st-edina": "landlord said street is too busy - not great for kids.",
+    "ff-436496-sheridan-haven": "No contact",
+    "sabbatical-165748-lyndale-farmstead": "Wrong district"
   },
   "applications": {
     "sanctuary-lofts": "https://appfol.io/v0OrPJbm"
