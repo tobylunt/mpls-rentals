@@ -61,7 +61,8 @@
     "4416-grimes-ave-s": "Absolutely wonderful park a block away. Very quiet and lovely block. Great size, seemingly a good value for money.",
     "5048-thomas-ave-s-2": "3BR plus weird flex space, updated kitchen and bath, great quiet block, really friendly landlord below! Fiber internet ready. No snow removal or lawn responsibilities.",
     "ff-982084-lynnhurst": "Amazing location next to Burroughs. Friendly landlord. 2min walk to school!!! Right next to the creek. Across the street from a farmer's market.",
-    "5525-vincent-ave-s": "Affordable, flex space in basement and up in the attic, nice quiet block, pretty nice on the main level. Cat clearly fine — present tenants have two cats."
+    "5525-vincent-ave-s": "Affordable, flex space in basement and up in the attic, nice quiet block, pretty nice on the main level. Cat clearly fine — present tenants have two cats.",
+    "5417-25th-ave-s": "Cute house, cute block. Seems good? Close to Wenonah."
   },
   "cons": {
     "sanctuary-lofts": "A little weird to be in the church? No in-unit laundry. Layout a little odd.",
@@ -76,7 +77,8 @@
     "4416-grimes-ave-s": "Edina district. Video to come.",
     "5048-thomas-ave-s-2": "Not the full house, upstairs unit. No garage - street / driveway parking.",
     "ff-982084-lynnhurst": "Busier street (50th). Small. Laundry in basement. Furniture is kinda weird. No garage.",
-    "5525-vincent-ave-s": "No garage, rollaway dishwasher, small kitchen."
+    "5525-vincent-ave-s": "No garage, rollaway dishwasher, small kitchen.",
+    "5417-25th-ave-s": "Couldn't get inside."
   },
   "schoolNotes": {
     "ISLA": "Feels far. Really need to take the highway to get here. Grounds seem...fine? A bit run down. But I know they recently moved to this location.",
@@ -223,7 +225,8 @@
       "school:Lake Harriet",
       "school:Concord",
       "school:ISLA",
-      "school:Hale"
+      "school:Hale",
+      "listing:5417-25th-ave-s"
     ]
   },
   "itineraries": {
