@@ -4,7 +4,7 @@
     "5207-belmont-ave-s": "Large, right by the greenway, affordable, burroughs school. TL reached out on Zillow on 5/16.",
     "4934-lyndale-ave-s-2": "Looks like a busier street. Tour request sent.",
     "4749-harriet-ave-2": "Off market as of 5/19. Drat.",
-    "5525-vincent-ave-s": "Tour CONFIRMED Sun 11am. Listing says no pets \u2014 verify negotiable. Armatage school zone (not Burroughs).",
+    "5525-vincent-ave-s": "Weird mixup where the tenants showed me the apt but the landlord didn't show up. Armatage school zone (not Burroughs).",
     "5536-penn-ave-s": "Off market as of 5/21.",
     "abbott-412": "Virtual tour CANCELLED (was Fri 10am). The Abbott unit 412 (2BR Linden Hills luxury apt, built 2023). Pricey but pet-friendly + Lake Harriet school. Zillow Apps: building has own portal (multi-unit).",
     "4724-chowen-ave-s": "1920s bungalow on same street as Lake Harriet Lower. Charming but only 2BR/1BA, no garage, tenant pays everything. ⚠️ 'small dogs OK' — cat policy not mentioned. Zillow Apps: request only.",
@@ -60,7 +60,8 @@
     "4804-france-ave-s-2": "Unit in nicer shape than most. Nice owner downstairs. Excellent price. Backs up to a nice neighborhood, good walking roads and nature.",
     "4416-grimes-ave-s": "Absolutely wonderful park a block away. Very quiet and lovely block. Great size, seemingly a good value for money.",
     "5048-thomas-ave-s-2": "3BR plus weird flex space, updated kitchen and bath, great quiet block, really friendly landlord below! Fiber internet ready. No snow removal or lawn responsibilities.",
-    "ff-982084-lynnhurst": "Amazing location next to Burroughs. Friendly landlord. 2min walk to school!!! Right next to the creek. Across the street from a farmer's market."
+    "ff-982084-lynnhurst": "Amazing location next to Burroughs. Friendly landlord. 2min walk to school!!! Right next to the creek. Across the street from a farmer's market.",
+    "5525-vincent-ave-s": "Affordable, flex space in basement and up in the attic, nice quiet block, pretty nice on the main level. Cat clearly fine — present tenants have two cats."
   },
   "cons": {
     "sanctuary-lofts": "A little weird to be in the church? No in-unit laundry. Layout a little odd.",
@@ -74,7 +75,8 @@
     "4804-france-ave-s-2": "Nice owner downstairs. Small - only 2BR 1BR. On a busy street.",
     "4416-grimes-ave-s": "Edina district. Video to come.",
     "5048-thomas-ave-s-2": "Not the full house, upstairs unit. No garage - street / driveway parking.",
-    "ff-982084-lynnhurst": "Busier street (50th). Small. Laundry in basement. Furniture is kinda weird. No garage."
+    "ff-982084-lynnhurst": "Busier street (50th). Small. Laundry in basement. Furniture is kinda weird. No garage.",
+    "5525-vincent-ave-s": "No garage, rollaway dishwasher, small kitchen."
   },
   "schoolNotes": {
     "ISLA": "Feels far. Really need to take the highway to get here. Grounds seem...fine? A bit run down. But I know they recently moved to this location.",
@@ -200,7 +202,12 @@
     "sabbatical-179679-4515-grand": "no response",
     "ff-960786-lake-harriet": "no response",
     "ff-935587-sw-mpls": "no response",
-    "5320-bryant-ave-s": "too expensive; no response"
+    "5320-bryant-ave-s": "too expensive; no response",
+    "4739-1st-ave-s": "no longer available",
+    "ff-908986-standish": "no response",
+    "ff-780453-nokomis": "no response",
+    "5855-blaisdell-ave": "no response",
+    "4641-lyndale-ave-s": "no response"
   },
   "applications": {
     "sanctuary-lofts": "https://appfol.io/v0OrPJbm",
@@ -208,11 +215,15 @@
   },
   "itineraryVisited": {
     "sunday-drive-by": [
+      "listing:5048-thomas-ave-s-2",
       "school:Burroughs",
+      "listing:5525-vincent-ave-s",
+      "school:Armatage",
       "listing:linden-flats-washburn",
       "school:Lake Harriet",
       "school:Concord",
-      "school:ISLA"
+      "school:ISLA",
+      "school:Hale"
     ]
   },
   "itineraries": {
