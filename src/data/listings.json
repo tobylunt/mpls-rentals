@@ -1136,39 +1136,38 @@
     },
     {
       "id": "ff-835517-cozy",
-      "lodging": "Cozy 3BR (FF, S Mpls)",
-      "address": "South Minneapolis (exact addr TBD)",
+      "lodging": "Cozy 3BR (FF, Nokomis)",
+      "address": "3418 Boardman St, Minneapolis, MN 55417",
       "url": "https://www.furnishedfinder.com/property/835517_1",
       "image_url": "/images/ff-835517.jpg",
-      "lat": 44.9071733,
-      "lng": -93.2195246,
+      "lat": 44.9045244,
+      "lng": -93.2225971,
       "bedrooms": 3,
       "housing_type": "house",
-      "neighborhood": "S Mpls (TBD)",
+      "neighborhood": "Nokomis",
       "price": 2750.0,
-      "pet_rent": "unknown",
+      "pet_rent": "Pets OK ($200 deposit, monthly rate TBD)",
       "furnished": true,
       "parking": "?",
       "size_sqft": 1000.0,
       "price_per_sqft": 2.75,
       "available": "2026-07-31",
       "term": "1mo min",
-      "school": null,
-      "daycare": null,
+      "school": "Wenonah",
+      "daycare": "Casa Kingfield",
       "dist_school": {
-        "walk_min": null,
-        "drive_min": null,
-        "raw": ""
+        "walk_min": 17,
+        "drive_min": 3,
+        "raw": "~17 min walk (3) (est)"
       },
       "dist_daycare": {
         "walk_min": null,
-        "drive_min": null,
-        "raw": ""
+        "drive_min": 11,
+        "raw": "~11 min drive (est)"
       },
-      "dist_work_drive_min": null,
+      "dist_work_drive_min": 17,
       "utilities": "Included",
-      "notes": "Furnished. 3BR/1BA, 1000 sqft (smallish). Fenced yard, 4-season porch. Pet deposit $200. Pets allowed. Close to MSP airport. Coords approximate (FF map pin).",
-      "coords_approximate": true
+      "notes": "Furnished. 3BR/1BA, 1000 sqft (smallish). Fenced yard, 4-season porch. Pet deposit $200. Pets allowed. Close to MSP airport. Wenonah attendance area (G3 — same as Sanctuary + 5417 25th)."
     },
     {
       "id": "ff-780453-nokomis",
