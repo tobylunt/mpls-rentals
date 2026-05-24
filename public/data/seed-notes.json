@@ -8,7 +8,7 @@
     "5536-penn-ave-s": "Off market as of 5/21.",
     "abbott-412": "Virtual tour CANCELLED (was Fri 10am). The Abbott unit 412 (2BR Linden Hills luxury apt, built 2023). Pricey but pet-friendly + Lake Harriet school. Zillow Apps: building has own portal (multi-unit).",
     "5417-25th-ave-s": "Tour requested. Nokomis SFH, 3BR/2BA. Cats+dogs OK, Jul 1 avail. Zillow Apps: direct accept. 3 blocks to Lake Nokomis.",
-    "5048-thomas-ave-s-2": "Tour CONFIRMED Sun 9am. Newly remodeled 3BR/1BA top-floor apt in Fulton. Listing says no pets \u2014 verify negotiability. Jun 1 avail (or sooner). Zillow Apps: direct accept.",
+    "5048-thomas-ave-s-2": "This is a good one!!! Pet rent / deposit unclear, Jackie will get back to me. She's remodeling basement unit, doing",
     "5025-york-ave-s": "Off market as of 5/22 — Sun 1pm tour cancelled.",
     "4416-grimes-ave-s": "Drove by — awesome from the outside! Virtual tour Tue (realtor sending video). Morningside (Edina) SFH, 3BR/2BA + office, attached garage. ✅ Cat OK with pet deposit (negotiated despite 'dogs only' listing). Concord school zone. Zillow Apps: direct accept.",
     "4641-lyndale-ave-s": "Seems a little run down. Tour request sent on Zillow.",
@@ -57,7 +57,8 @@
     "3613-w-54th-st-edina": "Very nice block.",
     "4311-abbott-ave-s-2": "Definitely a good value. RIGHT next to an awesome park with tons of kid stuff. And another park. Lovely block, quiet. Downstairs neighbor Liv is delightful. Lake Harriet Lower.",
     "4804-france-ave-s-2": "Unit in nicer shape than most. Nice owner downstairs. Excellent price. Backs up to a nice neighborhood, good walking roads and nature.",
-    "4416-grimes-ave-s": "Absolutely wonderful park a block away. Very quiet and lovely block. Great size, seemingly a good value for money."
+    "4416-grimes-ave-s": "Absolutely wonderful park a block away. Very quiet and lovely block. Great size, seemingly a good value for money.",
+    "5048-thomas-ave-s-2": "3BR plus weird flex space, updated kitchen and bath, great quiet block, really friendly landlord below! Fiber internet ready. No snow removal or lawn responsibilities."
   },
   "cons": {
     "sanctuary-lofts": "A little weird to be in the church? No in-unit laundry. Layout a little odd.",
@@ -69,7 +70,8 @@
     "3613-w-54th-st-edina": "Everythign else",
     "4311-abbott-ave-s-2": "Basement is disgusting. Truly gross. Apartment is also pretty dingy. But good light! Only 2 BR, 1B. Shared thermostat. Probably gets cold.",
     "4804-france-ave-s-2": "Nice owner downstairs. Small - only 2BR 1BR. On a busy street.",
-    "4416-grimes-ave-s": "Edina district. Video to come."
+    "4416-grimes-ave-s": "Edina district. Video to come.",
+    "5048-thomas-ave-s-2": "Not the full house, upstairs unit. No garage - street / driveway parking."
   },
   "schoolNotes": {
     "ISLA": "Feels far. Really need to take the highway to get here. Grounds seem...fine? A bit run down. But I know they recently moved to this location.",
@@ -96,7 +98,8 @@
     "4927-ewing-ave-s-3": 2,
     "4937-clinton-ave": 1,
     "4416-grimes-ave-s": 5,
-    "4804-france-ave-s-2": 3
+    "4804-france-ave-s-2": 3,
+    "5048-thomas-ave-s-2": 5
   },
   "tours": {
     "4927-ewing-ave-s-3": {
