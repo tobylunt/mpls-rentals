@@ -1,6 +1,41 @@
 {
   "listings": [
     {
+      "id": "4724-chowen-ave-s",
+      "lodging": "4724 Chowen Ave S (1920s Linden Hills bungalow)",
+      "address": "4724 Chowen Ave S, Minneapolis, MN 55410",
+      "url": "https://www.zillow.com/homedetails/4724-Chowen-Ave-S-Minneapolis-MN-55410/1847733_zpid/",
+      "image_url": "/images/4724-chowen-ave-s.jpg",
+      "lat": 44.9174507,
+      "lng": -93.3255606,
+      "bedrooms": 2,
+      "housing_type": "house",
+      "neighborhood": "Linden Hills / Fulton",
+      "price": 2795.0,
+      "pet_rent": "small dogs OK (cats not mentioned — verify)",
+      "furnished": false,
+      "parking": "Off-street (no garage); street parking w/ neighborhood permit",
+      "size_sqft": 1020.0,
+      "price_per_sqft": 2.74,
+      "available": "2026-08-01",
+      "term": "1 year",
+      "school": "Lake Harriet",
+      "daycare": "Casa 50th and France",
+      "dist_school": {
+        "walk_min": 18,
+        "drive_min": 3,
+        "raw": "~18 min walk (3) (est)"
+      },
+      "dist_daycare": {
+        "walk_min": 10,
+        "drive_min": 2,
+        "raw": "~10 min walk (2) (est)"
+      },
+      "dist_work_drive_min": 17,
+      "utilities": "Tenant pays all utilities + lawn + snow.",
+      "notes": "1920s 2BR/1BA bungalow, 1020 sqft. Hardwood, crown molding, half-finished basement, fresh exterior paint, new roof, covered awning patio. Central A/C, in-unit W/D. Same street as Lake Harriet Lower (~0.9 mi). ⚠️ Listing says 'small dogs OK' — cats not mentioned, verify. NO garage, street parking only (permit needed). Tenant on the hook for all utilities/lawn/snow. Zillow Apps: request to apply only."
+    },
+    {
       "id": "4416-grimes-ave-s",
       "lodging": "4416 Grimes Ave S (Morningside SFH)",
       "address": "4416 Grimes Ave S, Minneapolis, MN 55424",
